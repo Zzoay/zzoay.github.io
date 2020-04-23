@@ -37,9 +37,16 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title><![CDATA[Attention]]></title>
     <url>%2F2019%2F01%2F11%2Fdeep-learning%2Fattention%2F</url>
     <content type="text"><![CDATA[注意力模型&emsp; 注意力模型(Attention Model)被广泛使用在自然语言处理、图像识别及语音识别等各种不同类型的深度学习任务中，它的基本思想是仿照人类在做阅读文本、观察物体和听声音等工作时，会对特定的词语、物体、声音给予更多的关注，因而能更好地完成对语言、图像和声音的识别以及理解. Encoder-Decoder模型&emsp; 注意力模型的一个广泛的应用是在机器翻译和对话生成上，而这两个应用最广泛使用的即是Encoder-Decoder模型，AM可以对Encoder-Decoder模型进行改进. &emsp; 如图所示，这是Encoder-Decoder模型的基本架构. 具体地，Encoder负责将输入的序列$(x_1,x_2,…,x_m)$，转化为语义编码$C$，而Decoder则负责将$C$生成$(y_1,y_2,…,y_n)$. \begin{align} C &= F(x_1,x_2,...,x_m) \\ y_i &= G(C,y_1,y_2,...,y_{i-1}) \end{align}一般在文本处理领域，Encoder和Decoder都是RNN模型. &emsp; 但普通的Encoder-Decoder模型存在一个问题，即Encoder生成的语义编码$C$都是一样的，这样一来，无论是生成哪个单词，输入的每个单词对它的影响力都是一样的. \begin{align} y_1 &= f(C) \\ y_2 &= f(C,y_1) \\ y_3 &= f(C,y_1,y_2) \end{align}这样一来，无法体现输入的不同单词对于目标单词的影响，于是需要引入注意力机制. 引入注意力&emsp; 引入注意力机制的Encoder-Decoder模型的结构如下， 相比于普通的Encoder-Decoder模型，引入注意力机制的模型在生成语义编码上面更加多样化，对于每个生成的词语$y_i$，都有语义编码$C_i$与之对应. 于是目标单词的生成变成了如下的形式： \begin{align} y_1 &= f(C_1) \\ y_2 &= f(C_2,y_1) \\ y_3 &= f(C_3,y_1,y_2) \end{align}那么，如何计算不同的目标单词对应的语义编码$C_i$呢？ &emsp; 为了体现不同输入单词对目标单词的影响，而又尽可能不要损失信息，一般采用加权求和的方式计算$C_i$. C_i = \sum_{j=1}^{L_x}a_{ij}h_j其中，$L_x$代表输入句子的长度，$a_{ij}$代表输出第$i$个单词的注意力分配系数，而$h_j$是输入句子中第$j$个单词的语义编码. &emsp; 于是问题就转变成如何求得注意力分配系数$a_{ij}$. 我们把引入注意力机制的Encoder-Decode模型展开，如下所示. (图中有误，$H_n$应该为$H_{n-1}$)那么我们可以采用如下方式计算注意力分配系数. 如图所示(图中有误，$H_{i-1}$应该是$H_{i-2}$，$H_{i}$应该是$H_{i-1 }$)，使用函数F，使得$h_j$与Decoder中的$y_i$之前的隐藏状态$h_i$对齐，最后以Softmax函数输出概率，即可得到目标单词$y_i$所对应的输入单词$x_j$的注意力分配系数$a_{ij}$. 注意力机制​ 我们可以总结出一个通用的注意力机制模式，即如下所示. 将Source中的元素看成是的键值对，然后计算Query和各个key之间的相似度或相关度，就能得到每个key对应value的权重系数，然后加权求和就能得到最终的AttentionValue. Attention(Query,Source)=\sum_{i=1}^{L_x}Similarity(Query,Key_i)*Value_i&emsp; 详细一点，我们可以将注意力机制分为3个阶段，第1个阶段，计算Query和Key的相似度或相关度；第2个阶段，进行归一化处理；第3个阶段，根据权重对Value进行加权求和得到AttentionValue. &lt;/br&gt; &lt;/br&gt; 参考资料： [1]. 张俊林, 深度学习中的注意力机制, https://blog.csdn.net/tg229dvt5i93mxaq5a6u/article/details/78422216. 2017-11-02.]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>神经网络</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Transformer]]></title>
@@ -68,7 +75,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[深度学习Dropout]]></title>
+    <title><![CDATA[Dropout]]></title>
     <url>%2F2018%2F11%2F13%2Fdeep-learning%2Fdropout%2F</url>
     <content type="text"><![CDATA[Dropout&emsp; Dropout是指在深度学习网络的训练过程中，按照一定概率暂时将神经元从网络中丢弃，这样一来，每一批的训练数据都在训练不同的网络. 实验证明，Dropout具有提高神经网络训练速度和防止过拟合的效果. 流程&emsp; 假设我们要训练如下的一个神经网络 使用Dropout时，我们临时随机删除一些神经元，得到如下的子网络： 使用反向传播算法，训练此子网络的参数，然后再重新从完整的神经网络，随机删除一些神经元，不断重复这一过程. 算法首先我们要设置一个参数p，代表的是神经网络中被随机删除的神经元比例. 训练阶段 Standard network \begin{align} z_i^{(l+1)} &= w_i^{(l+1)}y^l+b_i^{(l+1)} \\ y_i^{(l+1)} &= f(z_i^{l+1}) \end{align} Drop network \begin{align} r_j^{(l)} &\sim Bernoulli(p) \\ \hat{y} &= r^{(l)}*y^{(l)} \\ z_i^{(l+1)} &= w_i^{(l+1)} \hat{y}^l + b_i^{(l+1)} \\ y_i^{(l+1)} &= f(z_i^{(l+1)}) \end{align} 测试阶段&emsp; 测试时，每一个单元的参数都要乘以p 即 w_{test}^{(l)} = pW^{(l)}缓解过拟合的原因&emsp; Dropout的原理很简单直接，但为什么Dropout能够缓解神经网络中过拟合的问题呢？ 集成(Ensemble)的思想 &emsp; 如果把Dropout后的每个子网络看成是一个学习器，那么就可以把Dropout看作是Bagging的一种近似，且消耗更少的内存和运算力. 神经元共享的集成 &emsp; Dropout不仅仅是训练一个Bagging的集成模型，而且是共享神经元的集成模型. 这意味着，无论其他神经元是否在模型中，每个神经元都必须表现良好. 这样一来，每一个神经元在很多情况下都能表现良好，也就提高了神经网络的泛化能力. 引入噪声 &emsp; 我们可以认为Dropout实际上是对神经元施加了噪声扰动，增强了神经网络的学习能力和鲁棒性. 传统地，我们为了在神经网络中引入噪声，会对输入的原始值进行破坏，而Dropout直接作用于神经元，相当于是屏蔽掉一部分的输入，这比原始的方法更加智能和高效. &lt;/br&gt; &lt;/br&gt; 参考资料： [1] Micorstrong0305. 深度学习中Dropout原理解析. https://blog.csdn.net/program_developer/article/details/80737724 [2] Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. The Journal of Machine Learning Research, 2014, 15(1): 1929-1958. [3] Dropout as data augmentation. http://arxiv.org/abs/1506.08700]]></content>
       <categories>
