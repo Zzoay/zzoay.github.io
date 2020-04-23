@@ -91,10 +91,6 @@
 <meta property="og:site_name" content="One Blog">
 <meta property="og:description" content="Transformer&amp;emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer1.png?raw=true">
-<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer3.png?raw=true">
-<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer4.png?raw=true">
-<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer2.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true">
@@ -107,11 +103,15 @@
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true">
-<meta property="og:updated_time" content="2020-04-23T03:06:11.209Z">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true">
+<meta property="og:updated_time" content="2020-04-23T12:09:24.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Transformer">
 <meta name="twitter:description" content="Transformer&amp;emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer">
-<meta name="twitter:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer1.png?raw=true">
+<meta name="twitter:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true">
 
 
 
@@ -410,12 +410,12 @@
         <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>&emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer.</p>
 <a id="more"></a> 
 <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>&emsp; Transformer的结构如下</p>
-<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer1.png?raw=true" alt="transformer1"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true" alt="transformer1"></p>
 <h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><p>&emsp; Self-Attention的好处是可以建立句子内部的联系，可以直接跨越多个词捕获长期依赖知识，而无需像RNN那样按照时序建模.</p>
 <p>​    RNN对序列建模的结构如下：</p>
-<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer3.png?raw=true" alt="transformer3"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true" alt="transformer3"></p>
 <p>&emsp; Self-Attention对序列的建模如下：</p>
-<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer4.png?raw=true" alt="transformer4"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true" alt="transformer4"></p>
 <p>&emsp;在Attention机制中，我们对Source和Target进行Attention建模，如果把Source看作是存储器存储的内容，元素由地址Key和值Value组成，当前有个Key=Query的查询，目的是取出存储器中对应的Value值，即Attetion值. 即把计算Attention值看作是一种软寻址，即根据Query和Key的相似性来决定取出对应Value的可能性.</p>
 <script type="math/tex; mode=display">
 Attention(Q,K,V) = softmax(QK^T)V</script><p>&emsp; 而Self-Attention则可看作是词自身为Query，整句都是<key,value>的软寻址. </key,value></p>
@@ -423,7 +423,7 @@ Attention(Q,K,V) = softmax(QK^T)V</script><p>&emsp; 而Self-Attention则可看�
 <p>&emsp; 具体地，Attention的计算公式中的分母多了一个向量的维度的平方根，为的是防止维度过大导致点乘结果过大，而进入SoftMax的饱和区，引起梯度饱和. 公式如下:</p>
 <script type="math/tex; mode=display">
 Attention(Q,K,V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</script><p>&emsp; 而多头机制指的是，引入多组的参数矩阵来分别做Self-Attention，最后将所有结果拼接起来，如下图所示</p>
-<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer2.png?raw=true" alt="transformer2"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true" alt="transformer2"></p>
 <p>左边是单层的Attention，而右边是多头机制的Attention.</p>
 <p>公式如下：</p>
 <script type="math/tex; mode=display">
