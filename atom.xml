@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>One Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-23T03:06:09.425Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Yao-zz</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Byte Pair Encoding</title>
+    <link href="http://yoursite.com/2020/04/23/deep-learning/Byte-Pair-Encoding/"/>
+    <id>http://yoursite.com/2020/04/23/deep-learning/Byte-Pair-Encoding/</id>
+    <published>2020-04-23T03:15:00.587Z</published>
+    <updated>2020-04-23T03:06:09.425Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Byte-Pair-Encoding&quot;&gt;&lt;a href=&quot;#Byte-Pair-Encoding&quot; class=&quot;headerlink&quot; title=&quot;Byte Pair Encoding&quot;&gt;&lt;/a&gt;Byte Pair Encoding&lt;/h1&gt;&lt;p&gt;​    &lt;strong&gt;Byte Pari Encoding（BPE）&lt;/strong&gt;）是一种简单的数据压缩技巧，最初在1994年被提出，而如今广泛应用于各种现代的NLP模型（如BERT、GPT-2、XLM…）。&lt;/p&gt;
+&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;​    如今NLP的发展，由刚开始的基于频率的稀疏词向量（如词袋、N-gram），到前几年通过预训练（word2vec，glove）生成语义表示的稠密词向量，再到划时代意义的BERT，NLP界越来越重视通过预训练学习语义，从而得到好的词向量表示。&lt;/p&gt;
+&lt;p&gt;​    然而这其中有个问题需要解决，基本上所有的NLP任务都需要构造一个词表，往往是选取出现频率最高的N个词加入词表。这其中有什么问题呢，举个例子，BERT的预训练语料是维基百科，如此庞大的语料库，词量肯定也是惊人的高。如果我们构造的词表太小，很多频率较低的词语就会被表示为一个掩码（又或是被去除），在模型中就根本“看不到”，这不仅会让这些低频词无法被学习，还会影响上下文中的高频词的学习。但如果词表过大，就会带来效率问题。&lt;/p&gt;
+&lt;p&gt;​    BPE就是一种很好的方法，在不扩大词表的情况下，能够让更多的词语“被模型看到”。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ELU and GELU</title>
+    <link href="http://yoursite.com/2019/01/11/deep-learning/ELU&amp;GELU/"/>
+    <id>http://yoursite.com/2019/01/11/deep-learning/ELU&amp;GELU/</id>
+    <published>2019-01-11T08:47:03.905Z</published>
+    <updated>2020-04-23T04:44:22.907Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;ELU&quot;&gt;&lt;a href=&quot;#ELU&quot; class=&quot;headerlink&quot; title=&quot;ELU&quot;&gt;&lt;/a&gt;ELU&lt;/h2&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;ELU&lt;/strong&gt;(&lt;em&gt;Exponential Linear Units&lt;/em&gt;)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0.&lt;/p&gt;
+&lt;h3 id=&quot;图像和公式&quot;&gt;&lt;a href=&quot;#图像和公式&quot; class=&quot;headerlink&quot; title=&quot;图像和公式&quot;&gt;&lt;/a&gt;图像和公式&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true&quot; alt=&quot;GELU1&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$) &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="激活函数" scheme="http://yoursite.com/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BERT</title>
+    <link href="http://yoursite.com/2019/01/11/deep-learning/BERT/"/>
+    <id>http://yoursite.com/2019/01/11/deep-learning/BERT/</id>
+    <published>2019-01-11T02:28:04.569Z</published>
+    <updated>2020-04-23T03:06:08.362Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;BERT&quot;&gt;&lt;a href=&quot;#BERT&quot; class=&quot;headerlink&quot; title=&quot;BERT&quot;&gt;&lt;/a&gt;BERT&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;BERT&lt;/strong&gt;全称是&lt;strong&gt;Bidirectional Encoder Representations from Transformers&lt;/strong&gt;，从字面意思可以知道，这是一个基于Transformer的双向的编码器表征模型.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png&quot; alt=&quot;BERT1&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上面是BERT和GPT、ELMo的结构对比.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/01/11/deep-learning/attention/"/>
+    <id>http://yoursite.com/2019/01/11/deep-learning/attention/</id>
+    <published>2019-01-11T01:35:08.450Z</published>
+    <updated>2020-04-23T04:35:58.450Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;注意力模型&quot;&gt;&lt;a href=&quot;#注意力模型&quot; class=&quot;headerlink&quot; title=&quot;注意力模型&quot;&gt;&lt;/a&gt;注意力模型&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;注意力模型&lt;/strong&gt;(&lt;em&gt;Attention Model&lt;/em&gt;)被广泛使用在自然语言处理、图像识别及语音识别等各种不同类型的深度学习任务中，它的基本思想是仿照人类在做阅读文本、观察物体和听声音等工作时，会对特定的词语、物体、声音给予更多的关注，因而能更好地完成对语言、图像和声音的识别以及理解.&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Transformer</title>
+    <link href="http://yoursite.com/2019/01/10/deep-learning/Transformer/"/>
+    <id>http://yoursite.com/2019/01/10/deep-learning/Transformer/</id>
+    <published>2019-01-10T10:33:16.532Z</published>
+    <updated>2020-04-23T03:06:11.209Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Transformer&quot;&gt;&lt;a href=&quot;#Transformer&quot; class=&quot;headerlink&quot; title=&quot;Transformer&quot;&gt;&lt;/a&gt;Transformer&lt;/h1&gt;&lt;p&gt;&amp;emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="注意力机制" scheme="http://yoursite.com/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LSTM</title>
+    <link href="http://yoursite.com/2018/11/13/deep-learning/LSTM/"/>
+    <id>http://yoursite.com/2018/11/13/deep-learning/LSTM/</id>
+    <published>2018-11-13T13:49:00.576Z</published>
+    <updated>2020-04-23T04:23:30.139Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;LSTM&quot;&gt;&lt;a href=&quot;#LSTM&quot; class=&quot;headerlink&quot; title=&quot;LSTM&quot;&gt;&lt;/a&gt;LSTM&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;LSTM&lt;/strong&gt;(&lt;em&gt;Long Short Term Memory&lt;/em&gt;)，是&lt;strong&gt;RNN&lt;/strong&gt;的一种，通过门控机制，有选择地遗忘先前的状态和输出当前状态，可以很好地解决&lt;strong&gt;长期依赖&lt;/strong&gt;(&lt;em&gt;Long-Term Dependencies&lt;/em&gt;)的问题.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习Dropout</title>
+    <link href="http://yoursite.com/2018/11/13/deep-learning/dropout/"/>
+    <id>http://yoursite.com/2018/11/13/deep-learning/dropout/</id>
+    <published>2018-11-13T03:19:12.049Z</published>
+    <updated>2020-04-23T03:27:54.822Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Dropout&quot;&gt;&lt;a href=&quot;#Dropout&quot; class=&quot;headerlink&quot; title=&quot;Dropout&quot;&gt;&lt;/a&gt;Dropout&lt;/h1&gt;&lt;p&gt;&amp;emsp; Dropout是指在深度学习网络的训练过程中，按照一定概率暂时将神经元从网络中丢弃，这样一来，每一批的训练数据都在训练不同的网络.  实验证明，Dropout具有提高神经网络训练速度和防止过拟合的效果.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog-fig.oss-cn-shenzhen.aliyuncs.com/dropout1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>批标准化</title>
+    <link href="http://yoursite.com/2018/11/13/deep-learning/batch-normalization/"/>
+    <id>http://yoursite.com/2018/11/13/deep-learning/batch-normalization/</id>
+    <published>2018-11-13T00:14:30.646Z</published>
+    <updated>2020-04-23T04:33:29.766Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;批标准化-Batch-Normalization&quot;&gt;&lt;a href=&quot;#批标准化-Batch-Normalization&quot; class=&quot;headerlink&quot; title=&quot;批标准化(Batch Normalization)&quot;&gt;&lt;/a&gt;批标准化(Batch Normalization)&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;批标准化&lt;/strong&gt;(&lt;em&gt;Batch Normalization&lt;/em&gt;)，是解决随着网络深度加深，训练困难的问题的一种方法，一般用在激活函数之前，其基本思想是把每层的输入值的分布拉回到标准正态分布当中，使得每一层中，每一次的输入独立同分布，使得神经网络可以很好地学习数据；针对于非线性激活函数，还能将处于饱和区的值，拉回到梯度较大的区域，一定程度上解决梯度消失的问题.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>循环神经网络</title>
+    <link href="http://yoursite.com/2018/10/08/deep-learning/recurrent-neural-network/"/>
+    <id>http://yoursite.com/2018/10/08/deep-learning/recurrent-neural-network/</id>
+    <published>2018-10-08T14:47:11.163Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;循环神经网络&quot;&gt;&lt;a href=&quot;#循环神经网络&quot; class=&quot;headerlink&quot; title=&quot;循环神经网络&quot;&gt;&lt;/a&gt;循环神经网络&lt;/h1&gt;&lt;h2 id=&quot;结构&quot;&gt;&lt;a href=&quot;#结构&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卷积神经网络</title>
+    <link href="http://yoursite.com/2018/10/08/deep-learning/convolutional-neural-network/"/>
+    <id>http://yoursite.com/2018/10/08/deep-learning/convolutional-neural-network/</id>
+    <published>2018-10-08T14:45:42.623Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;卷积神经网络&quot;&gt;&lt;a href=&quot;#卷积神经网络&quot; class=&quot;headerlink&quot; title=&quot;卷积神经网络&quot;&gt;&lt;/a&gt;卷积神经网络&lt;/h1&gt;&lt;h2 id=&quot;卷积&quot;&gt;&lt;a href=&quot;#卷积&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="计算机视觉" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>神经网络</title>
+    <link href="http://yoursite.com/2018/10/08/deep-learning/neural-network/"/>
+    <id>http://yoursite.com/2018/10/08/deep-learning/neural-network/</id>
+    <published>2018-10-08T10:35:46.825Z</published>
+    <updated>2020-04-23T04:24:34.855Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;神经网络&quot;&gt;&lt;a href=&quot;#神经网络&quot; class=&quot;headerlink&quot; title=&quot;神经网络&quot;&gt;&lt;/a&gt;神经网络&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;神经网络&lt;/strong&gt;(&lt;em&gt;neural network&lt;/em&gt;)，是&lt;strong&gt;深度学习&lt;/strong&gt;(&lt;em&gt;deep learning&lt;/em&gt;)领域的基础和核心工具，是一种模仿生物神经网络的结构和功能的机器学习模型。神经网络由大量的人工神经元(neron)组成，基本思想是神经元超过一个&lt;strong&gt;阈值&lt;/strong&gt;(&lt;em&gt;threshold&lt;/em&gt;)后被激活，输出值传到下一神经元，一层层传播，最终输出结果。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Word2Vec</title>
+    <link href="http://yoursite.com/2018/09/09/natural-language-processing/Word2Vec/"/>
+    <id>http://yoursite.com/2018/09/09/natural-language-processing/Word2Vec/</id>
+    <published>2018-09-09T11:19:59.257Z</published>
+    <updated>2020-04-23T04:55:11.492Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Word2Vec&quot;&gt;&lt;a href=&quot;#Word2Vec&quot; class=&quot;headerlink&quot; title=&quot;Word2Vec&quot;&gt;&lt;/a&gt;Word2Vec&lt;/h1&gt;&lt;p&gt;&amp;emsp; Word2Vec是一种以&lt;strong&gt;无监督&lt;/strong&gt;的方式来得到词向量的模型，其核心思想是通过上下文信息表达一个词语，将词语从原先的空间映射到新的空间中(本质上是一种降维)。这样得到的词向量相对于&lt;strong&gt;独热编码&lt;/strong&gt;具有维度较低、词语之间相似度易衡量等优点.&lt;/p&gt;
+&lt;p&gt;&amp;emsp; 具体地，Word2Vec首先将词语进行独热编码，然后将编码后的词向量输入神经网络，通过最小化误差来更新权值矩阵，最后将训练好的权值矩阵作为处理后的词向量矩阵. &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="word2vec" scheme="http://yoursite.com/tags/word2vec/"/>
+    
+      <category term="词向量" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%90%91%E9%87%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>特征选择</title>
+    <link href="http://yoursite.com/2018/08/10/feature-selection/"/>
+    <id>http://yoursite.com/2018/08/10/feature-selection/</id>
+    <published>2018-08-10T12:31:18.430Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;特征选择&quot;&gt;&lt;a href=&quot;#特征选择&quot; class=&quot;headerlink&quot; title=&quot;特征选择&quot;&gt;&lt;/a&gt;特征选择&lt;/h1&gt;&lt;p&gt;&amp;emsp; 特征选择是数据预处理中非常重要的技术，具体来说，在一般的场景下，数据的特征往往很多，会出现数据样本稀疏、距离计算困难等问题，称为&lt;strong&gt;维数灾难&lt;/strong&gt;(&lt;em&gt;curse of dimensionality&lt;/em&gt;).  另外，去除那些不那么重要的特征，能使得重要的特征对结果的预测有更好的作用.  因此，特征的选择就变得非常重要.  具体的，在特征选择中，我们的目标是去除那些与预测结果相关性小的特征，而保留那些相关性大的特征.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="特征工程" scheme="http://yoursite.com/categories/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+      <category term="特征选择" scheme="http://yoursite.com/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性判别分析</title>
+    <link href="http://yoursite.com/2018/08/10/descend-dimension/LDA/"/>
+    <id>http://yoursite.com/2018/08/10/descend-dimension/LDA/</id>
+    <published>2018-08-10T01:53:45.379Z</published>
+    <updated>2020-04-23T04:38:41.301Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;线性判别分析-LDA&quot;&gt;&lt;a href=&quot;#线性判别分析-LDA&quot; class=&quot;headerlink&quot; title=&quot;线性判别分析(LDA)&quot;&gt;&lt;/a&gt;线性判别分析(LDA)&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;线性判别分析&lt;/strong&gt;(&lt;em&gt;Linear Discriminant Analysis&lt;/em&gt;，简称LDA)，是一种有监督的降维方法.  其思想是希望投影到超平面上的点具有如下性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同类的样本点尽可能地接近&lt;/li&gt;
+&lt;li&gt;不同类的样本点尽可能远离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如下图所示，右图的降维效果显然要好于左图.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog-fig.oss-cn-shenzhen.aliyuncs.com/lda1.png&quot; alt=&quot;图片来源：博客园刘建平&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="特征工程" scheme="http://yoursite.com/categories/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据降维" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E9%99%8D%E7%BB%B4/"/>
+    
+      <category term="线性判别分析" scheme="http://yoursite.com/tags/%E7%BA%BF%E6%80%A7%E5%88%A4%E5%88%AB%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>梯度提升树(GBDT)</title>
+    <link href="http://yoursite.com/2018/08/08/ensemble-learning/GBDT/"/>
+    <id>http://yoursite.com/2018/08/08/ensemble-learning/GBDT/</id>
+    <published>2018-08-08T09:12:11.045Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;梯度提升树-GBDT&quot;&gt;&lt;a href=&quot;#梯度提升树-GBDT&quot; class=&quot;headerlink&quot; title=&quot;梯度提升树(GBDT)&quot;&gt;&lt;/a&gt;梯度提升树(GBDT)&lt;/h1&gt;&lt;p&gt;&amp;emsp; 提升树(Boosting Tree)是以分类树或回归树为基学习器的 &lt;strong&gt;Boosting 算法&lt;/strong&gt;. 而因为面对不同的学习任务，会有不同的损失函数，而对于一般的损失函数，往往每一步的优化不容易，于是提出了&lt;strong&gt;梯度提升&lt;/strong&gt;(&lt;em&gt;gradient boosting&lt;/em&gt;)算法，即&lt;strong&gt;梯度提升树&lt;/strong&gt;(&lt;em&gt;Gradient Boosting Decision Tree&lt;/em&gt;, 简称&lt;strong&gt;GBDT&lt;/strong&gt;).  总的来说，GBDT是一种学习性能非常好的算法.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成学习" scheme="http://yoursite.com/categories/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Boosting" scheme="http://yoursite.com/tags/Boosting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主成分分析</title>
+    <link href="http://yoursite.com/2018/08/07/descend-dimension/PCA/"/>
+    <id>http://yoursite.com/2018/08/07/descend-dimension/PCA/</id>
+    <published>2018-08-07T09:28:49.859Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;主成分分析-PCA&quot;&gt;&lt;a href=&quot;#主成分分析-PCA&quot; class=&quot;headerlink&quot; title=&quot;主成分分析(PCA)&quot;&gt;&lt;/a&gt;主成分分析(PCA)&lt;/h1&gt;&lt;p&gt;&amp;emsp;&lt;strong&gt;主成分分析&lt;/strong&gt;(&lt;em&gt;Principal Component Analysis&lt;/em&gt; , 简称 &lt;em&gt;PCA&lt;/em&gt; ) 是最常用的一种降维方法.  其求解主要有对样本的协方差矩阵的&lt;strong&gt;特征值分解&lt;/strong&gt;和对原样本矩阵的&lt;strong&gt;奇异值分解&lt;/strong&gt;两种方法.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="特征工程" scheme="http://yoursite.com/categories/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据降维" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E9%99%8D%E7%BB%B4/"/>
+    
+      <category term="主成分分析" scheme="http://yoursite.com/tags/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Random Forest</title>
+    <link href="http://yoursite.com/2018/08/07/ensemble-learning/Random-Forest/"/>
+    <id>http://yoursite.com/2018/08/07/ensemble-learning/Random-Forest/</id>
+    <published>2018-08-07T01:58:03.038Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Random-Forest&quot;&gt;&lt;a href=&quot;#Random-Forest&quot; class=&quot;headerlink&quot; title=&quot;Random Forest&quot;&gt;&lt;/a&gt;Random Forest&lt;/h1&gt;&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;&amp;emsp; 我们知道，Bagging 算法在样本选择的时候采用&lt;strong&gt;自助采样法&lt;/strong&gt;，这样的好处在于引入了随机性，使得最终学习器不容易过拟合，而在&lt;strong&gt;随机森林&lt;/strong&gt;(&lt;em&gt;Random Forest&lt;/em&gt;) 中，我们进一步引入随机性：在决策树的训练过程中引入随机属性选择.  最终由多个决策树共同组成随机森林.&lt;/p&gt;
+&lt;p&gt;&amp;emsp; 令人惊讶的是，这样一种原理简单的算法，在许多任务中都有非常优秀的性能.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成学习" scheme="http://yoursite.com/categories/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Bagging" scheme="http://yoursite.com/tags/Bagging/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AdaBoost</title>
+    <link href="http://yoursite.com/2018/08/06/ensemble-learning/AdaBoost/"/>
+    <id>http://yoursite.com/2018/08/06/ensemble-learning/AdaBoost/</id>
+    <published>2018-08-06T10:11:38.598Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;AdaBoost&quot;&gt;&lt;a href=&quot;#AdaBoost&quot; class=&quot;headerlink&quot; title=&quot;AdaBoost&quot;&gt;&lt;/a&gt;AdaBoost&lt;/h1&gt;&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;&amp;emsp; 我们知道 AdaBoost 是一种 Boosting 算法，而 Boosting 的核心问题在于：如何在每一轮改变训练数据的权值或概率分布；如何将弱分类器组合成一个强分类器.  而 AdaBoost 的做法是，提高那些被前一轮弱分类器错误分类的样本权值，而降低那些正确分类样本的权值；采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，减小分类误差率大的弱分类器的权值. &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成学习" scheme="http://yoursite.com/categories/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Boosting" scheme="http://yoursite.com/tags/Boosting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集成学习</title>
+    <link href="http://yoursite.com/2018/08/06/ensemble-learning/ensemble-learning/"/>
+    <id>http://yoursite.com/2018/08/06/ensemble-learning/ensemble-learning/</id>
+    <published>2018-08-06T07:30:20.959Z</published>
+    <updated>2018-12-03T16:04:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;集成学习-ensemble-learning&quot;&gt;&lt;a href=&quot;#集成学习-ensemble-learning&quot; class=&quot;headerlink&quot; title=&quot;集成学习(ensemble learning)&quot;&gt;&lt;/a&gt;集成学习(ensemble learning)&lt;/h1&gt;&lt;p&gt;&amp;emsp;&lt;strong&gt;集成学习&lt;/strong&gt;(&lt;em&gt;ensemble learning&lt;/em&gt;)通过构建并结合多个学习器来完成学习任务，有时也被称为&lt;strong&gt;多分类器系统&lt;/strong&gt;(&lt;em&gt;multi-classifier system&lt;/em&gt;)、&lt;strong&gt;基于委员会的学习&lt;/strong&gt;(&lt;em&gt;committee-based learning&lt;/em&gt;)等.&lt;/p&gt;
+&lt;p&gt;&amp;emsp;集成学习根据学习方法可分为两大类：基学习器间存在强依赖关系、必须串行生成的序列化方法；基学习器不存在强依赖关系、可同时生成的并行化方法.&lt;/p&gt;
+&lt;p&gt;&amp;emsp;集成学习比较常见的有 &lt;strong&gt;Boosting&lt;/strong&gt;、&lt;strong&gt;Bagging&lt;/strong&gt;、&lt;strong&gt;Stacking&lt;/strong&gt; 三种类型，其中它们的主要效果分别是&lt;strong&gt;减小偏差(bias)、减小方差(variance)、改进预测&lt;/strong&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成学习" scheme="http://yoursite.com/categories/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>条件随机场</title>
+    <link href="http://yoursite.com/2018/08/02/probabilistic-graphical-model/CRF/"/>
+    <id>http://yoursite.com/2018/08/02/probabilistic-graphical-model/CRF/</id>
+    <published>2018-08-02T08:37:13.114Z</published>
+    <updated>2020-04-23T04:47:37.781Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;条件随机场&quot;&gt;&lt;a href=&quot;#条件随机场&quot; class=&quot;headerlink&quot; title=&quot;条件随机场&quot;&gt;&lt;/a&gt;条件随机场&lt;/h1&gt;&lt;p&gt; 首先，&lt;strong&gt;概率图模型&lt;/strong&gt;(&lt;em&gt;Probabilistic graphical model&lt;/em&gt;)的体系结构如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog-fig.oss-cn-shenzhen.aliyuncs.com/PGM1.jpg&quot; alt=&quot;PGM&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 可见，条件随机场是&lt;strong&gt;无向图模型&lt;/strong&gt;(&lt;em&gt;Unidirected graphical models&lt;/em&gt;)中&lt;strong&gt;马尔可夫网络&lt;/strong&gt;(&lt;em&gt;Markov networks&lt;/em&gt;)的一种.&lt;/p&gt;
+&lt;p&gt; 具体地，&lt;strong&gt;条件随机场&lt;/strong&gt;(&lt;em&gt;Conditional random field&lt;/em&gt;) 是给定随机变量 $X$ 的条件下，随机变量 $Y$ 的马尔可夫随机场.  这里主要介绍定义在线性链上的特殊的条件随机场，称为&lt;strong&gt;线性链条件随机场&lt;/strong&gt; (&lt;em&gt;Linear chain conditional random field&lt;/em&gt;). 线性链条件随机场可以用于标注等问题.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="概率图模型" scheme="http://yoursite.com/categories/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="判别模型" scheme="http://yoursite.com/tags/%E5%88%A4%E5%88%AB%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="条件随机场" scheme="http://yoursite.com/tags/%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA/"/>
+    
+      <category term="概率图模型" scheme="http://yoursite.com/tags/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+</feed>
