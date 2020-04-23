@@ -94,16 +94,7 @@
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true">
-<meta property="og:updated_time" content="2020-04-23T03:06:08.362Z">
+<meta property="og:updated_time" content="2020-04-23T12:15:16.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BERT">
 <meta name="twitter:description" content="BERT&amp;emsp; BERT全称是Bidirectional Encoder Representations from Transformers，从字面意思可以知道，这是一个基于Transformer的双向的编码器表征模型.   上面是BERT和GPT、ELMo的结构对比.">
@@ -448,148 +439,7 @@ P(masked|X_{else})</script><p>&emsp; 实际上，BERT并不总是Mask那15%的�
 <blockquote>
 <p>参考资料</p>
 <p><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">https://arxiv.org/abs/1810.04805</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/46652512---" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46652512---</a><br>title: BERT<br>tags: [深度学习, 自然语言处理]</p>
-<h2 id="categories-深度学习"><a href="#categories-深度学习" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2></blockquote>
-<h1 id="BERT-1"><a href="#BERT-1" class="headerlink" title="BERT"></a>BERT</h1><p>&emsp; <strong>BERT</strong>全称是<strong>Bidirectional Encoder Representations from Transformers</strong>，从字面意思可以知道，这是一个基于Transformer的双向的编码器表征模型.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png" alt="BERT1"></p>
-<blockquote>
-<p>上面是BERT和GPT、ELMo的结构对比.</p>
-</blockquote>
-<!--more-->
-<h2 id="Embedding-1"><a href="#Embedding-1" class="headerlink" title="Embedding"></a>Embedding</h2><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true" alt=""></p>
-<p>&emsp; <strong>BERT</strong>的Embedding是3个Embedding的相加，即Token Embeddings、Segment Embeddings、Position Embeddings.</p>
-<ul>
-<li>Token Embeddings：词向量，其中第一个单词是分类任务的标记，可用于后面的分类任务</li>
-<li>Segment Embeddings：用来区别上句和下句</li>
-<li>Position Embeddings：位置信息向量，和Transformer中使用三角函数不一样，这里的是通过学习得到的</li>
-</ul>
-<h2 id="预训练任务-1"><a href="#预训练任务-1" class="headerlink" title="预训练任务"></a>预训练任务</h2><p>&emsp; BERT有两个无监督预训练任务，第一步是随机遮盖一些词，然后依赖上下文来预测这些词，得到初步的预训练模型；第二步在第一步的基础上，是随机改变一半的句子对中的第二句，预测一个句子对的第二句是否是第一句的下一句。</p>
-<h3 id="Task-1-1"><a href="#Task-1-1" class="headerlink" title="Task 1"></a>Task 1</h3><p>&emsp; 第一个任务称为Mask-LM，常规的LanguageModel是这样的</p>
-<script type="math/tex; mode=display">
-P(X_i|X_{i-1},...X_1)</script><p>或是这样的</p>
-<script type="math/tex; mode=display">
-P(X_i|X_{i+1},...,X_{n})</script><p>而Mask-LM充分利用上下文信息，具体地，随机Mask掉15%的词，然后只去预测那些被Mask的词，即</p>
-<script type="math/tex; mode=display">
-P(masked|X_{else})</script><p>&emsp; 实际上，BERT并不总是Mask那15%的词，而是</p>
-<ul>
-<li>80%的概率Mask</li>
-<li>10%的概率用一个随机的词代替</li>
-<li>10%的概率不变</li>
-</ul>
-<blockquote>
-<p>需注意的是模型本身并不知道它将要被要求预测哪些单词，或哪些单词被替换.</p>
-</blockquote>
-<h3 id="Task-2-1"><a href="#Task-2-1" class="headerlink" title="Task 2"></a>Task 2</h3><p>&emsp; 第二个任务则是预测句子的下一句，即给定句子对$<s_1,s_2>$，预测$S_2$是否是$S_1$的下一句。具体地，BERT随机替换50%的句子对中的$S_2$，并自动给定标签，然后去对所有句子对做预测. 例如：</s_1,s_2></p>
-<blockquote>
-<p>Input = [CLS] the man went to [MASK] store [SEP]</p>
-<p>he bought a gallon [MASK] milk [SEP]</p>
-<p>Label = IsNext</p>
-<p>Input = [CLS] the man [MASK] to the store [SEP]</p>
-<p>penguin [MASK] are flight ##less birds [SEP]</p>
-<p>Label = NotNext</p>
-</blockquote>
-<h2 id="Fine-tuning-1"><a href="#Fine-tuning-1" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h2><p>&emsp; 预训练好的BERT模型，再去做一些简单调整，再在新的数据集上做训练，可以在许多自然语言处理的任务上有很好的表现. 例如，文本分类、问答、命名实体识别、上下文预测、对话等.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true" alt=""></p>
-<p>&lt;/br&gt;</p>
-<p>&lt;/br&gt;</p>
-<blockquote>
-<p>参考资料</p>
-<p><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">https://arxiv.org/abs/1810.04805</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/46652512---" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46652512---</a><br>title: BERT<br>tags: [深度学习, 自然语言处理]</p>
-<h2 id="categories-深度学习-1"><a href="#categories-深度学习-1" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2></blockquote>
-<h1 id="BERT-2"><a href="#BERT-2" class="headerlink" title="BERT"></a>BERT</h1><p>&emsp; <strong>BERT</strong>全称是<strong>Bidirectional Encoder Representations from Transformers</strong>，从字面意思可以知道，这是一个基于Transformer的双向的编码器表征模型.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png" alt="BERT1"></p>
-<blockquote>
-<p>上面是BERT和GPT、ELMo的结构对比.</p>
-</blockquote>
-<!--more-->
-<h2 id="Embedding-2"><a href="#Embedding-2" class="headerlink" title="Embedding"></a>Embedding</h2><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true" alt=""></p>
-<p>&emsp; <strong>BERT</strong>的Embedding是3个Embedding的相加，即Token Embeddings、Segment Embeddings、Position Embeddings.</p>
-<ul>
-<li>Token Embeddings：词向量，其中第一个单词是分类任务的标记，可用于后面的分类任务</li>
-<li>Segment Embeddings：用来区别上句和下句</li>
-<li>Position Embeddings：位置信息向量，和Transformer中使用三角函数不一样，这里的是通过学习得到的</li>
-</ul>
-<h2 id="预训练任务-2"><a href="#预训练任务-2" class="headerlink" title="预训练任务"></a>预训练任务</h2><p>&emsp; BERT有两个无监督预训练任务，第一步是随机遮盖一些词，然后依赖上下文来预测这些词，得到初步的预训练模型；第二步在第一步的基础上，是随机改变一半的句子对中的第二句，预测一个句子对的第二句是否是第一句的下一句。</p>
-<h3 id="Task-1-2"><a href="#Task-1-2" class="headerlink" title="Task 1"></a>Task 1</h3><p>&emsp; 第一个任务称为Mask-LM，常规的LanguageModel是这样的</p>
-<script type="math/tex; mode=display">
-P(X_i|X_{i-1},...X_1)</script><p>或是这样的</p>
-<script type="math/tex; mode=display">
-P(X_i|X_{i+1},...,X_{n})</script><p>而Mask-LM充分利用上下文信息，具体地，随机Mask掉15%的词，然后只去预测那些被Mask的词，即</p>
-<script type="math/tex; mode=display">
-P(masked|X_{else})</script><p>&emsp; 实际上，BERT并不总是Mask那15%的词，而是</p>
-<ul>
-<li>80%的概率Mask</li>
-<li>10%的概率用一个随机的词代替</li>
-<li>10%的概率不变</li>
-</ul>
-<blockquote>
-<p>需注意的是模型本身并不知道它将要被要求预测哪些单词，或哪些单词被替换.</p>
-</blockquote>
-<h3 id="Task-2-2"><a href="#Task-2-2" class="headerlink" title="Task 2"></a>Task 2</h3><p>&emsp; 第二个任务则是预测句子的下一句，即给定句子对$<s_1,s_2>$，预测$S_2$是否是$S_1$的下一句。具体地，BERT随机替换50%的句子对中的$S_2$，并自动给定标签，然后去对所有句子对做预测. 例如：</s_1,s_2></p>
-<blockquote>
-<p>Input = [CLS] the man went to [MASK] store [SEP]</p>
-<p>he bought a gallon [MASK] milk [SEP]</p>
-<p>Label = IsNext</p>
-<p>Input = [CLS] the man [MASK] to the store [SEP]</p>
-<p>penguin [MASK] are flight ##less birds [SEP]</p>
-<p>Label = NotNext</p>
-</blockquote>
-<h2 id="Fine-tuning-2"><a href="#Fine-tuning-2" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h2><p>&emsp; 预训练好的BERT模型，再去做一些简单调整，再在新的数据集上做训练，可以在许多自然语言处理的任务上有很好的表现. 例如，文本分类、问答、命名实体识别、上下文预测、对话等.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true" alt=""></p>
-<p>&lt;/br&gt;</p>
-<p>&lt;/br&gt;</p>
-<blockquote>
-<p>参考资料</p>
-<p><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">https://arxiv.org/abs/1810.04805</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/46652512---" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46652512---</a><br>title: BERT<br>tags: [深度学习, 自然语言处理]</p>
-<h2 id="categories-深度学习-2"><a href="#categories-深度学习-2" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2></blockquote>
-<h1 id="BERT-3"><a href="#BERT-3" class="headerlink" title="BERT"></a>BERT</h1><p>&emsp; <strong>BERT</strong>全称是<strong>Bidirectional Encoder Representations from Transformers</strong>，从字面意思可以知道，这是一个基于Transformer的双向的编码器表征模型.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT1.png?raw=trueF:\blog-fig\BERT1.png" alt="BERT1"></p>
-<blockquote>
-<p>上面是BERT和GPT、ELMo的结构对比.</p>
-</blockquote>
-<!--more-->
-<h2 id="Embedding-3"><a href="#Embedding-3" class="headerlink" title="Embedding"></a>Embedding</h2><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT3.png?raw=true" alt=""></p>
-<p>&emsp; <strong>BERT</strong>的Embedding是3个Embedding的相加，即Token Embeddings、Segment Embeddings、Position Embeddings.</p>
-<ul>
-<li>Token Embeddings：词向量，其中第一个单词是分类任务的标记，可用于后面的分类任务</li>
-<li>Segment Embeddings：用来区别上句和下句</li>
-<li>Position Embeddings：位置信息向量，和Transformer中使用三角函数不一样，这里的是通过学习得到的</li>
-</ul>
-<h2 id="预训练任务-3"><a href="#预训练任务-3" class="headerlink" title="预训练任务"></a>预训练任务</h2><p>&emsp; BERT有两个无监督预训练任务，第一步是随机遮盖一些词，然后依赖上下文来预测这些词，得到初步的预训练模型；第二步在第一步的基础上，是随机改变一半的句子对中的第二句，预测一个句子对的第二句是否是第一句的下一句。</p>
-<h3 id="Task-1-3"><a href="#Task-1-3" class="headerlink" title="Task 1"></a>Task 1</h3><p>&emsp; 第一个任务称为Mask-LM，常规的LanguageModel是这样的</p>
-<script type="math/tex; mode=display">
-P(X_i|X_{i-1},...X_1)</script><p>或是这样的</p>
-<script type="math/tex; mode=display">
-P(X_i|X_{i+1},...,X_{n})</script><p>而Mask-LM充分利用上下文信息，具体地，随机Mask掉15%的词，然后只去预测那些被Mask的词，即</p>
-<script type="math/tex; mode=display">
-P(masked|X_{else})</script><p>&emsp; 实际上，BERT并不总是Mask那15%的词，而是</p>
-<ul>
-<li>80%的概率Mask</li>
-<li>10%的概率用一个随机的词代替</li>
-<li>10%的概率不变</li>
-</ul>
-<blockquote>
-<p>需注意的是模型本身并不知道它将要被要求预测哪些单词，或哪些单词被替换.</p>
-</blockquote>
-<h3 id="Task-2-3"><a href="#Task-2-3" class="headerlink" title="Task 2"></a>Task 2</h3><p>&emsp; 第二个任务则是预测句子的下一句，即给定句子对$<s_1,s_2>$，预测$S_2$是否是$S_1$的下一句。具体地，BERT随机替换50%的句子对中的$S_2$，并自动给定标签，然后去对所有句子对做预测. 例如：</s_1,s_2></p>
-<blockquote>
-<p>Input = [CLS] the man went to [MASK] store [SEP]</p>
-<p>he bought a gallon [MASK] milk [SEP]</p>
-<p>Label = IsNext</p>
-<p>Input = [CLS] the man [MASK] to the store [SEP]</p>
-<p>penguin [MASK] are flight ##less birds [SEP]</p>
-<p>Label = NotNext</p>
-</blockquote>
-<h2 id="Fine-tuning-3"><a href="#Fine-tuning-3" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h2><p>&emsp; 预训练好的BERT模型，再去做一些简单调整，再在新的数据集上做训练，可以在许多自然语言处理的任务上有很好的表现. 例如，文本分类、问答、命名实体识别、上下文预测、对话等.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/BERT2.png?raw=true" alt=""></p>
-<p>&lt;/br&gt;</p>
-<p>&lt;/br&gt;</p>
-<blockquote>
-<p>参考资料</p>
-<p><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">https://arxiv.org/abs/1810.04805</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/46652512" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46652512</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/46652512---" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46652512---</a></p>
 </blockquote>
 
       
@@ -814,7 +664,7 @@ P(masked|X_{else})</script><p>&emsp; 实际上，BERT并不总是Mask那15%的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BERT"><span class="nav-number">1.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Embedding"><span class="nav-number">1.1.</span> <span class="nav-text">Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预训练任务"><span class="nav-number">1.2.</span> <span class="nav-text">预训练任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Task 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">Task 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fine-tuning"><span class="nav-number">1.3.</span> <span class="nav-text">Fine-tuning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习"><span class="nav-number">1.4.</span> <span class="nav-text">categories: 深度学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BERT-1"><span class="nav-number">2.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Embedding-1"><span class="nav-number">2.1.</span> <span class="nav-text">Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预训练任务-1"><span class="nav-number">2.2.</span> <span class="nav-text">预训练任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Task 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Task 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fine-tuning-1"><span class="nav-number">2.3.</span> <span class="nav-text">Fine-tuning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习-1"><span class="nav-number">2.4.</span> <span class="nav-text">categories: 深度学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BERT-2"><span class="nav-number">3.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Embedding-2"><span class="nav-number">3.1.</span> <span class="nav-text">Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预训练任务-2"><span class="nav-number">3.2.</span> <span class="nav-text">预训练任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-1-2"><span class="nav-number">3.2.1.</span> <span class="nav-text">Task 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2-2"><span class="nav-number">3.2.2.</span> <span class="nav-text">Task 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fine-tuning-2"><span class="nav-number">3.3.</span> <span class="nav-text">Fine-tuning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习-2"><span class="nav-number">3.4.</span> <span class="nav-text">categories: 深度学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BERT-3"><span class="nav-number">4.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Embedding-3"><span class="nav-number">4.1.</span> <span class="nav-text">Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预训练任务-3"><span class="nav-number">4.2.</span> <span class="nav-text">预训练任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-1-3"><span class="nav-number">4.2.1.</span> <span class="nav-text">Task 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2-3"><span class="nav-number">4.2.2.</span> <span class="nav-text">Task 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fine-tuning-3"><span class="nav-number">4.3.</span> <span class="nav-text">Fine-tuning</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BERT"><span class="nav-number">1.</span> <span class="nav-text">BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Embedding"><span class="nav-number">1.1.</span> <span class="nav-text">Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预训练任务"><span class="nav-number">1.2.</span> <span class="nav-text">预训练任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Task 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">Task 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fine-tuning"><span class="nav-number">1.3.</span> <span class="nav-text">Fine-tuning</span></a></li></ol></li></ol></div>
             
 
           </div>

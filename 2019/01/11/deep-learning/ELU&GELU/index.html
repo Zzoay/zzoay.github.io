@@ -97,25 +97,7 @@
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU3.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true">
-<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true">
-<meta property="og:updated_time" content="2020-04-23T04:44:22.907Z">
+<meta property="og:updated_time" content="2020-04-23T12:14:01.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELU and GELU">
 <meta name="twitter:description" content="ELU&amp;emsp; ELU(Exponential Linear Units)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0. 图像和公式  其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$)">
@@ -454,130 +436,7 @@ x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class
 <p><a href="https://blog.csdn.net/mao_xiao_feng/article/details/53242235" target="_blank" rel="noopener">https://blog.csdn.net/mao_xiao_feng/article/details/53242235</a></p>
 <p><a href="https://arxiv.org/abs/1511.07289" target="_blank" rel="noopener">https://arxiv.org/abs/1511.07289</a></p>
 <p><a href="https://blog.csdn.net/dgyuanshaofeng/article/details/80209816" target="_blank" rel="noopener">https://blog.csdn.net/dgyuanshaofeng/article/details/80209816</a></p>
-<p><a href="https://arxiv.org/abs/1606.08415---" target="_blank" rel="noopener">https://arxiv.org/abs/1606.08415---</a><br>title: ELU and GELU<br>tags: [深度学习, 激活函数]</p>
-<h2 id="categories-深度学习"><a href="#categories-深度学习" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2></blockquote>
-<h2 id="ELU-1"><a href="#ELU-1" class="headerlink" title="ELU"></a>ELU</h2><p>&emsp; <strong>ELU</strong>(<em>Exponential Linear Units</em>)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0.</p>
-<h3 id="图像和公式-2"><a href="#图像和公式-2" class="headerlink" title="图像和公式"></a>图像和公式</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$) </p>
-</blockquote>
-<!--more-->
-<p>公式如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU2.png?raw=true" alt="GELU1"></p>
-<h3 id="实验结果-2"><a href="#实验结果-2" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU3.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的实验结果，左边是激活值的平均值，右边是交叉熵损失，可以看到ELU的激活值均值要更接近0，且交叉熵损失下降得更快.</p>
-</blockquote>
-<h2 id="GELU-1"><a href="#GELU-1" class="headerlink" title="GELU"></a>GELU</h2><p>&emsp; <strong>GELU</strong>(<em>Gaussian Error Linear Unit</em>)，是ReLU的一种改进，改进了ReLU缺乏概率解释的缺陷，在一些任务上表现得要更好. </p>
-<h3 id="图像和公式-3"><a href="#图像和公式-3" class="headerlink" title="图像和公式"></a>图像和公式</h3><p>&emsp;<strong>GELU</strong>的曲线如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>其中，GELU($\mu =0,\sigma =1$)，ELU($\alpha = 1$)</p>
-</blockquote>
-<p>公式如下：</p>
-<script type="math/tex; mode=display">
-GELU(x) = xP(X<x) = x\Phi(x)</script><p>并且可以用如下公式估计</p>
-<script type="math/tex; mode=display">
-0.5x(1+tanh[\sqrt{2/\pi}(x+0.044715x^3)])</script><p>或是</p>
-<script type="math/tex; mode=display">
-x \sigma(1.702x)</script><h3 id="实验结果-3"><a href="#实验结果-3" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的结果，左边是未使用Dropout，右边是使用了Dropout.</p>
-</blockquote>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的鲁棒性结果，可以看到，随着噪声的增加，GELU要表现得更稳定.</p>
-</blockquote>
-<p>&lt;/br&gt;</p>
-<p>&lt;/br&gt;</p>
-<blockquote>
-<p>参考资料</p>
-<p><a href="https://blog.csdn.net/mao_xiao_feng/article/details/53242235" target="_blank" rel="noopener">https://blog.csdn.net/mao_xiao_feng/article/details/53242235</a></p>
-<p><a href="https://arxiv.org/abs/1511.07289" target="_blank" rel="noopener">https://arxiv.org/abs/1511.07289</a></p>
-<p><a href="https://blog.csdn.net/dgyuanshaofeng/article/details/80209816" target="_blank" rel="noopener">https://blog.csdn.net/dgyuanshaofeng/article/details/80209816</a></p>
-<p><a href="https://arxiv.org/abs/1606.08415---" target="_blank" rel="noopener">https://arxiv.org/abs/1606.08415---</a><br>title: ELU and GELU<br>tags: [深度学习, 激活函数]</p>
-<h2 id="categories-深度学习-1"><a href="#categories-深度学习-1" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2></blockquote>
-<h2 id="ELU-2"><a href="#ELU-2" class="headerlink" title="ELU"></a>ELU</h2><p>&emsp; <strong>ELU</strong>(<em>Exponential Linear Units</em>)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0.</p>
-<h3 id="图像和公式-4"><a href="#图像和公式-4" class="headerlink" title="图像和公式"></a>图像和公式</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$) </p>
-</blockquote>
-<!--more-->
-<p>公式如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU2.png?raw=true" alt="GELU1"></p>
-<h3 id="实验结果-4"><a href="#实验结果-4" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU3.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的实验结果，左边是激活值的平均值，右边是交叉熵损失，可以看到ELU的激活值均值要更接近0，且交叉熵损失下降得更快.</p>
-</blockquote>
-<h2 id="GELU-2"><a href="#GELU-2" class="headerlink" title="GELU"></a>GELU</h2><p>&emsp; <strong>GELU</strong>(<em>Gaussian Error Linear Unit</em>)，是ReLU的一种改进，改进了ReLU缺乏概率解释的缺陷，在一些任务上表现得要更好. </p>
-<h3 id="图像和公式-5"><a href="#图像和公式-5" class="headerlink" title="图像和公式"></a>图像和公式</h3><p>&emsp;<strong>GELU</strong>的曲线如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>其中，GELU($\mu =0,\sigma =1$)，ELU($\alpha = 1$)</p>
-</blockquote>
-<p>公式如下：</p>
-<script type="math/tex; mode=display">
-GELU(x) = xP(X<x) = x\Phi(x)</script><p>并且可以用如下公式估计</p>
-<script type="math/tex; mode=display">
-0.5x(1+tanh[\sqrt{2/\pi}(x+0.044715x^3)])</script><p>或是</p>
-<script type="math/tex; mode=display">
-x \sigma(1.702x)</script><h3 id="实验结果-5"><a href="#实验结果-5" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的结果，左边是未使用Dropout，右边是使用了Dropout.</p>
-</blockquote>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的鲁棒性结果，可以看到，随着噪声的增加，GELU要表现得更稳定.</p>
-</blockquote>
-<p>&lt;/br&gt;</p>
-<p>&lt;/br&gt;</p>
-<blockquote>
-<p>参考资料</p>
-<p><a href="https://blog.csdn.net/mao_xiao_feng/article/details/53242235" target="_blank" rel="noopener">https://blog.csdn.net/mao_xiao_feng/article/details/53242235</a></p>
-<p><a href="https://arxiv.org/abs/1511.07289" target="_blank" rel="noopener">https://arxiv.org/abs/1511.07289</a></p>
-<p><a href="https://blog.csdn.net/dgyuanshaofeng/article/details/80209816" target="_blank" rel="noopener">https://blog.csdn.net/dgyuanshaofeng/article/details/80209816</a></p>
-<p><a href="https://arxiv.org/abs/1606.08415---" target="_blank" rel="noopener">https://arxiv.org/abs/1606.08415---</a><br>title: ELU and GELU<br>tags: [深度学习, 激活函数]</p>
-<h2 id="categories-深度学习-2"><a href="#categories-深度学习-2" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2></blockquote>
-<h2 id="ELU-3"><a href="#ELU-3" class="headerlink" title="ELU"></a>ELU</h2><p>&emsp; <strong>ELU</strong>(<em>Exponential Linear Units</em>)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0.</p>
-<h3 id="图像和公式-6"><a href="#图像和公式-6" class="headerlink" title="图像和公式"></a>图像和公式</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$) </p>
-</blockquote>
-<!--more-->
-<p>公式如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU2.png?raw=true" alt="GELU1"></p>
-<h3 id="实验结果-6"><a href="#实验结果-6" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU3.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的实验结果，左边是激活值的平均值，右边是交叉熵损失，可以看到ELU的激活值均值要更接近0，且交叉熵损失下降得更快.</p>
-</blockquote>
-<h2 id="GELU-3"><a href="#GELU-3" class="headerlink" title="GELU"></a>GELU</h2><p>&emsp; <strong>GELU</strong>(<em>Gaussian Error Linear Unit</em>)，是ReLU的一种改进，改进了ReLU缺乏概率解释的缺陷，在一些任务上表现得要更好. </p>
-<h3 id="图像和公式-7"><a href="#图像和公式-7" class="headerlink" title="图像和公式"></a>图像和公式</h3><p>&emsp;<strong>GELU</strong>的曲线如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>其中，GELU($\mu =0,\sigma =1$)，ELU($\alpha = 1$)</p>
-</blockquote>
-<p>公式如下：</p>
-<script type="math/tex; mode=display">
-GELU(x) = xP(X<x) = x\Phi(x)</script><p>并且可以用如下公式估计</p>
-<script type="math/tex; mode=display">
-0.5x(1+tanh[\sqrt{2/\pi}(x+0.044715x^3)])</script><p>或是</p>
-<script type="math/tex; mode=display">
-x \sigma(1.702x)</script><h3 id="实验结果-7"><a href="#实验结果-7" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的结果，左边是未使用Dropout，右边是使用了Dropout.</p>
-</blockquote>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true" alt="GELU1"></p>
-<blockquote>
-<p>在MINST数据集上的鲁棒性结果，可以看到，随着噪声的增加，GELU要表现得更稳定.</p>
-</blockquote>
-<p>&lt;/br&gt;</p>
-<p>&lt;/br&gt;</p>
-<blockquote>
-<p>参考资料</p>
-<p><a href="https://blog.csdn.net/mao_xiao_feng/article/details/53242235" target="_blank" rel="noopener">https://blog.csdn.net/mao_xiao_feng/article/details/53242235</a></p>
-<p><a href="https://arxiv.org/abs/1511.07289" target="_blank" rel="noopener">https://arxiv.org/abs/1511.07289</a></p>
-<p><a href="https://blog.csdn.net/dgyuanshaofeng/article/details/80209816" target="_blank" rel="noopener">https://blog.csdn.net/dgyuanshaofeng/article/details/80209816</a></p>
-<p><a href="https://arxiv.org/abs/1606.08415" target="_blank" rel="noopener">https://arxiv.org/abs/1606.08415</a></p>
+<p><a href="https://arxiv.org/abs/1606.08415---" target="_blank" rel="noopener">https://arxiv.org/abs/1606.08415---</a></p>
 </blockquote>
 
       
@@ -802,7 +661,7 @@ x \sigma(1.702x)</script><h3 id="实验结果-7"><a href="#实验结果-7" class
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ELU"><span class="nav-number">1.</span> <span class="nav-text">ELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式"><span class="nav-number">1.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果"><span class="nav-number">1.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GELU"><span class="nav-number">2.</span> <span class="nav-text">GELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-1"><span class="nav-number">2.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-1"><span class="nav-number">2.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习"><span class="nav-number">3.</span> <span class="nav-text">categories: 深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELU-1"><span class="nav-number">4.</span> <span class="nav-text">ELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-2"><span class="nav-number">4.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-2"><span class="nav-number">4.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GELU-1"><span class="nav-number">5.</span> <span class="nav-text">GELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-3"><span class="nav-number">5.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-3"><span class="nav-number">5.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习-1"><span class="nav-number">6.</span> <span class="nav-text">categories: 深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELU-2"><span class="nav-number">7.</span> <span class="nav-text">ELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-4"><span class="nav-number">7.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-4"><span class="nav-number">7.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GELU-2"><span class="nav-number">8.</span> <span class="nav-text">GELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-5"><span class="nav-number">8.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-5"><span class="nav-number">8.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习-2"><span class="nav-number">9.</span> <span class="nav-text">categories: 深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELU-3"><span class="nav-number">10.</span> <span class="nav-text">ELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-6"><span class="nav-number">10.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-6"><span class="nav-number">10.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GELU-3"><span class="nav-number">11.</span> <span class="nav-text">GELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-7"><span class="nav-number">11.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-7"><span class="nav-number">11.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ELU"><span class="nav-number">1.</span> <span class="nav-text">ELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式"><span class="nav-number">1.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果"><span class="nav-number">1.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GELU"><span class="nav-number">2.</span> <span class="nav-text">GELU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像和公式-1"><span class="nav-number">2.1.</span> <span class="nav-text">图像和公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果-1"><span class="nav-number">2.2.</span> <span class="nav-text">实验结果</span></a></li></ol></li></ol></div>
             
 
           </div>
