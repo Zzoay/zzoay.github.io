@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="数学,概率论," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本章主要内容是连续型随机变量及其分布。 连续型随机变量及其分布基本概念  给定一个随机变量$X$，称定义域为$(-\infty, +\infty)$ 的实值函数   F(x) = P (X \le x)，-\infty &amp;lt; x &amp;lt; + \infty为随机变量$X$的分布函数. 对任意实数 $x \in R , \{X \le x\}$ 是一个随机事件，它的概率$P(X \le x)$ 就定义为">
+<meta name="keywords" content="数学,概率论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论与数理统计(二)">
+<meta property="og:url" content="http://yoursite.com/2018/07/14/probability/probability-2/index.html">
+<meta property="og:site_name" content="One Blog">
+<meta property="og:description" content="本章主要内容是连续型随机变量及其分布。 连续型随机变量及其分布基本概念  给定一个随机变量$X$，称定义域为$(-\infty, +\infty)$ 的实值函数   F(x) = P (X \le x)，-\infty &amp;lt; x &amp;lt; + \infty为随机变量$X$的分布函数. 对任意实数 $x \in R , \{X \le x\}$ 是一个随机事件，它的概率$P(X \le x)$ 就定义为">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-03T16:04:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="概率论与数理统计(二)">
+<meta name="twitter:description" content="本章主要内容是连续型随机变量及其分布。 连续型随机变量及其分布基本概念  给定一个随机变量$X$，称定义域为$(-\infty, +\infty)$ 的实值函数   F(x) = P (X \le x)，-\infty &amp;lt; x &amp;lt; + \infty为随机变量$X$的分布函数. 对任意实数 $x \in R , \{X \le x\}$ 是一个随机事件，它的概率$P(X \le x)$ 就定义为">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/14/probability/probability-2/"/>
+
+
+
+
+
+  <title>概率论与数理统计(二) | One Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/FreshManCoder"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/probability/probability-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yao-zz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">概率论与数理统计(二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T00:14:39+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/概率论与数理统计/" itemprop="url" rel="index">
+                    <span itemprop="name">概率论与数理统计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  本章主要内容是<strong>连续型随机变量及其分布</strong>。</p>
+<h2 id="连续型随机变量及其分布"><a href="#连续型随机变量及其分布" class="headerlink" title="连续型随机变量及其分布"></a>连续型随机变量及其分布</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>  给定一个随机变量$X$，称定义域为$(-\infty, +\infty)$ 的实值函数 </p>
+<script type="math/tex; mode=display">
+F(x) = P (X \le x)，-\infty < x < + \infty</script><p>为随机变量$X$的<strong>分布函数</strong>.</p>
+<p>对任意实数 $x \in R , \{X \le x\}$ 是一个随机事件，它的概率$P(X \le x)$ 就定义为点$x$处分布函数的函数值.</p>
+<ul>
+<li>注：对任意满足条件 $-\infty &lt; a +\infty$ 的实数 $a,b,$ 有<script type="math/tex; mode=display">
+P(a < X \le b) = F(b) - F(a).</script></li>
+</ul>
+<hr>
+<a id="more"></a>
+<p>  <strong>定理3.1 (分布函数的性质)</strong>    设$F(x) 是随机变量$$X$的分布函数，则有：</p>
+<ol>
+<li>$0 \le F(x) \le 1 ;$</li>
+<li>分布函数单调不减；</li>
+<li>对任意$x \in (- \infty, +\infty)，$分布函数右连续；</li>
+<li>$\lim_{x \rightarrow -\infty} F(x) = 0,   \lim_{x \rightarrow + \infty} F(X)= 1.$</li>
+</ol>
+<hr>
+<p>  <strong>定理3.2 对于任意的随机变量$X$，其分布函数$F(X)$ 在 $x=x_o$点处连续的充分必要条件是$P(X = x_o) = 0.$</strong></p>
+<hr>
+<h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><p>  给定一个连续型的随机变量$X$，如果存在一个定义域为$(-\infty, +\infty)$的非负实值函数$f(x)$，使得$X$的分布函数$F(x)$可以表示为</p>
+<script type="math/tex; mode=display">
+F(x ) = \int^x_{-\infty} f(t) dt \qquad -\infty < x < +\infty</script><p>那么就称$f(x)$为连续型随机变量$X$的<strong>概率密度函数.</strong></p>
+<hr>
+<p>  概率密度函数满足下面两个条件：</p>
+<p>(1) $f(x) \ge 0, \quad -\infty&lt;x&lt;+\infty$</p>
+<p>(2)  $\int^{+\infty}_{-\infty} f(x)dx = F(+\infty) = 1.$</p>
+<p>  对照一下，设离散型随机变量的概率函数为</p>
+<script type="math/tex; mode=display">
+P(X = a_i) = p_i , \quad i =1, 2, ...</script><p>则有(1) $p_i \ge 0$     (2) $\sum_i p_i =1$</p>
+<hr>
+<p><strong>连续型随机变量的性质</strong>   设$X$ 是任意连续型的随机变量，且$F(X)$与$f(x)$分别是它的分布函数与概率密度函数，则有：</p>
+<p>  （1）$F(x) $是连续函数，且在$f(x)$的连续点处，有</p>
+<script type="math/tex; mode=display">
+F'(x) = f(x) ;</script><p>  （2）对任意常数 $c(-\infty &lt;c &lt; +\infty),$ 有 $P(X = c) = 0;$</p>
+<p>  （3） 对任意的两个常数$a,b,-\infty&lt;a&lt;b&lt;+\infty，$有</p>
+<script type="math/tex; mode=display">
+P(a < X \le b) 
+= F(b) - F(a)  
+= \int^b_{-\infty} f(x) dx - \int^a_{-\infty}f(x)dx  \\
+=\int^b_af(x)dx</script><p>注意到</p>
+<script type="math/tex; mode=display">
+P(x < X \le x+ \Delta x) = F(x + \Delta x) - F(x)\\
+\approx F'(x) \Delta x \\
+\approx f(x)\Delta x.</script><p>进一步，对实数轴上任意一个集合$S,$</p>
+<script type="math/tex; mode=display">
+P(X > a) = \int^{+\infty}_a f(x) dx = 1- F(a)   \\
+P(X \le b) = \int^b_{-\infty} f(x)dx = F(b).</script><hr>
+<h3 id="常见一维连续型分布"><a href="#常见一维连续型分布" class="headerlink" title="常见一维连续型分布"></a>常见一维连续型分布</h3><h4 id="均匀分布"><a href="#均匀分布" class="headerlink" title="均匀分布"></a>均匀分布</h4><p>  设随机变量$X$的概率密度函数为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+f(x) =
+\left \{ 
+\begin{aligned}
+c   \qquad a<x<b  \\
+0    \qquad 其余
+\end{aligned}
+\right .
+\end{equation}</script><p>则称$X$服从区间$(a, b)$上的<strong>均匀分布</strong>，记作$X \sim R(a,b).$</p>
+<p>  由概率密度函数性质可知$c = \frac{1}{b-a}$，并计算可得分布函数为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+F(x) = 
+\left \{
+\begin{aligned}
+0 \qquad x<a    \\
+\frac{x-a}{b-a}  \qquad   a \le x \le b    \\
+1   \qquad    x \ge b 
+\end{aligned}
+\right .
+\end{equation}</script><hr>
+<h4 id="指数分布"><a href="#指数分布" class="headerlink" title="指数分布"></a>指数分布</h4><p>  如果随机变量$X$的概率密度函数为</p>
+<script type="math/tex; mode=display">
+f(x) =
+\left \{
+\begin{align}
+\lambda e^{-\lambda x}    \qquad    x>0    \\
+0    \qquad    x\le 0
+\end{align}
+\right .</script><p>则称$X$服从参数为$\lambda$的<strong>指数分布</strong>，记为$X \sim E(\lambda), (\lambda &gt;0).$</p>
+<p>  其分布函数为</p>
+<script type="math/tex; mode=display">
+F(X) =
+\left \{
+\begin{align}
+1 - e^{-\lambda x}    \qquad    x\ge 0    \\
+0    \qquad    x<0
+\end{align}
+\right .</script><hr>
+<h4 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h4><h4 id="正态随机变量和概率密度函数"><a href="#正态随机变量和概率密度函数" class="headerlink" title="正态随机变量和概率密度函数"></a>正态随机变量和概率密度函数</h4><p>  设随机变量$X$的概率密度函数为</p>
+<script type="math/tex; mode=display">
+f(x) = \frac{1}{\sqrt{2 \pi} \delta} e^{-\frac{(x-u)^2}{2 \delta^2}},    \qquad    -\infty < x < +\infty</script><p>其中参数$\mu \in (-\infty,+\infty)$，而$\delta &gt; 0.$</p>
+<p>则称$X$服从参数为$\mu, \delta^2$的<strong>正态分布</strong>，记为$X \sim N(\mu, \delta^2).$</p>
+<p>服从正态分布的随机变量称为<strong>正态随机变量</strong>.</p>
+<hr>
+<p>  正态分布概率密度函数的曲线特征：</p>
+<p>(1) 密度函数$f(x)$的图形关于$x = \mu$对称；</p>
+<p>(2) $f(x)$在$x = \mu$处取得最大值$f(\mu) = \frac{1}{\sqrt{2\pi} \delta};$</p>
+<p>(3) 当$|x| \rightarrow \infty$时，$f(x) \rightarrow 0 ;$</p>
+<p>(4) 当$\delta^2$较大时曲线比较平坦，当$\delta^2$较小时曲线比较陡峭.</p>
+<hr>
+<h4 id="标准正态分布"><a href="#标准正态分布" class="headerlink" title="标准正态分布"></a>标准正态分布</h4><p>   $\mu = 0, \delta^2 = 1$时的正态分布称为<strong>标准正态分布</strong>，其概率密度函数和分布函数分别为</p>
+<script type="math/tex; mode=display">
+\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}    \qquad    -\infty < x < +\infty    \\
+\phi(x)    = \int^x_{-\infty} \phi(t)dt = P(X\le x)    \qquad    -\infty < x < +\infty</script><p>  关于标准正态分布有以下结果：</p>
+<ul>
+<li>当$x&gt;0$时，$\phi(x)$的值可以查概率函数数值表得到，且</li>
+</ul>
+<script type="math/tex; mode=display">
+P(a < x \le b) = \phi(b) - \phi(a)</script><ul>
+<li>当$x &lt; 0$时，由密度函数对称性可得$\phi(x) = 1 - \phi(-x)$，</li>
+</ul>
+<p>特别地，有$\phi(0) = \frac{1}{2}.$</p>
+<ul>
+<li><p>若$X \sim N(\mu, \delta^2)$，则$P(a&lt;x \le b) = \phi(\frac{b-\mu}{\delta}) - \phi(\frac{a-\mu}{\delta})$</p>
+<p>特别地 $P(X \le b) = P(-\infty &lt; X \le b) = \phi(\frac{b-\mu}{\delta})$</p>
+<p>​         $P(X &gt;a) = P(a &lt; x &lt;+\infty) = 1 - \phi( \frac{a-\mu}{\delta})$</p>
+</li>
+</ul>
+<ul>
+<li><p>标准正态分布的分位数概念：</p>
+<p>给定常数$0&lt;p&lt;1$，由概率函数数值表可查得数值$\mu_p$，使</p>
+<script type="math/tex; mode=display">
+\phi(u_p) = \int_{-\infty}^{u_p} \varphi(x)dx = P(X \le u_p) = p</script><p>称$u_p$为随机变量$X$的<strong>p-分位数</strong>.</p>
+</li>
+</ul>
+<hr>
+<h3 id="二维连续型随机变量"><a href="#二维连续型随机变量" class="headerlink" title="二维连续型随机变量"></a>二维连续型随机变量</h3><h4 id="联合分布函数"><a href="#联合分布函数" class="headerlink" title="联合分布函数"></a>联合分布函数</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>  给定随机向量$(X, Y)$，称定义域为整个平面的二元实值函数</p>
+<script type="math/tex; mode=display">
+F(x ,y) \doteq P(X \le x, Y \le y) , \qquad    -\infty <x , y< + \infty</script><p>为随机变量$(X, Y)$的<strong>分布函数</strong>，或称为$X$与$Y$的<strong>联合分布函数.</strong></p>
+<hr>
+<h5 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h5><ol>
+<li><p>$0 \le F(x,y) \le 1$；</p>
+</li>
+<li><p>$F(x,y)$关于$x$或$y$单调不减；</p>
+</li>
+<li><p>$F(x,y)$关于$x$或$y$是右连续的；</p>
+</li>
+<li><script type="math/tex; mode=display">
+\lim_{x \rightarrow -\infty} F(x,y) = 0,  \qquad   \lim_{y\rightarrow - \infty}F(x,y) = 0;    \\
+\lim_{x,y \rightarrow -\infty} F(x,y) = 0,  \qquad   \lim_{x,y\rightarrow - \infty}F(x,y) = 1.</script></li>
+<li><p>对任意实数$x_1 &lt; x_2, y_1 &lt;y_2,$</p>
+<script type="math/tex; mode=display">
+P(x_1 < X \le x_2, y1< Y \le y_2)    \\
+=F(x_2,y_2) - F(x_1,y_2) - F(x_2,y_1) + F(x_1,y_1).</script></li>
+</ol>
+<hr>
+<h4 id="二维连续型随机变量-1"><a href="#二维连续型随机变量-1" class="headerlink" title="二维连续型随机变量"></a>二维连续型随机变量</h4><p>  如果一个二维随机变量的值域是平面上的一个区域，那么称它为<strong>二维连续型随机变量(或向量)</strong>，类似地有$n$维连续型随机变量(向量).</p>
+<hr>
+<h4 id="联合概率密度函数"><a href="#联合概率密度函数" class="headerlink" title="联合概率密度函数"></a>联合概率密度函数</h4><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>  给定一个二维连续型随机变量$(X, Y)$，如果存在一个定义域为整个平面的二元非负实值函数 $f(x, y)$ ，使得 $(X, Y)$ 的联合分布函数 $F(x,y)$ 可以表示为</p>
+<script type="math/tex; mode=display">
+F(x, y) = \int^x_{-\infty} \int^y_{-\infty} f(u,v) dudv \ , \quad -\infty < x,y < + \infty</script><p>那么称$f(x, y)$是随机向量$(X, Y )$的<strong>联合概率密度函数</strong>.</p>
+<p>$f(x, y)$必须满足下列两个条件：</p>
+<p>  (1) $f(x,y) \ge 0,  -\infty &lt; x,y &lt; +\infty$ ;</p>
+<p>  (2)  $\int^{+\infty}_{-\infty} \int^{+\infty}_{-\infty} f(x,y) dxdy = F(+\infty, +\infty) =1$.</p>
+<hr>
+<h5 id="二维连续型随机向量的性质"><a href="#二维连续型随机向量的性质" class="headerlink" title="二维连续型随机向量的性质"></a>二维连续型随机向量的性质</h5><p>(1) $F(x,y)$ 连续，且在$f(x ,y )$的连续点处有</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2 F(x, y)}{\partial x \partial y} = f(x, y) ;</script><p>(2) 对平面内任意一条曲线$L$，有$P((X,Y) \in L) = 0 ;$</p>
+<p>(3)  对任意一个平面上的集合$D$，有</p>
+<script type="math/tex; mode=display">
+P((X,Y) \in D) = \int\int_Df(x,y)dxdy</script><hr>
+<h4 id="两个常见分布"><a href="#两个常见分布" class="headerlink" title="两个常见分布"></a>两个常见分布</h4><h5 id="均匀分布-1"><a href="#均匀分布-1" class="headerlink" title="均匀分布"></a>均匀分布</h5><p>平面区域上的均匀分布：设$(X, Y)$的联合密度函数为</p>
+<script type="math/tex; mode=display">
+f(x,y) = 
+\left \{    
+\begin{align}
+\frac{1}{|G|}   \quad  (x,y ) \in G    \\
+0   \quad  \qquad \quad  其余
+\end{align}
+\right .</script><p>其中$G$是平面上的某个有界区域，$|G|$表示区域面积，则称随机变量$(X, Y)$服从区域$G$的<strong>均匀分布</strong>.</p>
+<hr>
+<h5 id="n维正态分布"><a href="#n维正态分布" class="headerlink" title="n维正态分布"></a>n维正态分布</h5><p>我们将正态分布推广到$n$维，有对<strong>n维向量组$X:x_1,x_2,…x_n$</strong>：</p>
+<script type="math/tex; mode=display">
+f(X) = \frac{1}{(\sqrt{2\pi})^n\sqrt{|\Sigma|}}exp\{-\frac{1}{2}(X-\mu)^T \Sigma^{-1}(X-\mu)\}</script><p> 其中，$\mu$ 是高斯分布的<strong>均值向量</strong>，$\Sigma$ 是<strong>协方差矩阵</strong>.</p>
+<p>特别地，当$n=2$时有：</p>
+<p>设$(X,Y)$的联合密度函数为</p>
+<script type="math/tex; mode=display">
+f(x,y) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} exp({- \frac{1}{2(1-\rho)^2}[\frac{(x-\mu_1)^2}{\sigma_1^2}-\frac{2\rho(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}+\frac{(y-\mu_2)^2}{\sigma_2^2}]})</script><p>其中</p>
+<script type="math/tex; mode=display">
+-\infty < \mu_1 , \mu_2 < +\infty , \quad \sigma_1,  \sigma_2 >0 , \quad |\rho| < 1,</script><p>则称$(X, Y)$服从参数为$\mu_1,\mu_2,\sigma_1^2,\sigma_2^2, \rho$ 的<strong>二维正态分布</strong>，</p>
+<p>并记作</p>
+<script type="math/tex; mode=display">
+(X, Y) \sim N(\mu_1,\mu_2, \sigma_1^2, \sigma_2^2, \rho) .</script><h4 id="边缘概率密度函数"><a href="#边缘概率密度函数" class="headerlink" title="边缘概率密度函数"></a>边缘概率密度函数</h4><h5 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h5><p>  对于二维连续型随机变量$(X,Y)$，它的两个分量$X$或$Y$本身就是两个一维连续型随机变量，因此它们各自的分布就称为$(X,Y)$的关于$X$或关于$Y$的<strong>边缘分布（边缘概率密度函数）</strong>.</p>
+<h5 id="边缘分布函数"><a href="#边缘分布函数" class="headerlink" title="边缘分布函数"></a>边缘分布函数</h5><script type="math/tex; mode=display">
+F_X(x) = P(X \le x)    \\
+\qquad \qquad \qquad \ \ \ \ = P(X \le x, Y < +\infty)    \\
+\qquad \qquad \qquad \qquad \ =\lim_{y\rightarrow+\infty} P(X \le x, Y \le y)     \\
+\qquad \qquad= \lim_{y \rightarrow +\infty} F(x, y)    \\
+\qquad \quad\doteq F(x, +\infty)</script><p>称$F_X(x) \doteq = F(x, +\infty)$ 为随机变量$X$的<strong>边缘分布函数</strong>.</p>
+<p><em>随机变量Y的边缘分布函数同理</em></p>
+<h5 id="边缘概率密度函数-1"><a href="#边缘概率密度函数-1" class="headerlink" title="边缘概率密度函数"></a>边缘概率密度函数</h5><script type="math/tex; mode=display">
+F_X(x) = P(X \le x, Y < +\infty) = \int^x_{-\infty} \{ \int^{\infty}_{\infty}f(x,y)dy \}dx</script><p>按一维密度函数定义，称</p>
+<script type="math/tex; mode=display">
+f_X(x) = \int^{+\infty}_{-\infty} f(x,y)dy , \quad -\infty <x<+\infty</script><p>为随机变量 $X$ 的<strong>边缘概率密度函数</strong>（或边缘分布）；</p>
+<p>同理，</p>
+<script type="math/tex; mode=display">
+F_Y(y) = P(X < +\infty, Y \le y) = \int^y_{-\infty} \{ \int^{\infty}_{\infty}f(x,y)dx \}dy</script><p>称</p>
+<script type="math/tex; mode=display">
+f_Y(y) = \int^{+\infty}_{-\infty} f(x,y)dx , \quad -\infty <y<+\infty</script><p>为随机变量 $Y$ 的<strong>边缘概率密度函数</strong>（或边缘分布）. </p>
+<h4 id="随机变量的相互独立性"><a href="#随机变量的相互独立性" class="headerlink" title="随机变量的相互独立性"></a>随机变量的相互独立性</h4><h5 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h5><p>  如果等式$F(x,y) = F_X(x)F_Y(y)$ 对所有的 $-\infty &lt; x,y &lt; +\infty$ 成立，那么称随机变量 $X$ 与 $Y$ <strong>相互独立</strong>.</p>
+<p>  对于连续型随机变量而言，等价于等式：$f(x,y) = f_X(x)f_Y(y)$ 在 $f(x,y) , f_X(x), f_Y(y)$ 的一切公共连续点上成立.</p>
+<h5 id="定理3-7"><a href="#定理3-7" class="headerlink" title="定理3.7"></a>定理3.7</h5><p>  设$(X,Y) \sim N(\mu_1, \mu_2, \sigma_1^2,\sigma_2^2, \rho)$ ，那么 $X$ 与 $Y$ 相互独立的充分必要条件是 $\rho =0$. </p>
+<h4 id="条件密度函数"><a href="#条件密度函数" class="headerlink" title="条件密度函数"></a>条件密度函数</h4><h5 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h5><p>  设$(X,Y)$ 的密度函数为 $f(x,y)$ ，对于任意固定的$y, -\infty<y <="" +\infty$="" ，当$f_y(y)="">0$时，称</y></p>
+<script type="math/tex; mode=display">
+f_{x|y} = \frac{f(x,y)}{f_Y(y)} , \quad  -\infty < x < +\infty</script><p>为已知事件${Y =y }$ 发生的条件下 $X$ 的<strong>条件概率密度函数</strong>或条件分布；$y$ 同理.</p>
+<p>  相应的条件分布函数定义为</p>
+<script type="math/tex; mode=display">
+F_{X|Y}(x|y) = \int^x_{-\infty} f_{X|Y} (u|y)du = \int^x_{-\infty} \frac{f(u,y)}{f_Y(y)}du    \ , \\
+-\infty < x < +\infty</script><h3 id="随机变量函数的分布"><a href="#随机变量函数的分布" class="headerlink" title="随机变量函数的分布"></a>随机变量函数的分布</h3><h4 id="一维随机变量函数"><a href="#一维随机变量函数" class="headerlink" title="一维随机变量函数"></a>一维随机变量函数</h4><h5 id="定理3-8"><a href="#定理3-8" class="headerlink" title="定理3.8"></a>定理3.8</h5><p>  当$X \sim N(\mu, \sigma^2)$ 时，$Y = kX+c \sim N(ku+c, k^2\sigma^2)$</p>
+<p>其中$k,c$ 为常数，且$k \neq 0$；特别地，有$\frac{X -\mu}{\sigma} \sim N(0,1)$.</p>
+<h4 id="二维随机变量函数"><a href="#二维随机变量函数" class="headerlink" title="二维随机变量函数"></a>二维随机变量函数</h4><h5 id="随机变量和的分布"><a href="#随机变量和的分布" class="headerlink" title="随机变量和的分布"></a>随机变量和的分布</h5><h6 id="卷积公式"><a href="#卷积公式" class="headerlink" title="卷积公式"></a>卷积公式</h6><p>  一般地，设随机变量 $(X,Y )$ 的联合密度函数为$f(x,y)$，则 $Z =X+ Y$ 的密度函数为</p>
+<script type="math/tex; mode=display">
+f_Z(z) = \int^{+ \infty}_{- \infty} f(x, z-x) dx</script><p>当 $X$ 与 $Y$ 独立时，上式成为</p>
+<script type="math/tex; mode=display">
+f_Z(z) = \int^{+ \infty}_{- \infty} f_X(x) f_Y(z-x) dx</script><p>该公式称为 <strong>卷积公式</strong> .</p>
+<p>将 $X$ 与 $Y $ 对调，得到卷积公式的另一形式：</p>
+<script type="math/tex; mode=display">
+f_Z(z) = \int^{+ \infty}_{- \infty} f_X(z-y) f_Y(y) dy</script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/概率论/" rel="tag"># 概率论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/13/linear-algebra/linear-algebra-2/" rel="next" title="线性代数(二)">
+                <i class="fa fa-chevron-left"></i> 线性代数(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/14/probability/probability-3/" rel="prev" title="概率论与数理统计(三)">
+                概率论与数理统计(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yao-zz</p>
+              <p class="site-description motion-element" itemprop="description">在机器学习的方向努力中......</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FreshManCoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:uni_coder99@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10145221/jiang-gongyao" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.quora.com/profile/Jiang-Gongyao" target="_blank" title="Quora">
+                      
+                        <i class="fa fa-fw fa-quora"></i>Quora</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5b6b0ff9f265da0f48613fa3" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-angle-double-down"></i>Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/8d6a6834e4fc" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#连续型随机变量及其分布"><span class="nav-number">1.</span> <span class="nav-text">连续型随机变量及其分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率密度函数"><span class="nav-number">1.2.</span> <span class="nav-text">概率密度函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见一维连续型分布"><span class="nav-number">1.3.</span> <span class="nav-text">常见一维连续型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均匀分布"><span class="nav-number">1.3.1.</span> <span class="nav-text">均匀分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指数分布"><span class="nav-number">1.3.2.</span> <span class="nav-text">指数分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正态分布"><span class="nav-number">1.3.3.</span> <span class="nav-text">正态分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正态随机变量和概率密度函数"><span class="nav-number">1.3.4.</span> <span class="nav-text">正态随机变量和概率密度函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准正态分布"><span class="nav-number">1.3.5.</span> <span class="nav-text">标准正态分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维连续型随机变量"><span class="nav-number">1.4.</span> <span class="nav-text">二维连续型随机变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#联合分布函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">联合分布函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性质"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">性质</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维连续型随机变量-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">二维连续型随机变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#联合概率密度函数"><span class="nav-number">1.4.3.</span> <span class="nav-text">联合概率密度函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义-1"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二维连续型随机向量的性质"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">二维连续型随机向量的性质</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个常见分布"><span class="nav-number">1.4.4.</span> <span class="nav-text">两个常见分布</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#均匀分布-1"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">均匀分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n维正态分布"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">n维正态分布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边缘概率密度函数"><span class="nav-number">1.4.5.</span> <span class="nav-text">边缘概率密度函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义-2"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#边缘分布函数"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">边缘分布函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#边缘概率密度函数-1"><span class="nav-number">1.4.5.3.</span> <span class="nav-text">边缘概率密度函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机变量的相互独立性"><span class="nav-number">1.4.6.</span> <span class="nav-text">随机变量的相互独立性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义-3"><span class="nav-number">1.4.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定理3-7"><span class="nav-number">1.4.6.2.</span> <span class="nav-text">定理3.7</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件密度函数"><span class="nav-number">1.4.7.</span> <span class="nav-text">条件密度函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义-4"><span class="nav-number">1.4.7.1.</span> <span class="nav-text">定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机变量函数的分布"><span class="nav-number">1.5.</span> <span class="nav-text">随机变量函数的分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一维随机变量函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">一维随机变量函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定理3-8"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">定理3.8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维随机变量函数"><span class="nav-number">1.5.2.</span> <span class="nav-text">二维随机变量函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#随机变量和的分布"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">随机变量和的分布</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#卷积公式"><span class="nav-number">1.5.2.1.1.</span> <span class="nav-text">卷积公式</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yao-zz</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量:<span id="busuanzi_value_site_pv"></span> | 
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

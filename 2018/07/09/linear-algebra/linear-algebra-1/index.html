@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="数学,线性代数," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="线性代数是主要研究向量、向量空间、线性变换和线性方程组的一门学科，在工程上有广泛的应用，同时是机器学习的重要数学基础之一。本章主要内容为矩阵、行列式、解线性方程组。 线性代数(一)矩阵定义对于一个线性方程组，如下：  a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + ...+ a_{1n}x_n = b_1     \\ a_{21}x_1 + a_{22}x_2 + a">
+<meta name="keywords" content="数学,线性代数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数(一)">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/linear-algebra/linear-algebra-1/index.html">
+<meta property="og:site_name" content="One Blog">
+<meta property="og:description" content="线性代数是主要研究向量、向量空间、线性变换和线性方程组的一门学科，在工程上有广泛的应用，同时是机器学习的重要数学基础之一。本章主要内容为矩阵、行列式、解线性方程组。 线性代数(一)矩阵定义对于一个线性方程组，如下：  a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + ...+ a_{1n}x_n = b_1     \\ a_{21}x_1 + a_{22}x_2 + a">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-03T16:04:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线性代数(一)">
+<meta name="twitter:description" content="线性代数是主要研究向量、向量空间、线性变换和线性方程组的一门学科，在工程上有广泛的应用，同时是机器学习的重要数学基础之一。本章主要内容为矩阵、行列式、解线性方程组。 线性代数(一)矩阵定义对于一个线性方程组，如下：  a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + ...+ a_{1n}x_n = b_1     \\ a_{21}x_1 + a_{22}x_2 + a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/09/linear-algebra/linear-algebra-1/"/>
+
+
+
+
+
+  <title>线性代数(一) | One Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/FreshManCoder"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/09/linear-algebra/linear-algebra-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yao-zz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线性代数(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-09T16:48:02+08:00">
+                2018-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/线性代数/" itemprop="url" rel="index">
+                    <span itemprop="name">线性代数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  <strong>线性代数</strong>是主要研究向量、向量空间、线性变换和线性方程组的一门学科，在工程上有广泛的应用，同时是机器学习的重要数学基础之一。本章主要内容为<strong>矩阵、行列式、解线性方程组</strong>。</p>
+<h1 id="线性代数-一"><a href="#线性代数-一" class="headerlink" title="线性代数(一)"></a>线性代数(一)</h1><h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于一个线性方程组，如下：</p>
+<script type="math/tex; mode=display">
+a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + ...+ a_{1n}x_n = b_1     \\
+a_{21}x_1 + a_{22}x_2 + a_{23}x_3 + ...+ a_{2n}x_n = b_2    \\
+a_{31}x_1 + a_{32}x_2 + a_{33}x_3 + ...+ a_{3n}x_n = b_3    \\
+......     \\
+a_{n1}x_1 + a_{n2}x_2 + a_{n3}x_3 + ...+ a_{nn}x_n = b_n</script><p>我们可以把未知项和算术符号去掉，写作如下形式：</p>
+<script type="math/tex; mode=display">
+\left ( \begin{matrix} \
+a_{11} \ a_{12} \ a_{13} ...\ a_{1n} \ b_1     \\
+a_{21} \ a_{22} \ a_{23} ...\ a_{2n} \ b_2     \\
+a_{31} \ a_{32} \ a_{33} ...\ a_{3n} \ b_3     \\
+......    \\
+a_{n1} \ a_{n2} \ a_{n3} ...\ a_{nn} \ b_n     \\
+\end{matrix}
+\right    )</script><p>这就是线性方程组的矩阵形式</p>
+<hr>
+<a id="more"></a>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><h4 id="矩阵加法"><a href="#矩阵加法" class="headerlink" title="- 矩阵加法"></a>- 矩阵加法</h4><p>​  设有两个$m\times n$矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，那么矩阵 $A$ 与 $B$ 的和记作 $A+B$，规定为</p>
+<script type="math/tex; mode=display">
+A + B = 
+\left (
+\begin{matrix} \
+a_{11}+b_{11} \quad a_{12}+b_{12} \quad a_{13}+b_{13} ...\quad a_{1n}+b_{1n}      \\
+a_{21}+b_{21} \quad a_{22}+b_{22} \quad a_{23}+b_{23} ...\quad a_{2n}+b_{2n}     \\
+a_{31}+b_{31} \quad a_{32}+b_{32} \quad a_{33}+b_{33} ...\quad a_{3n}+b_{3n}     \\
+......    \\
+a_{n1}+b_{n1} \quad a_{n2}+b_{n2} \quad a_{n3}+b_{n3} ...\quad a_{nn}+b_{nn}     \\
+\end{matrix}
+\right )</script><p>​    应该注意，只有两个矩阵是同型矩阵时，这两个矩阵才能进行加法运算.</p>
+<p>​    矩阵加法满足下列运算规律（设$A, B, C$都是$m \times n$矩阵 ) ；</p>
+<p>​    (i) $A+B = B+A$ </p>
+<p>​    (ii) $(A + B) + C = A +(B + C)$</p>
+<hr>
+<h4 id="矩阵数乘"><a href="#矩阵数乘" class="headerlink" title="- 矩阵数乘"></a>- 矩阵数乘</h4><p>​  设数$\lambda$与矩阵$A$的乘积记作 $\lambda A$ 或 $A\lambda$    ，规定为</p>
+<script type="math/tex; mode=display">
+\lambda A = A \lambda =
+\left ( \begin{matrix} \
+\lambda a_{11} \ \lambda  a_{12} \ \lambda a_{13} ...\ \lambda a_{1n}     \\
+\lambda a_{21} \ \lambda a_{22} \ \lambda a_{23} ...\ \lambda a_{2n}      \\
+\lambda a_{31} \ \lambda a_{32} \ \lambda a_{33} ...\ \lambda a_{3n}      \\
+......    \\
+\lambda a_{n1} \ \lambda a_{n2} \ \lambda a_{n3} ...\ \lambda a_{nn}      \\
+\end{matrix}
+\right    )</script><p>​    (i) $(\lambda \mu) A = \lambda (\mu A) ;$</p>
+<p>​    (ii) $(\lambda + \mu) A = \lambda A + \mu A ;$</p>
+<p>​    (iii) $\lambda(A+B) = \lambda A + \lambda B .$</p>
+<p>​    矩阵加法运算和数乘统称为矩阵的线性运算.</p>
+<hr>
+<h4 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="- 矩阵相乘"></a>- 矩阵相乘</h4><p>​  设 $A = (a_{ij})$ 是一个 $m \times s$ 的矩阵，$B = (b_{ij})$ 是一个 $s \times n$ 的矩阵，那么规定矩阵$A$与矩阵$B$的乘积是一个$m \times n$ 矩阵$C = c_{ij}$，其中</p>
+<script type="math/tex; mode=display">
+c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + ... + a_{is}b_{sj} = \sum^s_{k=1} a_{ik}b_{kj}    \\
+(i=1, 2, ..., m ; j =1, 2, ..., n),</script><p>并把此乘积记作</p>
+<script type="math/tex; mode=display">
+C = A \times B</script><ul>
+<li>矩阵的乘法不满足交换律，即在一般情况下，$AB \ne BA$</li>
+<li>矩阵乘法满足下列结合律和分配律</li>
+</ul>
+<hr>
+<h4 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="- 矩阵的转置"></a>- 矩阵的转置</h4><p>  把矩阵$A$的行换成同序数的列得到一个新矩阵，叫做$A$的转置矩阵，记作$A^T$.</p>
+<p>​  矩阵的转置运算满足下列运算律：</p>
+<p>​    (i) $(A^T)^T = A ;$</p>
+<p>​    (ii) $(A +B)^T = A^T + B^T ;$</p>
+<p>​    (iii) $(\lambda A)^T = \lambda A^T ;$</p>
+<p>​    (iv) $(AB)^T = B^T A^T.$</p>
+<hr>
+<h4 id="方阵的行列式"><a href="#方阵的行列式" class="headerlink" title="- 方阵的行列式"></a>- 方阵的行列式</h4><p>​  <em>(有关行列式的知识点在下一节)</em></p>
+<p>​  由$n$阶方阵$A$的元素所构成的行列式（各元素的位置不变），称为方阵$A$的行列式，记作$det A$ 或 $|A|.$</p>
+<p>​  由$A$确定$|A|$的这个运算满足下述运算规律（设$A, B$为$n$阶方阵，$\lambda 为数$）:</p>
+<p>​    (i) $|A^T| = |A| ;$</p>
+<p>​    (ii) $|\lambda A| = \lambda ^n    |A| ;$</p>
+<p>​    (iii)  $|AB| = |A| |B|.$</p>
+<hr>
+<h4 id="伴随矩阵"><a href="#伴随矩阵" class="headerlink" title="- 伴随矩阵"></a>- 伴随矩阵</h4><p>​  <em>（余子式的概念在下一节“行列式按行(列)展开“处会提到）</em></p>
+<p>​  行列式 $|A|$ 的各个元素的代数余子式 $A_{ij}$ 所构成的如下矩阵</p>
+<script type="math/tex; mode=display">
+\left ( \begin{matrix} \
+A_{11} \ A_{12} \ A_{13} ...\ A_{1n}      \\
+A_{21} \ A_{22} \ A_{23} ...\ A_{2n}      \\
+A_{31} \ A_{32} \ A_{33} ...\ A_{3n}      \\
+......    \\
+A_{n1} \ A_{n2} \ A_{n3} ...\ A_{nn}      \\
+\end{matrix}
+\right    )</script><p>称为矩阵 $A$ 的<strong>伴随矩阵</strong>，简称<strong>伴随阵</strong>.</p>
+<hr>
+<h4 id="逆矩阵"><a href="#逆矩阵" class="headerlink" title="- 逆矩阵"></a>- 逆矩阵</h4><p>​  对于$n$阶矩阵$A$，如果有一个$n$阶矩阵$B$，使</p>
+<script type="math/tex; mode=display">
+AB = BA = E ,</script><p>则说矩阵$A$是可逆的，并把矩阵$B$称为$A$的逆矩阵，简称逆阵.</p>
+<p>​     $A$的逆矩阵记作$A^{-1}.$  即若$AB = BA = E ,$ 则 $B = A^{-1} .$</p>
+<p>​     <strong>定理 1  若矩阵A可逆，则$|A| \ne 0 .$</strong></p>
+<p>​     <strong>定理 2 若$|A| \ne 0$，则矩阵$A$可逆，且</strong></p>
+<script type="math/tex; mode=display">
+A^{-1} = \frac{1}{|A|} A^*</script><p><strong>其中$A^*$为矩阵$A$的伴随矩阵.</strong></p>
+<p>​  当$|A| = 0 $ 时，$A$称为<strong>奇异矩阵</strong>，否则称为<strong>非奇异矩阵</strong></p>
+<p>​  由定理 2 ,有如下推论</p>
+<p>​  <strong>推论   若 $AB = E$ (或 $BA = E$) ，则 $B = A^{-1}.$ </strong></p>
+<p>​  逆矩满足如下运算律：</p>
+<p>​  (i) 若$A$可逆，则$A^{-1}可逆$，且$(A^{-1})^{-1} = A ;$</p>
+<p>  (ii) 若$A$ 可逆，数 $\lambda \ne 0$，则$\lambda A$可逆，且$(\lambda A) ^{-1} = \frac{1}{\lambda} A^{-1} ;$</p>
+<p>​  (iii) 若$A、B$为同阶矩阵且可逆，则$AB$亦可逆，且$(AB)^{-1} = B^{-1}A^{-1} .$</p>
+<hr>
+<h2 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>​  设有$n^2$个数，排成$n$行$n$列的数表</p>
+<script type="math/tex; mode=display">
+a_{11} \ a_{12} \  ... \ a_{1n} \\ 
+a_{21} \ a_{22} \ ... \ a_{2n} \\
+....... \\
+a_{n1} \ a_{n2} \ ... \ a_{nn} ,</script><p>作出表中位于不同行不同列的$n$个数的乘积，并冠以符号$(-1)^t$，得到形如</p>
+<script type="math/tex; mode=display">
+(-1)^t a_{1p_1} a_{2p_2} ... a_{np_n}</script><p>的项，其中$p1p2…pn$为自然数$1, 2, …, n$的一个排列，$t$为这个排列的逆序数. 由于这样的排列共有$n!$个，因而形如上式的项共有$n!$ 项，所有这$n!$ 项的代数和</p>
+<script type="math/tex; mode=display">
+\sum (-1)^t a_{1p_1}a_{2p_2}...a_{np_n}</script><p>为<strong>n阶行列式</strong>，记作</p>
+<script type="math/tex; mode=display">
+D =
+\left | \begin{matrix} \
+a_{11} \ a_{12} \ a_{13} \ ... \ a_{1n}     \\
+......    \\
+a_{i1}  \ a_{i2} \  a_{i3} \ ...\ a_{in}      \\
+......    \\
+a_{n1} \ a_{n2} \ a_{n3} \ ...\ a_{nn}      \\
+\end{matrix}
+\right    |</script><p>简记作$det(a_{ij})$，其中数$a_{ij}$为行列式$D$的$(i, j)$元.</p>
+<hr>
+<h3 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h3><p>​     <strong>1.行列式与它的转置行列式相等.</strong></p>
+<p>​     <strong>2.对换行列式的两行(列)，行列式变号.</strong></p>
+<p>​         <strong>推论:</strong> 如果行列式有两行(列)完全相同，则此行列式为零</p>
+<p>​     <strong>3.行列式的某一行(列)中所有的元素都乘同一数k，等于用数k乘此行列式.</strong></p>
+<p>​         <strong>推论:</strong>行列式中某一行(列)的所有元素的公因子可以提到行列式记号的外面.</p>
+<p>​     <strong>4.行列式中如果有两行(列)元素成比例，则此行列式等于零.</strong></p>
+<p>​     <strong>5.若行列式的某一行(列)的元素都是两数之和，例如第i行的元素都是两数之和:</strong></p>
+<script type="math/tex; mode=display">
+D =
+\left | \begin{matrix} \
+a_{11} \qquad a_{12} \qquad a_{13} \qquad ...\qquad a_{1n}     \\
+......    \\
+a_{i1} + a'_{i1} \ a_{i2} + a'_{i2} \  a_{i3}+a'_{i3} ...\ a_{in}+a'_{in}      \\
+......    \\
+a_{n1} \qquad a_{n2} \qquad a_{n3} ...\qquad a_{nn}      \\
+\end{matrix}
+\right    |</script><p>则$D$等于下列两个行列式之和：</p>
+<script type="math/tex; mode=display">
+D =
+\left | \begin{matrix} \
+a_{11} \ a_{12} \ a_{13} \ ... \ a_{1n}     \\
+......    \\
+a_{i1}  \ a_{i2} \  a_{i3} \ ...\ a_{in}      \\
+......    \\
+a_{n1} \ a_{n2} \ a_{n3} \ ...\ a_{nn}      \\
+\end{matrix}
+\right    |
++
+\left | \begin{matrix} \
+a_{11} \ a_{12} \ a_{13} \ ...\ a_{1n}     \\
+......    \\
+a'_{i1} \ a'_{i2} \  a'_{i3} ...\ a'_{in}      \\
+......    \\
+a_{n1} \ a_{n2} \ a_{n3} ...\ a_{nn}      \\
+\end{matrix}
+\right    |</script><p>​     <strong>6.把行列式的某一行(列)的各元素乘同一数然后加到另一行(列)对应的元素上去，行列式不变.</strong></p>
+<hr>
+<h3 id="行列式按行-列-展开"><a href="#行列式按行-列-展开" class="headerlink" title="行列式按行(列)展开"></a>行列式按行(列)展开</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>​  在$n$阶行列式中，把$(i,j)$元$a_{ij}$所在的第i行和第j列划去后，留下来的n-1阶行列式叫做$(i,j)$元$a_{ij}$的余子式，记作$M_{ij}$；记</p>
+<script type="math/tex; mode=display">
+A_{ij} = (-1)^{i+j}M_{ij}</script><p>$A_{ij}$叫做$(i,j)$元$a_{ij}$的<strong>代数余子式</strong>.</p>
+<hr>
+<h4 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h4><p>​  <strong>一个$n$阶行列式，如果其中第$i$行所有元素除$(i,j)$元$a_{ij}$以外都为零，那么这行列式等于$a_{ij}$与它的代数余子式的乘积，即</strong></p>
+<script type="math/tex; mode=display">
+D = a_{ij}A_{ij}</script><hr>
+<h4 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h4><p>​  <strong>行列式等于它的任一行(列)的各元素与其对应的代数余子式乘积之和，即</strong></p>
+<script type="math/tex; mode=display">
+D = a_{i1}A_{i1} + a_{i2}A_{i2} + ... + a_{in}A_{in}    \qquad    (i=1, 2, ..., n)     \\
+或    \\
+D = a_{1j}A_{1j} + a_{2j}A_{2j} + ... + a_{nj}A_{nj}    \qquad    (j=1, 2, ..., n)</script><hr>
+<h2 id="求解线性方程组"><a href="#求解线性方程组" class="headerlink" title="求解线性方程组"></a>求解线性方程组</h2><h3 id="矩阵的初等变换"><a href="#矩阵的初等变换" class="headerlink" title="矩阵的初等变换"></a>矩阵的初等变换</h3><h4 id="初等变换"><a href="#初等变换" class="headerlink" title="初等变换"></a>初等变换</h4><p>​  下面三种变换称为矩阵的<strong>初等行变换</strong>：</p>
+<p>​  (i) 对换两行</p>
+<p>​  (ii) 以数k乘某一行中的所有元</p>
+<p>​  (iii) 把某一行所有元的k倍加到另一行对应的元上去</p>
+<p>​  把定义中的“行”换成“列”，即为 <strong>初等列变换</strong></p>
+<hr>
+<h4 id="等价关系"><a href="#等价关系" class="headerlink" title="等价关系"></a>等价关系</h4><p>​  如果矩阵$A$经过有限次初等变换变成矩阵$B$，就称矩阵$A$与矩阵$B$<strong>等价</strong>，记作$A \sim B.$</p>
+<p>​  矩阵的等价具有下列性质：</p>
+<p>​  (i) <strong>反身性</strong>     $A \sim A ;$</p>
+<p>​  (ii) <strong>对称性</strong>    若$A \sim B$，则$ B \sim A ;$</p>
+<p>​  (iii)  <strong>传递性</strong>     若 $A \sim B$，$B \sim C$，则$A \sim C.$</p>
+<hr>
+<h4 id="定理-1"><a href="#定理-1" class="headerlink" title="定理 1"></a>定理 1</h4><ul>
+<li><p><strong>定理1 设 $A$ 与 $B$ 为 $m \times n$ 矩阵，那么</strong></p>
+<p>  <strong>(i) $A \sim^r B$的充分必要条件是存在m阶可逆矩阵$P$，使$PA = B ;$ </strong></p>
+<p>  <strong>(ii) $A \sim^c B$的充分必要条件是存在m阶可逆矩阵$P$，使$AQ = B;$</strong></p>
+<p>  <strong>(iii)  $A \sim B$的充分必要条件的是存在m阶可逆矩阵$P$及存在m阶可逆矩阵$P$，使$PAQ = B.$</strong></p>
+</li>
+</ul>
+<hr>
+<h3 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h3><h4 id="子式"><a href="#子式" class="headerlink" title="子式"></a>子式</h4><p>​  在$m \times n$ 矩阵$A$中，任取$k$行与$k$列，位于这些交叉处的$k^2$个元素，不改变他们在$A$中所处的位置次序而得到的$k$阶行列式，称为矩阵$A$的$k$阶子式.</p>
+<hr>
+<h4 id="秩"><a href="#秩" class="headerlink" title="秩"></a>秩</h4><p>​  设在矩阵$A$中有一个不等于0的$r$阶子式$D$，且所有$r+1$阶子式全等于0，那么$D$称为矩阵$A$的最高阶非零子式，数$r$称为矩阵$A$的秩，记作$R(A).$</p>
+<hr>
+<h4 id="定理-2"><a href="#定理-2" class="headerlink" title="定理 2"></a>定理 2</h4><ul>
+<li><strong>定理2 若$A \sim B$，则 $R(A) = R(B).$</strong></li>
+</ul>
+<hr>
+<h4 id="秩的基本性质"><a href="#秩的基本性质" class="headerlink" title="秩的基本性质"></a>秩的基本性质</h4><ol>
+<li>$0 \le R(A_{m \times n}) \le min \{m, n\}.$</li>
+<li>$R(A^T) = R(A).$</li>
+<li>若$A \sim b$，则$R(A) = R(B).$</li>
+<li>若$P、Q$可逆，则$R(PAQ) = R(A).$</li>
+<li>$max\{ R(A), R(B)\} \le R(A, B) \le R(A) +R(B).$</li>
+<li>$R(A+B) \le R(A) + R(B).$</li>
+<li>$R(AB) \le min\{R(A), R(B)\}.$</li>
+<li>若$A_{m\times n}B_{n\times l} = 0$，则$R(A) + R(B) \le n$</li>
+</ol>
+<hr>
+<h3 id="线性方程组的解"><a href="#线性方程组的解" class="headerlink" title="线性方程组的解"></a>线性方程组的解</h3><h4 id="行阶梯形矩阵"><a href="#行阶梯形矩阵" class="headerlink" title="行阶梯形矩阵"></a>行阶梯形矩阵</h4><p>​  每行的第一个非零元的下方的所有元素都为零，这样的矩阵称为行阶梯形矩阵。    </p>
+<hr>
+<h4 id="行最简型矩阵"><a href="#行最简型矩阵" class="headerlink" title="行最简型矩阵"></a>行最简型矩阵</h4><p>​  每行的第一个非零元的所在列，除了该元素外都为零，这样的矩阵称为行阶梯形矩阵。</p>
+<hr>
+<h4 id="齐次线性方程组"><a href="#齐次线性方程组" class="headerlink" title="齐次线性方程组"></a>齐次线性方程组</h4><p>​  把$Ax = 0$这样的线性方程组称为齐次线性方程组。</p>
+<hr>
+<h4 id="非齐次线性方程组"><a href="#非齐次线性方程组" class="headerlink" title="非齐次线性方程组"></a>非齐次线性方程组</h4><p>​  把$Ax = b$这样的线性方程组称为非齐次线性方程组。</p>
+<hr>
+<h4 id="解线性方程组"><a href="#解线性方程组" class="headerlink" title="解线性方程组"></a>解线性方程组</h4><p>​  将矩阵通过<strong>行变换</strong>化成<strong>行阶梯型矩阵</strong>，或<strong>行最简型矩阵</strong>，如下所示</p>
+<script type="math/tex; mode=display">
+\left ( \begin{matrix} \
+1 \ 2 \ 3 \ 4    \\
+2 \ 3 \ 4 \ 5    \\
+3 \ 4 \ 5 \ 6    
+\end{matrix}
+\right    )
+\rightarrow
+\left ( \begin{matrix} \
+1 \ 2 \ 3 \ 4    \\
+0 \ 1 \ 2 \ 3    \\
+0 \ 0 \ 1 \ 2    
+\end{matrix}
+\right    )
+\rightarrow
+\left ( \begin{matrix} \
+1 \ 0 \ 0 \quad 0    \\
+\ \  0 \ 1 \ 0 \ -1    \\
+0 \ 0 \ 1 \quad  2    
+\end{matrix}
+\right    )</script><p>​  得到行阶梯型或行最简型矩阵后，便可以容易地得到方程组的解。</p>
+<hr>
+<h4 id="定理3-7"><a href="#定理3-7" class="headerlink" title="定理3~7"></a>定理3~7</h4><ul>
+<li><p><strong>定理3  n元线性方程组$Ax = b$</strong></p>
+<p><strong>(i) 无解的充分必要条件是$R(A) &lt; R(A, b) ;​$</strong></p>
+<p><strong>(ii) 有唯一解的充分必要条件是$R(A) = R(A, b) = n ;​$</strong></p>
+<p><strong>(iii)  有无限多解的充分必要条件是$R(A) = R(A ,b) &lt; n $</strong></p>
+</li>
+</ul>
+<ul>
+<li><strong>定理4  n元齐次方程组 $Ax = 0$ 有非零解的充分必要条件是$R(A)&lt;n$</strong> .</li>
+</ul>
+<ul>
+<li><strong>定理5  线性方程组$Ax = b$ 有解的充分必要条件是$R(A) = R(A, b).$</strong></li>
+</ul>
+<ul>
+<li><strong>定理6  矩阵方程$AX = B$ 有解的充分必要条件是$R(A) = R(A, B).$</strong></li>
+</ul>
+<ul>
+<li><strong>定理7  设$AB = C$，则$R(C) \le min \{R(A), R(B) \}$</strong></li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/线性代数/" rel="tag"># 线性代数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/12/git/git/" rel="next" title="Git使用教程">
+                <i class="fa fa-chevron-left"></i> Git使用教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/10/probability/probability-1/" rel="prev" title="概率论与数理统计(一)">
+                概率论与数理统计(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yao-zz</p>
+              <p class="site-description motion-element" itemprop="description">在机器学习的方向努力中......</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FreshManCoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:uni_coder99@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10145221/jiang-gongyao" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.quora.com/profile/Jiang-Gongyao" target="_blank" title="Quora">
+                      
+                        <i class="fa fa-fw fa-quora"></i>Quora</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5b6b0ff9f265da0f48613fa3" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-angle-double-down"></i>Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/8d6a6834e4fc" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性代数-一"><span class="nav-number">1.</span> <span class="nav-text">线性代数(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵"><span class="nav-number">1.1.</span> <span class="nav-text">矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质"><span class="nav-number">1.1.2.</span> <span class="nav-text">性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵加法"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">- 矩阵加法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵数乘"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">- 矩阵数乘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵相乘"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">- 矩阵相乘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的转置"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">- 矩阵的转置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方阵的行列式"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">- 方阵的行列式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伴随矩阵"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">- 伴随矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逆矩阵"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">- 逆矩阵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行列式"><span class="nav-number">1.2.</span> <span class="nav-text">行列式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行列式按行-列-展开"><span class="nav-number">1.2.3.</span> <span class="nav-text">行列式按行(列)展开</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义-2"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引理"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">引理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定理"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求解线性方程组"><span class="nav-number">1.3.</span> <span class="nav-text">求解线性方程组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的初等变换"><span class="nav-number">1.3.1.</span> <span class="nav-text">矩阵的初等变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初等变换"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">初等变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等价关系"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">等价关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定理-1"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">定理 1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的秩"><span class="nav-number">1.3.2.</span> <span class="nav-text">矩阵的秩</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#子式"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">子式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#秩"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">秩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定理-2"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">定理 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#秩的基本性质"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">秩的基本性质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程组的解"><span class="nav-number">1.3.3.</span> <span class="nav-text">线性方程组的解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行阶梯形矩阵"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">行阶梯形矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行最简型矩阵"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">行最简型矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#齐次线性方程组"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">齐次线性方程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非齐次线性方程组"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">非齐次线性方程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解线性方程组"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">解线性方程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定理3-7"><span class="nav-number">1.3.3.6.</span> <span class="nav-text">定理3~7</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yao-zz</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量:<span id="busuanzi_value_site_pv"></span> | 
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

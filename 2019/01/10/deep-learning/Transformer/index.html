@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="深度学习,自然语言处理,注意力机制," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Transformer&amp;emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer">
+<meta name="keywords" content="深度学习,自然语言处理,注意力机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transformer">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/deep-learning/Transformer/index.html">
+<meta property="og:site_name" content="One Blog">
+<meta property="og:description" content="Transformer&amp;emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer1.png?raw=true">
+<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer3.png?raw=true">
+<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer4.png?raw=true">
+<meta property="og:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer2.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true">
+<meta property="og:updated_time" content="2020-04-23T03:06:11.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Transformer">
+<meta name="twitter:description" content="Transformer&amp;emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer">
+<meta name="twitter:image" content="https://github.com/FreshManCoder/blog-fig/blob/master/transformer1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/10/deep-learning/Transformer/"/>
+
+
+
+
+
+  <title>Transformer | One Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/FreshManCoder"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/10/deep-learning/Transformer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yao-zz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Transformer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T18:33:16+08:00">
+                2019-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>&emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer.</p>
+<a id="more"></a> 
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>&emsp; Transformer的结构如下</p>
+<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer1.png?raw=true" alt="transformer1"></p>
+<h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><p>&emsp; Self-Attention的好处是可以建立句子内部的联系，可以直接跨越多个词捕获长期依赖知识，而无需像RNN那样按照时序建模.</p>
+<p>​    RNN对序列建模的结构如下：</p>
+<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer3.png?raw=true" alt="transformer3"></p>
+<p>&emsp; Self-Attention对序列的建模如下：</p>
+<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer4.png?raw=true" alt="transformer4"></p>
+<p>&emsp;在Attention机制中，我们对Source和Target进行Attention建模，如果把Source看作是存储器存储的内容，元素由地址Key和值Value组成，当前有个Key=Query的查询，目的是取出存储器中对应的Value值，即Attetion值. 即把计算Attention值看作是一种软寻址，即根据Query和Key的相似性来决定取出对应Value的可能性.</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(QK^T)V</script><p>&emsp; 而Self-Attention则可看作是词自身为Query，整句都是<key,value>的软寻址. </key,value></p>
+<h2 id="Self-Attention的变种"><a href="#Self-Attention的变种" class="headerlink" title="Self-Attention的变种"></a>Self-Attention的变种</h2><p>&emsp; Transformer里面的Self-Attention机制是一种新的变种，具体来说有两个方面，一个是加入了<strong>缩放因子</strong>(<em>Scaling Factor</em>)，另一方面，引入了<strong>多头注意力机制</strong>(<em>muti-head attention</em>).</p>
+<p>&emsp; 具体地，Attention的计算公式中的分母多了一个向量的维度的平方根，为的是防止维度过大导致点乘结果过大，而进入SoftMax的饱和区，引起梯度饱和. 公式如下:</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</script><p>&emsp; 而多头机制指的是，引入多组的参数矩阵来分别做Self-Attention，最后将所有结果拼接起来，如下图所示</p>
+<p><img src="https://github.com/FreshManCoder/blog-fig/blob/master/transformer2.png?raw=true" alt="transformer2"></p>
+<p>左边是单层的Attention，而右边是多头机制的Attention.</p>
+<p>公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+MultiHead(Q,K,V) &= Concat(head_1,...,head_h)W^O    \\
+Where \ head_i &= Attention(QW_i^Q,KW_i^Q,VW_i^Q)
+\end{align}</script><p>这样一来，模型有多套比较独立的Attention参数，有一定集成的效果，理论上可以增强模型的能力.</p>
+<h2 id="位置编码"><a href="#位置编码" class="headerlink" title="位置编码"></a>位置编码</h2><p>&emsp; 由于Self-Attetion机制是一种扁平化的词袋的结构，导致不论距离多远的词，他们在Self-Attention中的距离都是1，这样的话，会丢失词之间的相对距离关系。导致像“牛 吃 草”、“草 吃 牛”在Selft-Attention下可能是一个意思.  因此，词向量中应尽可能地包含词的位置信息.</p>
+<p>&emsp; Transformer的做法是，将词在句子中所处的位置映射为向量，补充到其Embedding当中.  具体来说，Transformer使用了一种非常新颖的时序建模方式——利用三角函数的周期性，来构建词之间的相对位置关系.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+PE(pos,2i) = sin(pos/10000^{2i/d_{model}})    \\
+PE(pos, 2i+1) = cos(pos/10000^{2i/d_{model}})
+\end{align}</script><p>其中$pos$是词的绝对位置，而$i$是词的维度下标，$d_{model}$是Embedding的维度，由上述公式可以看出，Transformer将绝对位置，做为三角函数中的变量，利用三角函数的周期性去表示词的相对位置.</p>
+<h2 id="Position-wise-Feed-Forward-Networks"><a href="#Position-wise-Feed-Forward-Networks" class="headerlink" title="Position-wise Feed-Forward Networks"></a>Position-wise Feed-Forward Networks</h2><p>&emsp; 除了在Embedding时引入词的位置信息外，Transformer还采用一种”位置智能的前馈神经网络“，实际上是进行两次线性变换，一次ReLU激活，公式如下：</p>
+<script type="math/tex; mode=display">
+FFN(x) = max(0,xW_1+b_1)W_2+b_2</script><p>这样一来，如果在不同位置的词具有相同的线性变换，再经过ReLU非线性激活和再一次的线性变换后，在更新参数时能得到不同的参数.</p>
+<p>&lt;/br&gt;</p>
+<p>&lt;/br&gt;</p>
+<blockquote>
+<p>参考资料</p>
+<p>[1] 腾讯云+社区, “变形金刚”为何强大：从模型到代码全面解析Google Tensor2Tensor系统, <a href="https://segmentfault.com/a/1190000015575985#articleHeader6" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015575985#articleHeader6</a>, 2018-07-09.</p>
+<p>[2] Ashish Vaswani,Noam Shazeer,Niki Parmar,Jakob Uszkorei,Llion Jones,Aidan N. Gomez,Łukasz Kaise and Illia Polosukhin. Attention Is All You need. <em>arXiv preprint</em> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">arXiv:1706.03762</a> , 2017.</p>
+</blockquote>
+<hr>
+<p>title: Transformer<br>tags: [深度学习, 自然语言处理, 注意力机制]</p>
+<h2 id="categories-深度学习"><a href="#categories-深度学习" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2><h1 id="Transformer-1"><a href="#Transformer-1" class="headerlink" title="Transformer"></a>Transformer</h1><p>&emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer.</p>
+<!--more--> 
+<h2 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h2><p>&emsp; Transformer的结构如下</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true" alt="transformer1"></p>
+<h2 id="Self-Attention-1"><a href="#Self-Attention-1" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><p>&emsp; Self-Attention的好处是可以建立句子内部的联系，可以直接跨越多个词捕获长期依赖知识，而无需像RNN那样按照时序建模.</p>
+<p>​    RNN对序列建模的结构如下：</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true" alt="transformer3"></p>
+<p>&emsp; Self-Attention对序列的建模如下：</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true" alt="transformer4"></p>
+<p>&emsp;在Attention机制中，我们对Source和Target进行Attention建模，如果把Source看作是存储器存储的内容，元素由地址Key和值Value组成，当前有个Key=Query的查询，目的是取出存储器中对应的Value值，即Attetion值. 即把计算Attention值看作是一种软寻址，即根据Query和Key的相似性来决定取出对应Value的可能性.</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(QK^T)V</script><p>&emsp; 而Self-Attention则可看作是词自身为Query，整句都是<key,value>的软寻址. </key,value></p>
+<h2 id="Self-Attention的变种-1"><a href="#Self-Attention的变种-1" class="headerlink" title="Self-Attention的变种"></a>Self-Attention的变种</h2><p>&emsp; Transformer里面的Self-Attention机制是一种新的变种，具体来说有两个方面，一个是加入了<strong>缩放因子</strong>(<em>Scaling Factor</em>)，另一方面，引入了<strong>多头注意力机制</strong>(<em>muti-head attention</em>).</p>
+<p>&emsp; 具体地，Attention的计算公式中的分母多了一个向量的维度的平方根，为的是防止维度过大导致点乘结果过大，而进入SoftMax的饱和区，引起梯度饱和. 公式如下:</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</script><p>&emsp; 而多头机制指的是，引入多组的参数矩阵来分别做Self-Attention，最后将所有结果拼接起来，如下图所示</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true" alt="transformer2"></p>
+<p>左边是单层的Attention，而右边是多头机制的Attention.</p>
+<p>公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+MultiHead(Q,K,V) &= Concat(head_1,...,head_h)W^O    \\
+Where \ head_i &= Attention(QW_i^Q,KW_i^Q,VW_i^Q)
+\end{align}</script><p>这样一来，模型有多套比较独立的Attention参数，有一定集成的效果，理论上可以增强模型的能力.</p>
+<h2 id="位置编码-1"><a href="#位置编码-1" class="headerlink" title="位置编码"></a>位置编码</h2><p>&emsp; 由于Self-Attetion机制是一种扁平化的词袋的结构，导致不论距离多远的词，他们在Self-Attention中的距离都是1，这样的话，会丢失词之间的相对距离关系。导致像“牛 吃 草”、“草 吃 牛”在Selft-Attention下可能是一个意思.  因此，词向量中应尽可能地包含词的位置信息.</p>
+<p>&emsp; Transformer的做法是，将词在句子中所处的位置映射为向量，补充到其Embedding当中.  具体来说，Transformer使用了一种非常新颖的时序建模方式——利用三角函数的周期性，来构建词之间的相对位置关系.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+PE(pos,2i) = sin(pos/10000^{2i/d_{model}})    \\
+PE(pos, 2i+1) = cos(pos/10000^{2i/d_{model}})
+\end{align}</script><p>其中$pos$是词的绝对位置，而$i$是词的维度下标，$d_{model}$是Embedding的维度，由上述公式可以看出，Transformer将绝对位置，做为三角函数中的变量，利用三角函数的周期性去表示词的相对位置.</p>
+<h2 id="Position-wise-Feed-Forward-Networks-1"><a href="#Position-wise-Feed-Forward-Networks-1" class="headerlink" title="Position-wise Feed-Forward Networks"></a>Position-wise Feed-Forward Networks</h2><p>&emsp; 除了在Embedding时引入词的位置信息外，Transformer还采用一种”位置智能的前馈神经网络“，实际上是进行两次线性变换，一次ReLU激活，公式如下：</p>
+<script type="math/tex; mode=display">
+FFN(x) = max(0,xW_1+b_1)W_2+b_2</script><p>这样一来，如果在不同位置的词具有相同的线性变换，再经过ReLU非线性激活和再一次的线性变换后，在更新参数时能得到不同的参数.</p>
+<p>&lt;/br&gt;</p>
+<p>&lt;/br&gt;</p>
+<blockquote>
+<p>参考资料</p>
+<p>[1] 腾讯云+社区, “变形金刚”为何强大：从模型到代码全面解析Google Tensor2Tensor系统, <a href="https://segmentfault.com/a/1190000015575985#articleHeader6" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015575985#articleHeader6</a>, 2018-07-09.</p>
+<p>[2] Ashish Vaswani,Noam Shazeer,Niki Parmar,Jakob Uszkorei,Llion Jones,Aidan N. Gomez,Łukasz Kaise and Illia Polosukhin. Attention Is All You need. <em>arXiv preprint</em> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">arXiv:1706.03762</a> , 2017.</p>
+</blockquote>
+<hr>
+<p>title: Transformer<br>tags: [深度学习, 自然语言处理, 注意力机制]</p>
+<h2 id="categories-深度学习-1"><a href="#categories-深度学习-1" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2><h1 id="Transformer-2"><a href="#Transformer-2" class="headerlink" title="Transformer"></a>Transformer</h1><p>&emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer.</p>
+<!--more--> 
+<h2 id="结构-2"><a href="#结构-2" class="headerlink" title="结构"></a>结构</h2><p>&emsp; Transformer的结构如下</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true" alt="transformer1"></p>
+<h2 id="Self-Attention-2"><a href="#Self-Attention-2" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><p>&emsp; Self-Attention的好处是可以建立句子内部的联系，可以直接跨越多个词捕获长期依赖知识，而无需像RNN那样按照时序建模.</p>
+<p>​    RNN对序列建模的结构如下：</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true" alt="transformer3"></p>
+<p>&emsp; Self-Attention对序列的建模如下：</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true" alt="transformer4"></p>
+<p>&emsp;在Attention机制中，我们对Source和Target进行Attention建模，如果把Source看作是存储器存储的内容，元素由地址Key和值Value组成，当前有个Key=Query的查询，目的是取出存储器中对应的Value值，即Attetion值. 即把计算Attention值看作是一种软寻址，即根据Query和Key的相似性来决定取出对应Value的可能性.</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(QK^T)V</script><p>&emsp; 而Self-Attention则可看作是词自身为Query，整句都是<key,value>的软寻址. </key,value></p>
+<h2 id="Self-Attention的变种-2"><a href="#Self-Attention的变种-2" class="headerlink" title="Self-Attention的变种"></a>Self-Attention的变种</h2><p>&emsp; Transformer里面的Self-Attention机制是一种新的变种，具体来说有两个方面，一个是加入了<strong>缩放因子</strong>(<em>Scaling Factor</em>)，另一方面，引入了<strong>多头注意力机制</strong>(<em>muti-head attention</em>).</p>
+<p>&emsp; 具体地，Attention的计算公式中的分母多了一个向量的维度的平方根，为的是防止维度过大导致点乘结果过大，而进入SoftMax的饱和区，引起梯度饱和. 公式如下:</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</script><p>&emsp; 而多头机制指的是，引入多组的参数矩阵来分别做Self-Attention，最后将所有结果拼接起来，如下图所示</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true" alt="transformer2"></p>
+<p>左边是单层的Attention，而右边是多头机制的Attention.</p>
+<p>公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+MultiHead(Q,K,V) &= Concat(head_1,...,head_h)W^O    \\
+Where \ head_i &= Attention(QW_i^Q,KW_i^Q,VW_i^Q)
+\end{align}</script><p>这样一来，模型有多套比较独立的Attention参数，有一定集成的效果，理论上可以增强模型的能力.</p>
+<h2 id="位置编码-2"><a href="#位置编码-2" class="headerlink" title="位置编码"></a>位置编码</h2><p>&emsp; 由于Self-Attetion机制是一种扁平化的词袋的结构，导致不论距离多远的词，他们在Self-Attention中的距离都是1，这样的话，会丢失词之间的相对距离关系。导致像“牛 吃 草”、“草 吃 牛”在Selft-Attention下可能是一个意思.  因此，词向量中应尽可能地包含词的位置信息.</p>
+<p>&emsp; Transformer的做法是，将词在句子中所处的位置映射为向量，补充到其Embedding当中.  具体来说，Transformer使用了一种非常新颖的时序建模方式——利用三角函数的周期性，来构建词之间的相对位置关系.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+PE(pos,2i) = sin(pos/10000^{2i/d_{model}})    \\
+PE(pos, 2i+1) = cos(pos/10000^{2i/d_{model}})
+\end{align}</script><p>其中$pos$是词的绝对位置，而$i$是词的维度下标，$d_{model}$是Embedding的维度，由上述公式可以看出，Transformer将绝对位置，做为三角函数中的变量，利用三角函数的周期性去表示词的相对位置.</p>
+<h2 id="Position-wise-Feed-Forward-Networks-2"><a href="#Position-wise-Feed-Forward-Networks-2" class="headerlink" title="Position-wise Feed-Forward Networks"></a>Position-wise Feed-Forward Networks</h2><p>&emsp; 除了在Embedding时引入词的位置信息外，Transformer还采用一种”位置智能的前馈神经网络“，实际上是进行两次线性变换，一次ReLU激活，公式如下：</p>
+<script type="math/tex; mode=display">
+FFN(x) = max(0,xW_1+b_1)W_2+b_2</script><p>这样一来，如果在不同位置的词具有相同的线性变换，再经过ReLU非线性激活和再一次的线性变换后，在更新参数时能得到不同的参数.</p>
+<p>&lt;/br&gt;</p>
+<p>&lt;/br&gt;</p>
+<blockquote>
+<p>参考资料</p>
+<p>[1] 腾讯云+社区, “变形金刚”为何强大：从模型到代码全面解析Google Tensor2Tensor系统, <a href="https://segmentfault.com/a/1190000015575985#articleHeader6" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015575985#articleHeader6</a>, 2018-07-09.</p>
+<p>[2] Ashish Vaswani,Noam Shazeer,Niki Parmar,Jakob Uszkorei,Llion Jones,Aidan N. Gomez,Łukasz Kaise and Illia Polosukhin. Attention Is All You need. <em>arXiv preprint</em> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">arXiv:1706.03762</a> , 2017.</p>
+</blockquote>
+<hr>
+<p>title: Transformer<br>tags: [深度学习, 自然语言处理, 注意力机制]</p>
+<h2 id="categories-深度学习-2"><a href="#categories-深度学习-2" class="headerlink" title="categories: 深度学习"></a>categories: 深度学习</h2><h1 id="Transformer-3"><a href="#Transformer-3" class="headerlink" title="Transformer"></a>Transformer</h1><p>&emsp; 在Google的“Attention is all you need”论文中，在Sequence-to-Sequence的任务下，打破了以往Encoder-Decoder模型以RNN、CNN为代表的神经网络架构，对序列的建模摒弃了RNN的时序观点和CNN的结构观点，而是直接使用self-attention机制，提出了一种新的神经网络结构——Transformer.</p>
+<!--more--> 
+<h2 id="结构-3"><a href="#结构-3" class="headerlink" title="结构"></a>结构</h2><p>&emsp; Transformer的结构如下</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer1.png?raw=true" alt="transformer1"></p>
+<h2 id="Self-Attention-3"><a href="#Self-Attention-3" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><p>&emsp; Self-Attention的好处是可以建立句子内部的联系，可以直接跨越多个词捕获长期依赖知识，而无需像RNN那样按照时序建模.</p>
+<p>​    RNN对序列建模的结构如下：</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer3.png?raw=true" alt="transformer3"></p>
+<p>&emsp; Self-Attention对序列的建模如下：</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer4.png?raw=true" alt="transformer4"></p>
+<p>&emsp;在Attention机制中，我们对Source和Target进行Attention建模，如果把Source看作是存储器存储的内容，元素由地址Key和值Value组成，当前有个Key=Query的查询，目的是取出存储器中对应的Value值，即Attetion值. 即把计算Attention值看作是一种软寻址，即根据Query和Key的相似性来决定取出对应Value的可能性.</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(QK^T)V</script><p>&emsp; 而Self-Attention则可看作是词自身为Query，整句都是<key,value>的软寻址. </key,value></p>
+<h2 id="Self-Attention的变种-3"><a href="#Self-Attention的变种-3" class="headerlink" title="Self-Attention的变种"></a>Self-Attention的变种</h2><p>&emsp; Transformer里面的Self-Attention机制是一种新的变种，具体来说有两个方面，一个是加入了<strong>缩放因子</strong>(<em>Scaling Factor</em>)，另一方面，引入了<strong>多头注意力机制</strong>(<em>muti-head attention</em>).</p>
+<p>&emsp; 具体地，Attention的计算公式中的分母多了一个向量的维度的平方根，为的是防止维度过大导致点乘结果过大，而进入SoftMax的饱和区，引起梯度饱和. 公式如下:</p>
+<script type="math/tex; mode=display">
+Attention(Q,K,V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</script><p>&emsp; 而多头机制指的是，引入多组的参数矩阵来分别做Self-Attention，最后将所有结果拼接起来，如下图所示</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/transformer2.png?raw=true" alt="transformer2"></p>
+<p>左边是单层的Attention，而右边是多头机制的Attention.</p>
+<p>公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+MultiHead(Q,K,V) &= Concat(head_1,...,head_h)W^O    \\
+Where \ head_i &= Attention(QW_i^Q,KW_i^Q,VW_i^Q)
+\end{align}</script><p>这样一来，模型有多套比较独立的Attention参数，有一定集成的效果，理论上可以增强模型的能力.</p>
+<h2 id="位置编码-3"><a href="#位置编码-3" class="headerlink" title="位置编码"></a>位置编码</h2><p>&emsp; 由于Self-Attetion机制是一种扁平化的词袋的结构，导致不论距离多远的词，他们在Self-Attention中的距离都是1，这样的话，会丢失词之间的相对距离关系。导致像“牛 吃 草”、“草 吃 牛”在Selft-Attention下可能是一个意思.  因此，词向量中应尽可能地包含词的位置信息.</p>
+<p>&emsp; Transformer的做法是，将词在句子中所处的位置映射为向量，补充到其Embedding当中.  具体来说，Transformer使用了一种非常新颖的时序建模方式——利用三角函数的周期性，来构建词之间的相对位置关系.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+PE(pos,2i) = sin(pos/10000^{2i/d_{model}})    \\
+PE(pos, 2i+1) = cos(pos/10000^{2i/d_{model}})
+\end{align}</script><p>其中$pos$是词的绝对位置，而$i$是词的维度下标，$d_{model}$是Embedding的维度，由上述公式可以看出，Transformer将绝对位置，做为三角函数中的变量，利用三角函数的周期性去表示词的相对位置.</p>
+<h2 id="Position-wise-Feed-Forward-Networks-3"><a href="#Position-wise-Feed-Forward-Networks-3" class="headerlink" title="Position-wise Feed-Forward Networks"></a>Position-wise Feed-Forward Networks</h2><p>&emsp; 除了在Embedding时引入词的位置信息外，Transformer还采用一种”位置智能的前馈神经网络“，实际上是进行两次线性变换，一次ReLU激活，公式如下：</p>
+<script type="math/tex; mode=display">
+FFN(x) = max(0,xW_1+b_1)W_2+b_2</script><p>这样一来，如果在不同位置的词具有相同的线性变换，再经过ReLU非线性激活和再一次的线性变换后，在更新参数时能得到不同的参数.</p>
+<p>&lt;/br&gt;</p>
+<p>&lt;/br&gt;</p>
+<blockquote>
+<p>参考资料</p>
+<p>[1] 腾讯云+社区, “变形金刚”为何强大：从模型到代码全面解析Google Tensor2Tensor系统, <a href="https://segmentfault.com/a/1190000015575985#articleHeader6" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015575985#articleHeader6</a>, 2018-07-09.</p>
+<p>[2] Ashish Vaswani,Noam Shazeer,Niki Parmar,Jakob Uszkorei,Llion Jones,Aidan N. Gomez,Łukasz Kaise and Illia Polosukhin. Attention Is All You need. <em>arXiv preprint</em> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">arXiv:1706.03762</a> , 2017.</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+            <a href="/tags/注意力机制/" rel="tag"># 注意力机制</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/deep-learning/LSTM/" rel="next" title="LSTM">
+                <i class="fa fa-chevron-left"></i> LSTM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/11/deep-learning/attention/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yao-zz</p>
+              <p class="site-description motion-element" itemprop="description">在机器学习的方向努力中......</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FreshManCoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:uni_coder99@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10145221/jiang-gongyao" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.quora.com/profile/Jiang-Gongyao" target="_blank" title="Quora">
+                      
+                        <i class="fa fa-fw fa-quora"></i>Quora</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5b6b0ff9f265da0f48613fa3" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-angle-double-down"></i>Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/8d6a6834e4fc" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer"><span class="nav-number">1.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">1.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention"><span class="nav-number">1.2.</span> <span class="nav-text">Self-Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention的变种"><span class="nav-number">1.3.</span> <span class="nav-text">Self-Attention的变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置编码"><span class="nav-number">1.4.</span> <span class="nav-text">位置编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Position-wise-Feed-Forward-Networks"><span class="nav-number">1.5.</span> <span class="nav-text">Position-wise Feed-Forward Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">categories: 深度学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer-1"><span class="nav-number">2.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构-1"><span class="nav-number">2.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention-1"><span class="nav-number">2.2.</span> <span class="nav-text">Self-Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention的变种-1"><span class="nav-number">2.3.</span> <span class="nav-text">Self-Attention的变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置编码-1"><span class="nav-number">2.4.</span> <span class="nav-text">位置编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Position-wise-Feed-Forward-Networks-1"><span class="nav-number">2.5.</span> <span class="nav-text">Position-wise Feed-Forward Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习-1"><span class="nav-number">2.6.</span> <span class="nav-text">categories: 深度学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer-2"><span class="nav-number">3.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构-2"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention-2"><span class="nav-number">3.2.</span> <span class="nav-text">Self-Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention的变种-2"><span class="nav-number">3.3.</span> <span class="nav-text">Self-Attention的变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置编码-2"><span class="nav-number">3.4.</span> <span class="nav-text">位置编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Position-wise-Feed-Forward-Networks-2"><span class="nav-number">3.5.</span> <span class="nav-text">Position-wise Feed-Forward Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-深度学习-2"><span class="nav-number">3.6.</span> <span class="nav-text">categories: 深度学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer-3"><span class="nav-number">4.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构-3"><span class="nav-number">4.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention-3"><span class="nav-number">4.2.</span> <span class="nav-text">Self-Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Attention的变种-3"><span class="nav-number">4.3.</span> <span class="nav-text">Self-Attention的变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置编码-3"><span class="nav-number">4.4.</span> <span class="nav-text">位置编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Position-wise-Feed-Forward-Networks-3"><span class="nav-number">4.5.</span> <span class="nav-text">Position-wise Feed-Forward Networks</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yao-zz</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量:<span id="busuanzi_value_site_pv"></span> | 
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
