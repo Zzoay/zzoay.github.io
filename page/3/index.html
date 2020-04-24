@@ -371,6 +371,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/10/feature-selection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/10/feature-selection/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -516,6 +526,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/10/descend-dimension/LDA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/10/descend-dimension/LDA/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -669,6 +689,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/08/ensemble-learning/GBDT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/08/ensemble-learning/GBDT/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -815,6 +845,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/descend-dimension/PCA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/descend-dimension/PCA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -960,6 +1000,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/ensemble-learning/Random-Forest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/ensemble-learning/Random-Forest/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1108,6 +1158,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/06/ensemble-learning/AdaBoost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/06/ensemble-learning/AdaBoost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1254,6 +1314,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/06/ensemble-learning/ensemble-learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/06/ensemble-learning/ensemble-learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1336,6 +1406,11 @@
 
 
           
+
+
+
+
+
 
         </div>
         
@@ -1672,7 +1747,44 @@
 
 
 
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'PYesa2aFUX1zKBBdFA9M17bq-gzGzoHsz',
+        appKey: '81LH73KMJTtNEXA7qfJvT1Pu',
+        placeholder: '欢迎畅所欲言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'6' || 10,
+    });
+  </script>
 
+
+<script type="text/javascript">
+    (function() {
+        // 匿名函数，防止污染全局变量
+        var utterances = document.createElement('script');
+        utterances.type = 'text/javascript';
+        utterances.async = true;
+        utterances.setAttribute('issue-term','pathname')
+        utterances.setAttribute('theme','github-light')
+        utterances.setAttribute('repo','Zzoay/comments')
+        utterances.crossorigin = 'anonymous';
+        utterances.src = 'https://utteranc.es/client.js';
+        // content 是要插入评论的地方
+        document.getElementById('gitment-container').appendChild(utterances);
+    })();
+</script>
 
   
 

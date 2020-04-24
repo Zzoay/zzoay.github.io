@@ -371,6 +371,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/09/linear-algebra/linear-algebra-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/09/linear-algebra/linear-algebra-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -534,6 +544,16 @@ a_{n1} \ a_{n2} \ a_{n3} ...\ a_{nn} \ b_n     \\
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/12/git/git/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/12/git/git/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -688,6 +708,16 @@ a_{n1} \ a_{n2} \ a_{n3} ...\ a_{nn} \ b_n     \\
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/08/discrimination-model/decision-tree/decision-tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/08/discrimination-model/decision-tree/decision-tree/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -838,6 +868,16 @@ a_{n1} \ a_{n2} \ a_{n3} ...\ a_{nn} \ b_n     \\
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/07/linear-model/logistic-regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/07/linear-model/logistic-regression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -987,6 +1027,16 @@ g(z) = \frac{1}{1+e^{-z}}    \tag{1.1}</script><p>便是一个很好的选择。
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/07/linear-model/linear-regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/07/linear-model/linear-regression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1118,6 +1168,16 @@ J(\theta) = \frac{1}{2m}  (h_{\theta}(x)-y)^2</script><p>因此，我们训练�
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/07/test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/07/test/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1195,6 +1255,11 @@ J(\theta) = \frac{1}{2m}  (h_{\theta}(x)-y)^2</script><p>因此，我们训练�
 
 
           
+
+
+
+
+
 
         </div>
         
@@ -1531,7 +1596,44 @@ J(\theta) = \frac{1}{2m}  (h_{\theta}(x)-y)^2</script><p>因此，我们训练�
 
 
 
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'PYesa2aFUX1zKBBdFA9M17bq-gzGzoHsz',
+        appKey: '81LH73KMJTtNEXA7qfJvT1Pu',
+        placeholder: '欢迎畅所欲言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'6' || 10,
+    });
+  </script>
 
+
+<script type="text/javascript">
+    (function() {
+        // 匿名函数，防止污染全局变量
+        var utterances = document.createElement('script');
+        utterances.type = 'text/javascript';
+        utterances.async = true;
+        utterances.setAttribute('issue-term','pathname')
+        utterances.setAttribute('theme','github-light')
+        utterances.setAttribute('repo','Zzoay/comments')
+        utterances.crossorigin = 'anonymous';
+        utterances.src = 'https://utteranc.es/client.js';
+        // content 是要插入评论的地方
+        document.getElementById('gitment-container').appendChild(utterances);
+    })();
+</script>
 
   
 

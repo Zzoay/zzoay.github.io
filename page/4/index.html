@@ -371,6 +371,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/02/probabilistic-graphical-model/CRF/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/02/probabilistic-graphical-model/CRF/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -520,6 +530,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/31/probabilistic-graphical-model/HMM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/31/probabilistic-graphical-model/HMM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -665,6 +685,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/30/clustering/GMM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/30/clustering/GMM/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -812,6 +842,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/30/optimization-theory/EM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/30/optimization-theory/EM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -957,6 +997,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/30/clustering/K-Means/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/30/clustering/K-Means/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1108,6 +1158,16 @@ E = \sum^k_{i=1}\sum_{x\in C_i}||x-\mu_i||_2^2    \tag{1}</script><p>其中 $\mu
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/optimization-theory/CO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/optimization-theory/CO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1254,6 +1314,16 @@ E = \sum^k_{i=1}\sum_{x\in C_i}||x-\mu_i||_2^2    \tag{1}</script><p>其中 $\mu
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/discrimination-model/SVM/SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/discrimination-model/SVM/SVM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1336,6 +1406,11 @@ E = \sum^k_{i=1}\sum_{x\in C_i}||x-\mu_i||_2^2    \tag{1}</script><p>其中 $\mu
 
 
           
+
+
+
+
+
 
         </div>
         
@@ -1672,7 +1747,44 @@ E = \sum^k_{i=1}\sum_{x\in C_i}||x-\mu_i||_2^2    \tag{1}</script><p>其中 $\mu
 
 
 
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'PYesa2aFUX1zKBBdFA9M17bq-gzGzoHsz',
+        appKey: '81LH73KMJTtNEXA7qfJvT1Pu',
+        placeholder: '欢迎畅所欲言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'6' || 10,
+    });
+  </script>
 
+
+<script type="text/javascript">
+    (function() {
+        // 匿名函数，防止污染全局变量
+        var utterances = document.createElement('script');
+        utterances.type = 'text/javascript';
+        utterances.async = true;
+        utterances.setAttribute('issue-term','pathname')
+        utterances.setAttribute('theme','github-light')
+        utterances.setAttribute('repo','Zzoay/comments')
+        utterances.crossorigin = 'anonymous';
+        utterances.src = 'https://utteranc.es/client.js';
+        // content 是要插入评论的地方
+        document.getElementById('gitment-container').appendChild(utterances);
+    })();
+</script>
 
   
 
