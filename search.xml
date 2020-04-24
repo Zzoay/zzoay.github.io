@@ -14,14 +14,15 @@
   </entry>
   <entry>
     <title><![CDATA[Byte Pair Encoding]]></title>
-    <url>%2F2020%2F04%2F23%2Fdeep-learning%2FByte-Pair-Encoding%2F</url>
+    <url>%2F2020%2F04%2F23%2Fnatural-language-processing%2FByte-Pair-Encoding%2F</url>
     <content type="text"><![CDATA[Byte Pair Encoding​ Byte Pari Encoding（BPE））是一种简单的数据压缩技巧，最初在1994年被提出，而如今广泛应用于各种现代的NLP模型（如BERT、GPT-2、XLM…）。 背景​ 如今NLP的发展，由刚开始的基于频率的稀疏词向量（如词袋、N-gram），到前几年通过预训练（word2vec，glove）生成语义表示的稠密词向量，再到划时代意义的BERT，NLP界越来越重视通过预训练学习语义，从而得到好的词向量表示。 ​ 然而这其中有个问题需要解决，基本上所有的NLP任务都需要构造一个词表，往往是选取出现频率最高的N个词加入词表。这其中有什么问题呢，举个例子，BERT的预训练语料是维基百科，如此庞大的语料库，词量肯定也是惊人的高。如果我们构造的词表太小，很多频率较低的词语就会被表示为一个掩码（又或是被去除），在模型中就根本“看不到”，这不仅会让这些低频词无法被学习，还会影响上下文中的高频词的学习。但如果词表过大，就会带来效率问题。 ​ BPE就是一种很好的方法，在不扩大词表的情况下，能够让更多的词语“被模型看到”。 原始BPE​ BPE最早在1994年由Philip Gage提出（A New Algorithm for Data Compression），是一种数据压缩的技术，通过使用数据中未出现的字节代替常见的连续字节对。 子词标记（Subword Tokenization）的BPE​ 方法最早在Neural Machine Translation of Rare Words with Subword Units提出，最初是为了解决神经网络翻译（NMT）中的OOV（Out of vocabulary）问题，即处理的词表是定长的，而翻译却往往会在词表之外。同样的，这个问题各种NLP任务也会遇到。 ​ 为了进行子词标记，BPE简单地做了一些调整，经常出现的子字对合并在一起，而不是被另一个字节代替。这样一来，低频的词就会被分割成几个高频的子词，例如athazagoraphobia可能就会被分割成[‘▁ath’, ‘az’, ‘agor’, ‘aphobia’]。 第0步，初始化词表； 第1步，把每个词表示为字符的组合，为了防止与其他词混淆，在词的后面再加入一个特殊的标识”&lt;\w&gt;”。例如hello，就会被分割成：”h e l l o “ 。 第2步，遍历词表，统计所有的字符对（其实就是2-gram），如：(h, e), (e, l), (l, l), (l, o), (o, )。 第3步，合并频率最高的字符对，将合成的新子词加入词表（或词频+1）。例如，(h, e)出现频率最高，那么就将他们合并，变成新子词he，再将这个新词加入词表，同时原来的单词就变成“he l l o ”。 第4步，重复2、3步，直到达到迭代次数或达到所需的词汇量。（超参数） 编码与解码​ 得到子词的词表后，我们先需要对子词表进行长度从大到小的排序。编码时，我们对每个单词，遍历子词表，寻找是否有子词是该单词的子串，然后将该单词分割成若干子词。若某一子串没有找到对应的子词，那么将它替换为一个特殊的标记如“”。 12345678910# 给定单词序列[“the&lt;/w&gt;”, “biggest&lt;/w&gt;”, “stone&lt;/w&gt;”]# 假设已有排好序的subword词表[“er&lt;/w&gt;”, “tain&lt;/w&gt;”, “tone”, “est&lt;/w&gt;”, “big”, “the&lt;/w&gt;”, “one&lt;/w&gt;”, &quot;s&quot;, &quot;g&quot;]# 迭代结果&quot;the&lt;/w&gt;&quot; -&gt; [&quot;the&lt;/w&gt;&quot;]&quot;biggest&lt;/w&gt;&quot; -&gt; [&quot;big&quot;, &quot;g&quot;,&quot;est&lt;/w&gt;&quot;]&quot;stone&lt;/w&gt;&quot; -&gt; [&quot;st&quot;, &quot;tone&lt;/w&gt;&quot;] ​ 这种方式的好处是，可以很好地适应新语料，缺点是，如果语料很大，这一编码方式效率较慢，因此一般是在训练模型之前，预编码好语料。还有一种方式是，在构建子词表的时候，其实就可以对构建子词表的语料进行编码了。 1234567891011121314151617181920# 给定单词序列[..., “the&lt;/w&gt;”, “biggest&lt;/w&gt;”, “stone&lt;/w&gt;”, ...] # 假设语料库中还有其他词语# 第一步# [..., &quot;t h e &lt;/w&gt;&quot;, &quot;b i g g e s t &lt;/w&gt;&quot;, &quot;s t o n e &lt;/w&gt;&quot;, ...]# 第二步# ..., (t, h), (h, e), (e, &lt;/w&gt;), (b, i), ...# 第三步，假设he频率最高# [..., &quot;t he &lt;/w&gt;&quot;, &quot;b i g g e s t &lt;/w&gt;&quot;, &quot;s t o n e &lt;/w&gt;&quot;, ...]# 继续第二步# ..., (t , he), (he, &lt;/w&gt;), (e, &lt;/w&gt;), (b, i), ...# ... 第三步# ... 迭代，直到次数满足，或词表大小满足# 最终结果# [..., &quot;the&lt;/w&gt;&quot;, &quot;big g est&lt;/w&gt;&quot;, &quot;s tone&lt;/w&gt;&quot;] ​ 可以看到，这个时候，我们直接将改变后的每个单词，按照空格符分割即可。 ​ 解码的过程就简单多了，以”“作为分割符，将子词合并为单词即可 12345# 假设模型预测后得到[“the&lt;/w&gt;”, &quot;big&quot;, &quot;g&quot;, &quot;est&lt;/w&gt;&quot;, &quot;s&quot;, &quot;tone&lt;/w&gt;&quot;]# 解码the biggest stone 代码实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859import refrom collections import Counter, defaultdictdef build_vocab(corpus: str) -&gt; dict: """Step 1. 建立词表""" # 把每个字符分割出来，并在词语最后加上&lt;/w&gt;，如:"hello"-&gt;"h e l l o &lt;/w&gt;" tokens = [" ".join(word) + " &lt;/w&gt;" for word in corpus.split()] # 统计语料中的词频 vocab = Counter(tokens) return vocabdef get_stats(vocab: dict) -&gt; dict: """Step 2. 分割字符串，并统计字符对的频率""" pairs = defaultdict(int) for word, frequency in vocab.items(): symbols = word.split() # 以空格分割 # 统计2-gram频率 for i in range(len(symbols) - 1): pairs[symbols[i], symbols[i + 1]] += frequency return pairsdef merge_vocab(pair: tuple, v_in: dict) -&gt; dict: """合并频率最高的对""" v_out = &#123;&#125; bigram = re.escape(' '.join(pair)) p = re.compile(r'(?&lt;!\S)' + bigram + r'(?!\S)') for word in v_in: # 将词表中所有的最高词频对替换，如："h e l l o" -&gt; "he l l o" w_out = p.sub(''.join(pair), word) v_out[w_out] = v_in[word] return v_outcorpus = "I had seen the biggest stone."vocab = build_vocab(corpus) # Step 1num_merges = 50 # 迭代次数，超参数for i in range(num_merges): pairs = get_stats(vocab) # Step 2 if not pairs: break # step 3 best = max(pairs, key=pairs.get) vocab = merge_vocab(best, vocab) References​ [1] Sennrich, Rico, Barry Haddow, and Alexandra Birch. “Neural machine translation of rare words with subword units.”arXiv preprint arXiv:1508.07909(2015). ​ [2] Akashdeep Singh Jaswal, Byte Pair Encoding — The Dark Horse of Modern NLP, 2019. ​ [3] PLM, subword-units, 2017. ​ [4] Luke, 深入理解NLP Subword算法：BPE、WordPiece、ULM, 2020. ​ [5] Byte pair encoding - Wikipedia - https://en.wikipedia.org/wiki/B.]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>自然语言处理</category>
       </categories>
       <tags>
         <tag>深度学习</tag>
         <tag>自然语言处理</tag>
+        <tag>BERT</tag>
       </tags>
   </entry>
   <entry>
@@ -38,14 +39,16 @@
   </entry>
   <entry>
     <title><![CDATA[BERT]]></title>
-    <url>%2F2019%2F01%2F11%2Fdeep-learning%2FBERT%2F</url>
+    <url>%2F2019%2F01%2F11%2Fnatural-language-processing%2FBERT%2F</url>
     <content type="text"><![CDATA[BERT&emsp; BERT全称是Bidirectional Encoder Representations from Transformers，从字面意思可以知道，这是一个基于Transformer的双向的编码器表征模型. 上面是BERT和GPT、ELMo的结构对比. Embedding &emsp; BERT的Embedding是3个Embedding的相加，即Token Embeddings、Segment Embeddings、Position Embeddings. Token Embeddings：词向量，其中第一个单词是分类任务的标记，可用于后面的分类任务 Segment Embeddings：用来区别上句和下句 Position Embeddings：位置信息向量，和Transformer中使用三角函数不一样，这里的是通过学习得到的 预训练任务&emsp; BERT有两个无监督预训练任务，第一步是随机遮盖一些词，然后依赖上下文来预测这些词，得到初步的预训练模型；第二步在第一步的基础上，是随机改变一半的句子对中的第二句，预测一个句子对的第二句是否是第一句的下一句。 Task 1&emsp; 第一个任务称为Mask-LM，常规的LanguageModel是这样的 P(X_i|X_{i-1},...X_1)或是这样的 P(X_i|X_{i+1},...,X_{n})而Mask-LM充分利用上下文信息，具体地，随机Mask掉15%的词，然后只去预测那些被Mask的词，即 P(masked|X_{else})&emsp; 实际上，BERT并不总是Mask那15%的词，而是 80%的概率Mask 10%的概率用一个随机的词代替 10%的概率不变 需注意的是模型本身并不知道它将要被要求预测哪些单词，或哪些单词被替换. Task 2&emsp; 第二个任务则是预测句子的下一句，即给定句子对$$，预测$S_2$是否是$S_1$的下一句。具体地，BERT随机替换50%的句子对中的$S_2$，并自动给定标签，然后去对所有句子对做预测. 例如： Input = [CLS] the man went to [MASK] store [SEP] he bought a gallon [MASK] milk [SEP] Label = IsNext Input = [CLS] the man [MASK] to the store [SEP] penguin [MASK] are flight ##less birds [SEP] Label = NotNext Fine-tuning&emsp; 预训练好的BERT模型，再去做一些简单调整，再在新的数据集上做训练，可以在许多自然语言处理的任务上有很好的表现. 例如，文本分类、问答、命名实体识别、上下文预测、对话等. &lt;/br&gt; &lt;/br&gt; 参考资料 https://arxiv.org/abs/1810.04805 https://zhuanlan.zhihu.com/p/46652512---]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>自然语言处理</category>
       </categories>
       <tags>
         <tag>深度学习</tag>
         <tag>自然语言处理</tag>
+        <tag>BERT</tag>
+        <tag>Pre-training</tag>
       </tags>
   </entry>
   <entry>
@@ -82,8 +85,8 @@
       </categories>
       <tags>
         <tag>深度学习</tag>
-        <tag>自然语言处理</tag>
         <tag>神经网络</tag>
+        <tag>自然语言处理</tag>
       </tags>
   </entry>
   <entry>
@@ -119,8 +122,8 @@
       </categories>
       <tags>
         <tag>深度学习</tag>
-        <tag>自然语言处理</tag>
         <tag>神经网络</tag>
+        <tag>自然语言处理</tag>
       </tags>
   </entry>
   <entry>
@@ -259,9 +262,9 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>判别模型</tag>
         <tag>条件随机场</tag>
         <tag>概率图模型</tag>
+        <tag>判别模型</tag>
       </tags>
   </entry>
   <entry>
@@ -287,10 +290,10 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>EM算法</tag>
-        <tag>无监督学习</tag>
-        <tag>聚类</tag>
         <tag>原型聚类</tag>
+        <tag>聚类</tag>
+        <tag>无监督学习</tag>
+        <tag>EM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -302,8 +305,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>EM算法</tag>
         <tag>无监督学习</tag>
+        <tag>EM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -315,9 +318,9 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>无监督学习</tag>
-        <tag>聚类</tag>
         <tag>原型聚类</tag>
+        <tag>聚类</tag>
+        <tag>无监督学习</tag>
       </tags>
   </entry>
   <entry>
@@ -369,8 +372,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>数学</tag>
         <tag>信息论基础</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -492,8 +495,8 @@
         <category>线性代数</category>
       </categories>
       <tags>
-        <tag>线性代数</tag>
         <tag>数学</tag>
+        <tag>线性代数</tag>
       </tags>
   </entry>
   <entry>
@@ -528,8 +531,8 @@
         <category>线性代数</category>
       </categories>
       <tags>
-        <tag>线性代数</tag>
         <tag>数学</tag>
+        <tag>线性代数</tag>
       </tags>
   </entry>
   <entry>
@@ -566,8 +569,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>逻辑回归</tag>
         <tag>判别模型</tag>
+        <tag>逻辑回归</tag>
       </tags>
   </entry>
   <entry>
