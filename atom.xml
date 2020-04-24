@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>One Blog</title>
   
-  <subtitle>要做爱学习的好孩子</subtitle>
+  <subtitle>要做爱 &lt;br&gt; 学习的好孩子</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
