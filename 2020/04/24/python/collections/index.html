@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Python,collections,">
 
 
 
@@ -90,17 +90,18 @@
 
 
 
-<meta name="description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。 1from collections imp">
+<meta name="description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。">
+<meta name="keywords" content="Python,collections">
 <meta property="og:type" content="article">
-<meta property="og:title" content="One Blog">
+<meta property="og:title" content="Python collections 简单上手">
 <meta property="og:url" content="http://yoursite.com/2020/04/24/python/collections/index.html">
 <meta property="og:site_name" content="One Blog">
-<meta property="og:description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。 1from collections imp">
+<meta property="og:description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-24T04:59:09.946Z">
+<meta property="og:updated_time" content="2020-04-24T05:08:33.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One Blog">
-<meta name="twitter:description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。 1from collections imp">
+<meta name="twitter:title" content="Python collections 简单上手">
+<meta name="twitter:description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。">
 
 
 
@@ -136,7 +137,7 @@
 
 
 
-  <title> | One Blog</title>
+  <title>Python collections 简单上手 | One Blog</title>
   
 
 
@@ -321,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Python collections 简单上手</h1>
         
 
         <div class="post-meta">
@@ -343,6 +344,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -372,6 +395,7 @@
 
       
         <h1 id="collections-库简单上手"><a href="#collections-库简单上手" class="headerlink" title="collections 库简单上手"></a>collections 库简单上手</h1><h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p>   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。</p>
+<a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">counter = Counter(lst)</span><br><span class="line">print(counter)</span><br></pre></td></tr></table></figure>
 <pre><code>Counter({1: 7, 2: 5, 3: 3})
@@ -437,7 +461,7 @@ OrderedDict([(&#39;b&#39;, None), (&#39;a&#39;, None), (&#39;c&#39;, None), (&#3
 <pre><code>[&#39;music&#39;, &#39;art&#39;, &#39;opera&#39;]
 {&#39;music&#39;: &#39;bach&#39;, &#39;art&#39;: &#39;van gogh&#39;, &#39;opera&#39;: &#39;carmen&#39;}
 </code></pre><p>ChainMap最常用的例子是在程序传入参数的优先级设置上，例如：参数可以通过命令行传入，可以通过环境变量传入，还可以有默认参数，我们可以设置优先级：命令行&gt;环境变量&gt;默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># jupyter notebook中无法使用argparse</span><br><span class="line"></span><br><span class="line">from collections import ChainMap</span><br><span class="line">import os, argparse</span><br><span class="line"></span><br><span class="line"># 构造缺省参数:</span><br><span class="line">defaults = &#123;</span><br><span class="line">    &apos;color&apos;: &apos;red&apos;,</span><br><span class="line">    &apos;user&apos;: &apos;guest&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 构造命令行参数:</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&apos;-u&apos;, &apos;--user&apos;)</span><br><span class="line">parser.add_argument(&apos;-c&apos;, &apos;--color&apos;)</span><br><span class="line">namespace = parser.parse_args()</span><br><span class="line">command_line_args = &#123; k: v for k, v in vars(namespace).items() if v &#125;</span><br><span class="line"></span><br><span class="line"># 组合成ChainMap:</span><br><span class="line">combined = ChainMap(command_line_args, os.environ, defaults)</span><br><span class="line"></span><br><span class="line"># 打印参数:</span><br><span class="line">print(&apos;color=%s&apos; % combined[&apos;color&apos;])</span><br><span class="line">print(&apos;user=%s&apos; % combined[&apos;user&apos;])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jupyter notebook中无法使用argparse</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line"><span class="keyword">import</span> os, argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造缺省参数:</span></span><br><span class="line">defaults = &#123;</span><br><span class="line">    <span class="string">'color'</span>: <span class="string">'red'</span>,</span><br><span class="line">    <span class="string">'user'</span>: <span class="string">'guest'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造命令行参数:</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'-u'</span>, <span class="string">'--user'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'-c'</span>, <span class="string">'--color'</span>)</span><br><span class="line">namespace = parser.parse_args()</span><br><span class="line">command_line_args = &#123; k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> vars(namespace).items() <span class="keyword">if</span> v &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组合成ChainMap:</span></span><br><span class="line">combined = ChainMap(command_line_args, os.environ, defaults)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印参数:</span></span><br><span class="line">print(<span class="string">'color=%s'</span> % combined[<span class="string">'color'</span>])</span><br><span class="line">print(<span class="string">'user=%s'</span> % combined[<span class="string">'user'</span>])</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -452,6 +476,14 @@ OrderedDict([(&#39;b&#39;, None), (&#39;a&#39;, None), (&#39;c&#39;, None), (&#3
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/collections/" rel="tag"># collections</a>
+          
+        </div>
       
 
       
@@ -560,7 +592,7 @@ OrderedDict([(&#39;b&#39;, None), (&#39;a&#39;, None), (&#39;c&#39;, None), (&#3
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -571,7 +603,7 @@ OrderedDict([(&#39;b&#39;, None), (&#39;a&#39;, None), (&#39;c&#39;, None), (&#3
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
