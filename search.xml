@@ -273,9 +273,9 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
+        <tag>判别模型</tag>
         <tag>条件随机场</tag>
         <tag>概率图模型</tag>
-        <tag>判别模型</tag>
       </tags>
   </entry>
   <entry>
@@ -301,10 +301,10 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>EM算法</tag>
-        <tag>无监督学习</tag>
-        <tag>聚类</tag>
         <tag>原型聚类</tag>
+        <tag>聚类</tag>
+        <tag>无监督学习</tag>
+        <tag>EM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -316,8 +316,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>EM算法</tag>
         <tag>无监督学习</tag>
+        <tag>EM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -329,9 +329,9 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>无监督学习</tag>
-        <tag>聚类</tag>
         <tag>原型聚类</tag>
+        <tag>聚类</tag>
+        <tag>无监督学习</tag>
       </tags>
   </entry>
   <entry>
@@ -580,8 +580,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>判别模型</tag>
         <tag>逻辑回归</tag>
+        <tag>判别模型</tag>
       </tags>
   </entry>
   <entry>

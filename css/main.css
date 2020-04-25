@@ -1828,7 +1828,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9aa21f;
+  background: #ff091f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3076,4 +3076,7 @@ pre {
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
+}
+.post-comments-count {
+  display: none;
 }
