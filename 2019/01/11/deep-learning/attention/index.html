@@ -377,16 +377,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/11/deep-learning/attention/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/11/deep-learning/attention/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -538,9 +528,6 @@ Attention(Query,Source)=\sum_{i=1}^{L_x}Similarity(Query,Key_i)*Value_i</script>
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
     </div>
 
   
@@ -913,43 +900,6 @@ Attention(Query,Source)=\sum_{i=1}^{L_x}Similarity(Query,Key_i)*Value_i</script>
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'Zzoay# MUST HAVE, Your Github ID',
-            repo: 'zzoay.github.io# MUST HAVE, The repo you use to store Gitment comments',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '44d34736c517d077fe9d',
-            
-                client_id: '44d34736c517d077fe9d'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
-
-
 
 
 
@@ -969,6 +919,22 @@ Attention(Query,Source)=\sum_{i=1}^{L_x}Similarity(Query,Key_i)*Value_i</script>
         document.getElementById('gitment-container').appendChild(utterances);
     })();
 </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '44d34736c517d077fe9d',
+          clientSecret: '44d34736c517d077fe9d',
+          repo: 'zzoay.github.io',
+          owner: '',
+          admin: ['Zzoay'],
+          id: location.pathname,
+          distractionFreeMode: 'false'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
 
   
 
