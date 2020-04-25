@@ -273,8 +273,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>概率图模型</tag>
         <tag>条件随机场</tag>
+        <tag>概率图模型</tag>
         <tag>判别模型</tag>
       </tags>
   </entry>
@@ -288,8 +288,8 @@
       <tags>
         <tag>机器学习</tag>
         <tag>生成模型</tag>
-        <tag>隐马尔可分模型</tag>
         <tag>概率图模型</tag>
+        <tag>隐马尔可分模型</tag>
       </tags>
   </entry>
   <entry>
