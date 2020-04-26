@@ -100,9 +100,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com//svm1.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/svm.jpg">
-<meta property="og:image" content="http://pbug3xg5x.bkt.clouddn.com/Svm_max_sep_hyperplane_with_margin.png">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/Svm_max_sep_hyperplane_with_margin.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/kernel.jpg">
-<meta property="og:updated_time" content="2020-04-23T04:40:56.049Z">
+<meta property="og:updated_time" content="2020-04-25T11:47:04.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机">
 <meta name="twitter:description" content="支持向量机(Support Vector Machine)介绍 在 感知机(Perceptron) 算法中，我们寻求一个超平面将两类数据分开，但显然这样的超平面可以有很多个，那么哪个超平面才是最好的呢？很显然，那个距离两边的点最远的超平面，能够更好地将样本分类. 这便是 支持向量机(Support Vector Machine) 的基本型.  如图，$H_2$ 和 $H_3$ 都可以将两类数据分离">
@@ -434,7 +434,7 @@
 
       
         <h1 id="支持向量机-Support-Vector-Machine"><a href="#支持向量机-Support-Vector-Machine" class="headerlink" title="支持向量机(Support Vector Machine)"></a>支持向量机(<em>Support Vector Machine</em>)</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> 在 <strong>感知机</strong>(<em>Perceptron</em>) 算法中，我们寻求一个超平面将两类数据分开，但显然这样的超平面可以有很多个，那么哪个超平面才是最好的呢？很显然，那个距离两边的点最远的超平面，能够更好地将样本分类. 这便是 <strong>支持向量机</strong>(<em>Support Vector Machine</em>) 的基本型.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com//svm1.png" alt="来自维基百科"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com//svm1.png" alt="来自维基百科" style="zoom:80%;"></p>
 <p>如图，$H_2$ 和 $H_3$ 都可以将两类数据分离，但显然 $H_3$ 更好.</p>
 <a id="more"></a>
 <h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>​    我们给定线性可分训练数据集，希望得到一个分离超平面为</p>
@@ -450,7 +450,7 @@ sign(t) =
 &-1, \quad t<0
 \end{align}
 \right.</script><p>支持向量机的基本型如图所示：</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/svm.jpg" alt="图片来源谷歌图片"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/svm.jpg" alt="图片来源谷歌图片" style="zoom:80%;"></p>
 <h3 id="函数间隔和几何间隔"><a href="#函数间隔和几何间隔" class="headerlink" title="函数间隔和几何间隔"></a>函数间隔和几何间隔</h3><h4 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h4><p>​    对于给定的训练数据集 $T$ 和超平面 $(w,b)$，我们定义超平面 $(w,b)$ 关于样本点 $(x_i,y_i)$ 的<strong>函数间隔</strong>为：</p>
 <script type="math/tex; mode=display">
 \hat{y_i} = y_i (w\cdot x_i +b)    \tag{3}</script><p>定义超平面 $(w,b)$ 关于训练数据集 $T$ 的函数间隔为所有样本点 $(x_i, y_i)$ 的函数间隔的最小值，即</p>
@@ -489,7 +489,7 @@ y_i(w\cdot x_i +b) = 1</script><p>则支持向量即是满足上式的点.</p>
 H_1 : w\cdot x + b =1</script><p>对负例点，支持向量在超平面:</p>
 <script type="math/tex; mode=display">
 H_2 : w\cdot x + b = -1</script><p>如图所示，在 $H_1$ 和 $H_2$ 上的点就是支持向量.</p>
-<p><img src="http://pbug3xg5x.bkt.clouddn.com/Svm_max_sep_hyperplane_with_margin.png" alt="支持向量"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/Svm_max_sep_hyperplane_with_margin.png" alt="支持向量" style="zoom:45%;"></p>
 <p> 我们看到，这两个超平面是平行的，并且中间形成了一条没有实例点的长带，分离超平面恰好在它们的中间. 长带的宽度叫做<strong>间隔</strong>(<em>margin</em>)，等于 $\frac{2}{||w||}$ .</p>
 <p> 显然我们可以知道，<strong>决定分离超平面时只有支持向量起作用.</strong></p>
 <h3 id="对偶算法"><a href="#对偶算法" class="headerlink" title="对偶算法"></a>对偶算法</h3><blockquote>
@@ -593,7 +593,7 @@ b^* = y_j - \sum_{i=1}^Ny_i\alpha_i^*(x_i\cdot x_j)
 </ul>
 <p> 我们观察发现：软间隔最大化下的对偶算法，仅仅在求解 $\alpha^{\ast}$ 时比硬间隔最大化多一个 $\alpha_i \le C$ 的条件.</p>
 <h2 id="非线性可分支持向量机"><a href="#非线性可分支持向量机" class="headerlink" title="非线性可分支持向量机"></a>非线性可分支持向量机</h2><h3 id="高维映射"><a href="#高维映射" class="headerlink" title="高维映射"></a>高维映射</h3><p>  前面，我们假设样本线性可分，或在允许一些误分类的情况下线性可分，但如果遇到样本需要曲线来拟合的情况呢？一个有效的方法是将样本映射到高维空间，使样本在该空间内线性可分.</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/kernel.jpg" alt="图片来源CSDN"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/kernel.jpg" alt="图片来源CSDN" style="zoom:80%;"></p>
 <p> 令 $\phi(x)$ 表示将 $x$ 映射后的特征向量，于是在特征空间中划分的超平面为：</p>
 <script type="math/tex; mode=display">
 f(x) = w^T\phi(x) + b \tag{27}</script><p>于是有：</p>
@@ -958,7 +958,7 @@ E_1^{new} = \sum_Sy_j\alpha_jK(x_i,x_j)+b^{new}-y_i</script><h3 id="算法实现
       <i class="fa fa-area-chart"></i>
     </span>
     
-      <span class="post-meta-item-text">本站总字数: </span>
+      <span class="post-meta-item-text">总字数: </span>
     
     <span title="Site words total count">51.2k</span>
   
@@ -1567,3 +1567,6 @@ E_1^{new} = \sum_Sy_j\alpha_jK(x_i,x_j)+b^{new}-y_i</script><h3 id="算法实现
 
 </body>
 </html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
