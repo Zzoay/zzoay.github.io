@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true">
-<meta property="og:updated_time" content="2020-04-23T12:14:01.239Z">
+<meta property="og:updated_time" content="2020-04-27T07:55:34.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELU and GELU">
 <meta name="twitter:description" content="ELU&amp;emsp; ELU(Exponential Linear Units)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0. 图像和公式  其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$)">
@@ -436,7 +436,7 @@
 
       
         <h2 id="ELU"><a href="#ELU" class="headerlink" title="ELU"></a>ELU</h2><p>&emsp; <strong>ELU</strong>(<em>Exponential Linear Units</em>)，是对ReLU负半区为0的改进，使得激活单元均值更趋向于0.</p>
-<h3 id="图像和公式"><a href="#图像和公式" class="headerlink" title="图像和公式"></a>图像和公式</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true" alt="GELU1"></p>
+<h3 id="图像和公式"><a href="#图像和公式" class="headerlink" title="图像和公式"></a>图像和公式</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/ELU1.png?raw=true" alt="GELU1" style="zoom: 33%;"></p>
 <blockquote>
 <p>其中，LReLU($\alpha=0.1$)，ELU($\alpha=1$) </p>
 </blockquote>
@@ -449,7 +449,7 @@
 </blockquote>
 <h2 id="GELU"><a href="#GELU" class="headerlink" title="GELU"></a>GELU</h2><p>&emsp; <strong>GELU</strong>(<em>Gaussian Error Linear Unit</em>)，是ReLU的一种改进，改进了ReLU缺乏概率解释的缺陷，在一些任务上表现得要更好. </p>
 <h3 id="图像和公式-1"><a href="#图像和公式-1" class="headerlink" title="图像和公式"></a>图像和公式</h3><p>&emsp;<strong>GELU</strong>的曲线如下</p>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true" alt="GELU1"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU1.png?raw=true" alt="GELU1" style="zoom: 33%;"></p>
 <blockquote>
 <p>其中，GELU($\mu =0,\sigma =1$)，ELU($\alpha = 1$)</p>
 </blockquote>
@@ -459,11 +459,11 @@ GELU(x) = xP(X<x) = x\Phi(x)</script><p>并且可以用如下公式估计</p>
 <script type="math/tex; mode=display">
 0.5x(1+tanh[\sqrt{2/\pi}(x+0.044715x^3)])</script><p>或是</p>
 <script type="math/tex; mode=display">
-x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true" alt="GELU1"></p>
+x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU2.png?raw=true" alt="GELU1" style="zoom:67%;"></p>
 <blockquote>
 <p>在MINST数据集上的结果，左边是未使用Dropout，右边是使用了Dropout.</p>
 </blockquote>
-<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true" alt="GELU1"></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/GELU3.png?raw=true" alt="GELU1" style="zoom:67%;"></p>
 <blockquote>
 <p>在MINST数据集上的鲁棒性结果，可以看到，随着噪声的增加，GELU要表现得更稳定.</p>
 </blockquote>
@@ -608,7 +608,7 @@ x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -619,7 +619,7 @@ x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -630,7 +630,7 @@ x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -745,7 +745,7 @@ x \sigma(1.702x)</script><h3 id="实验结果-1"><a href="#实验结果-1" class
     
       <span class="post-meta-item-text">总字数: </span>
     
-    <span title="Site words total count">51.2k</span>
+    <span title="Site words total count">52.7k</span>
   
 </div>
 
