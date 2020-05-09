@@ -98,12 +98,12 @@
 <meta property="og:site_name" content="One Blog">
 <meta property="og:description" content="关于求平方根——C语言实现​    求平方根一直是应用广泛、使用频繁的一个数学函数，比如很多距离的计算就需要用到平方根的计算，如何高效地求解平方根，一直以来都是一个有趣的问题。这里我们假设一个问题，要求不使用自带的求平方根函数，求解给定整数的平方根，返回一个整数。一般的思路有如下几种：  通过其它的数学函数代替平方根函数得到精确结果，取整数部分作为答案； 通过数学方法得到近似结果，直接作为答案。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://assets.leetcode-cn.com/solution-static/69/69_fig1.png">
-<meta property="og:updated_time" content="2020-05-09T08:47:42.373Z">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/69_fig1.png">
+<meta property="og:updated_time" content="2020-05-09T09:03:25.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于求平方根——C语言实现">
 <meta name="twitter:description" content="关于求平方根——C语言实现​    求平方根一直是应用广泛、使用频繁的一个数学函数，比如很多距离的计算就需要用到平方根的计算，如何高效地求解平方根，一直以来都是一个有趣的问题。这里我们假设一个问题，要求不使用自带的求平方根函数，求解给定整数的平方根，返回一个整数。一般的思路有如下几种：  通过其它的数学函数代替平方根函数得到精确结果，取整数部分作为答案； 通过数学方法得到近似结果，直接作为答案。">
-<meta name="twitter:image" content="https://assets.leetcode-cn.com/solution-static/69/69_fig1.png">
+<meta name="twitter:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/69_fig1.png">
 
 
 
@@ -438,7 +438,7 @@
 <a id="more"></a>
 <h2 id="袖珍计算器算法"><a href="#袖珍计算器算法" class="headerlink" title="袖珍计算器算法"></a>袖珍计算器算法</h2><p>​    <strong>袖珍计算器算法</strong>是一种用指数函数 $\exp$ 和对数函数 $\ln$ 代替平方根函数的方法。我们通过有限的可以使用的数学函数，得到我们想要计算的结果。基本原理如下：</p>
 <script type="math/tex; mode=display">
-\sqrt{x} = x^{1/2} = (e^{lnx})^{1/2} = e^{0.5\ln(x)}</script><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="built_in">exp</span>(<span class="number">0.5</span> * <span class="built_in">log</span>(x));</span><br><span class="line">        <span class="keyword">return</span> ((<span class="keyword">long</span>)(ans + <span class="number">1</span>) * (ans + <span class="number">1</span>) &lt;= x ? ans + <span class="number">1</span> : ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+\sqrt{x} = x^{1/2} = (e^{lnx})^{1/2} = e^{0.5\ln(x)}</script><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="built_in">exp</span>(<span class="number">0.5</span> * <span class="built_in">log</span>(x));</span><br><span class="line">    <span class="keyword">return</span> ((<span class="keyword">long</span>)(ans + <span class="number">1</span>) * (ans + <span class="number">1</span>) &lt;= x ? ans + <span class="number">1</span> : ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>注意：</strong> 由于计算机无法存储浮点数的精确值，而指数函数和对数函数的参数和返回值均为浮点数，因此运算过程中会存在误差。例如当 x = 2147395600时，$e^{0.5\ln(x)}$的计算结果与正确值 4634046340 相差 $10^{-11}$ ，这样在对结果取整数部分时，会得到 46339这个错误的结果。</p>
 <p>因此在得到结果的整数部分ans后，我们应当找出ans与ans+1中哪一个是真正的答案。</p>
 <h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><p>​    基本的思路就是二分查找，找到一个数ans，满足它的平方等于x，由于题目要求返回整数部分，因此只需要满足$ans^2&lt;= x$且$(ans+1)^2&gt;x$即可。</p>
@@ -446,7 +446,7 @@
 <h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><p>​        牛顿法是一种快速求解函数零点的方法，为了叙述方便，假设$C$为需要求解平方根的值，那么有</p>
 <script type="math/tex; mode=display">
 y = x^2 - C</script><p>我们任取一个$x_0$作为初始值，在每一步的迭代中，在这一个点上作一条斜率该点导数$f^{-1}(x_i)$的直线，与x轴的交点即为下一次迭代的x值。经过多次迭代之后，我们就可以得到一个距离零点非常接近的交点。如下图所示。</p>
-<p><img src="https://assets.leetcode-cn.com/solution-static/69/69_fig1.png" alt></p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/69_fig1.png" style="zoom:67%;"></p>
 <p><strong>算法</strong>：</p>
 <p>选择$x_0=C$作为初始值。</p>
 <p>在每一步的迭代中，通过当前的点$(x_i,f(x_i))$，作一条斜率为$f^{-1}(x_i)=2x_i$的直线，直线的方程为：</p>
