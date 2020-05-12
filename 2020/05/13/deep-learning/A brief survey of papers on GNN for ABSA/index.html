@@ -107,7 +107,7 @@
 <meta property="og:image" content="c:/Users/uni_c/AppData/Roaming/Typora/typora-user-images/image-20200512224216072.png">
 <meta property="og:image" content="c:/Users/uni_c/AppData/Roaming/Typora/typora-user-images/image-20200512223332060.png">
 <meta property="og:image" content="c:/Users/uni_c/AppData/Roaming/Typora/typora-user-images/image-20200512223805773.png">
-<meta property="og:updated_time" content="2020-05-12T16:22:35.225Z">
+<meta property="og:updated_time" content="2020-05-12T16:23:02.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A brief survey of papers on GNN for Aspect-Based Sentiment Analysis">
 <meta name="twitter:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    In previous years, there are lots of rearch about Graph Neural Network(GNN), a modified neural network for graph data. A">
@@ -440,6 +440,7 @@
       
         <h1 id="A-brief-survey-of-papers-on-GNN-for-Aspect-Based-Sentiment-Analysis"><a href="#A-brief-survey-of-papers-on-GNN-for-Aspect-Based-Sentiment-Analysis" class="headerlink" title="A brief survey of papers on GNN for Aspect-Based Sentiment Analysis"></a>A brief survey of papers on GNN for Aspect-Based Sentiment Analysis</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>​    In previous years, there are lots of rearch about Graph Neural Network(GNN), a modified neural network for graph data. And some rearchers forcus on using GNN for the NLP tasks, such as text classification(TextGCN, Yao et al.) and comment generation(graph2seq, Li et al.) . Sun et al. had purposed a new model called CDT, which is an application of Aspect-Based Sentiment Classification, the sub-task of Aspect-Based Sentiment Analysis(ABSA). Inspired by Sun et al., some rearchers considered to using the GNN for ABSA. We forcus on reviewing their rearches, and discussing about the future work in those aspects.</p>
 <p>​    最近关于图神经网络（Graph Neural Network）的研究非常火热，这是一种适应于图数据的神经网络，并且最近在NLP界也开始大展拳脚，比如文本分类任务（TextGCN，Yao et al.）和评论生成任务（graph2seq，Li et al.）。Sun et al. 提出了一个新的模型——CDT, 应用于Aspect-Based Sentiment Classification 任务，属于ABSA下的一个分支。受Sun et al.的研究的启发，一些研究人员开始致力于将GNN应用到ABSA任务上。我们希望回顾这些研究，并讨论一下这些研究未来的发展。</p>
+<a id="more"></a>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>​    这里简要介绍一下图神经网络，ABSA任务，以及GNN在ABSA方面的前沿研究。</p>
 <h3 id="Graph-Nerual-Network"><a href="#Graph-Nerual-Network" class="headerlink" title="Graph Nerual Network"></a>Graph Nerual Network</h3><p>​    图神经网络，是一种能适应于图数据的神经网络，其基本的思想是，定义图上结点与他的邻居之间的信息传递方式，并通过矩阵运算实现。</p>
 <p>​    而图这种信息的聚合，一般有两种方式：</p>
