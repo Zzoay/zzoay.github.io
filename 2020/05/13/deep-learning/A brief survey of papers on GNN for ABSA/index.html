@@ -98,6 +98,7 @@
 <meta property="og:site_name" content="One Blog">
 <meta property="og:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    In previous years, there are lots of research about Graph Neural Network(GNN), a modified neural network for graph data.">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/uni_c/AppData/Roaming/Typora/typora-user-images/image-20200614150538285.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512161705951.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512170653396.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com//image-20200512171345238.png">
@@ -107,11 +108,11 @@
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512224216072.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512223332060.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512223805773.png">
-<meta property="og:updated_time" content="2020-05-14T02:00:19.018Z">
+<meta property="og:updated_time" content="2020-06-14T07:50:14.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GNN在Aspect-Based Sentiment Analysis任务上的简单综述">
 <meta name="twitter:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    In previous years, there are lots of research about Graph Neural Network(GNN), a modified neural network for graph data.">
-<meta name="twitter:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512161705951.png">
+<meta name="twitter:image" content="c:/Users/uni_c/AppData/Roaming/Typora/typora-user-images/image-20200614150538285.png">
 
 
 
@@ -401,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,323 
+                  3,719 
                 </span>
               
 
@@ -417,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14 mins
+                  16 mins
                 </span>
               
             </div>
@@ -443,19 +444,29 @@
 <a id="more"></a>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>​    这里简要介绍一下图神经网络，ABSA任务，以及GNN在ABSA方面的前沿研究。</p>
 <h3 id="Graph-Nerual-Network"><a href="#Graph-Nerual-Network" class="headerlink" title="Graph Nerual Network"></a>Graph Nerual Network</h3><p>​    图神经网络，是一种能适应于图数据的神经网络，其基本的思想是，定义图上结点与他的邻居之间的信息传递方式，并通过矩阵运算实现。</p>
-<p>​    而图这种信息的聚合，一般有两种方式：</p>
+<p>​    而图这种信息的传递和聚合，在清华大学孙茂松教授组发表的<a href="https://arxiv.org/pdf/1812.08434.pdf" target="_blank" rel="noopener">图神经网络综述</a>中，划分为如下几种方式：</p>
 <ul>
-<li>Spatial：在原始的图空间上进行信息的传递，代表模型有：GAT、Spatial Temporal GCN</li>
-<li>Spectral：在经过一定变换后的谱空间上进行信息的传递，代表模型有：GCN</li>
+<li>Convolutional Aggregator：基于图卷积的信息聚合，一般分为谱域（Spectral）和空域（Spatial）；</li>
+<li>Attention Aggregator：基于注意力机制的信息聚合；</li>
+<li>Gated Updater：类似于GRU和LSTM的门控机制，提升在图信息上的长距离（long-term）传递；</li>
+<li>Skip Connection：在普通的神经网络中也十分常用，受residual network的启发，通过层之间的skip connection来增加网络深度，以获得更大的表示空间；</li>
+<li>Hierachical Graph：在一些图数据中，图和结点的层次往往也是非常重要的信息，目前的处理方式也是受CV领域的启发，通过层次化的池化（Hierachical Pooling），层层抽取一般化的特征；</li>
 </ul>
+<p><img src="C:\Users\uni_c\AppData\Roaming\Typora\typora-user-images\image-20200614150538285.png" alt="image-20200614150538285"></p>
 <p>GNN还有一种常见的分类，即直推式（Transductive）和归纳式（Inductive）:</p>
 <ul>
-<li>Transductive：面对新的数据（新结点）时，需要重新构建图，代表模型有：GCN</li>
-<li>Inductive：可以对新结点进行归纳，不需要对图进行重构，代表模型有：GraphSAGE、GAT、fastGCN</li>
+<li>Transductive：面对新的数据（新结点）时，需要重新构建图，代表模型有：GCN、ChebNet；</li>
+<li>Inductive：可以对新结点进行归纳，不需要对图进行重构，代表模型有：GraphSAGE、GAT、fastGCN；</li>
 </ul>
-<h4 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h4><p>​    Graph Convolutional Network（图卷积神经网络）可以说是最流行的图神经网络了。GCN发展也经过了一定的阶段，其基本思想是通过拉普拉斯矩阵的运算，实现图上的卷积。</p>
+<h4 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h4><p>​    Graph Convolutional Network（图卷积神经网络）可以说是最流行的图神经网络了。GCN发展也经过了一定的阶段，一般分为两大类：</p>
+<ul>
+<li>Spatial Methods：在原始的图空间上进行信息的传递，代表模型有：GraphSAGE、DGCN、SACNN；</li>
+<li>Spectral Methods：在经过一定变换后的谱空间上进行信息的传递，代表模型有：GCN、ChebNet；</li>
+</ul>
+<p>这里简单介绍Spectral Methods，其基本思想是通过拉普拉斯矩阵的运算（特征分解），实现图上的卷积。常见的拉普拉斯矩阵定义如下：</p>
 <script type="math/tex; mode=display">
-L^{sym} = D^{-1/2}LD^{-1/2} = I-D^{-1/2}AD^{-1/2}</script><p>​    目前最流行的版本由Kipf在2016年提出：</p>
+L^{sym} = D^{-1/2}LD^{-1/2} = I-D^{-1/2}AD^{-1/2}</script><p>接着会涉及到一些傅里叶变换和特征分解相关的内容，后续另写一文详细讲述。这里只需要知道，传统的GCN是需要对拉普拉斯矩阵进行特征分解，才能得到卷积核，这项操作的复杂度是非常高的。</p>
+<p>GCN提出得比较早，但一直无法广泛应用的一个重要原因是它的复杂度，后续的很多改进都是针对于复杂度的改进，基本的思路是基于Chebyshev多项式作为卷积核。目前最流行的版本由Kipf在2016年提出：</p>
 <script type="math/tex; mode=display">
 H^{(l+1)}= \sigma(\tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2}H^{(l)}W^{(l)})</script><p>其中：</p>
 <ul>
@@ -789,6 +800,7 @@ H^{(l+1)}= \sigma (AH^{(l)}W^{(l)})</script><p>（原论文中对$A$进行了标
 <p>[10] Ye et al., 2020. Document and Word Representations Generated by Graph Convolutional Network and BERT for Short Text Classification. ECAI-20.</p>
 <p>[11] Li et al, 2019. Coherent Comment Generation for Chinese Articles with a Graph-to-Sequence Model.  ACL-19.</p>
 <p>[12] Thomas N. Kipf, Max Welling, 2016. Semi-Supervised Classification with Graph Convolutional Networks, ICLR-17.</p>
+<p>[13] Jiezhou et al, 2020. Graph Neural Networks: A Review of Methods and Applications, arXiv-20.</p>
 
       
     </div>
@@ -1056,7 +1068,7 @@ H^{(l+1)}= \sigma (AH^{(l)}W^{(l)})</script><p>（原论文中对$A$进行了标
     
       <span class="post-meta-item-text">总字数: </span>
     
-    <span title="Site words total count">57.5k</span>
+    <span title="Site words total count">57.9k</span>
   
 </div>
 
