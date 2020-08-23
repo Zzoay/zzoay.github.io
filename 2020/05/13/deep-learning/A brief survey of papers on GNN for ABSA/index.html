@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    In previous years, there are lots of research about Graph Neural Network(GNN), a modified neural network for graph data.">
+<meta name="description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    最近关于图神经网络（Graph Neural Network）的研究非常火热，这是一种适应于图数据的神经网络，并且最近在NLP界也开始大展拳脚，比如文本分类任务（TextGCN，Yao et al.）和评论生成任务（graph2seq，Li">
 <meta name="keywords" content="深度学习,GNN,ABSA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GNN应用于Aspect-Based Sentiment Analysis任务的研究的简单概述">
 <meta property="og:url" content="http://yoursite.com/2020/05/13/deep-learning/A brief survey of papers on GNN for ABSA/index.html">
 <meta property="og:site_name" content="One Blog">
-<meta property="og:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    In previous years, there are lots of research about Graph Neural Network(GNN), a modified neural network for graph data.">
+<meta property="og:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    最近关于图神经网络（Graph Neural Network）的研究非常火热，这是一种适应于图数据的神经网络，并且最近在NLP界也开始大展拳脚，比如文本分类任务（TextGCN，Yao et al.）和评论生成任务（graph2seq，Li">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200614150538285.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512161705951.png">
@@ -108,10 +108,10 @@
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512224216072.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512223332060.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200512223805773.png">
-<meta property="og:updated_time" content="2020-06-14T08:02:52.648Z">
+<meta property="og:updated_time" content="2020-08-23T11:32:34.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GNN应用于Aspect-Based Sentiment Analysis任务的研究的简单概述">
-<meta name="twitter:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    In previous years, there are lots of research about Graph Neural Network(GNN), a modified neural network for graph data.">
+<meta name="twitter:description" content="A brief survey of papers on GNN for Aspect-Based Sentiment AnalysisAbstract​    最近关于图神经网络（Graph Neural Network）的研究非常火热，这是一种适应于图数据的神经网络，并且最近在NLP界也开始大展拳脚，比如文本分类任务（TextGCN，Yao et al.）和评论生成任务（graph2seq，Li">
 <meta name="twitter:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/image-20200614150538285.png">
 
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,719 
+                  3,616 
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  16 mins
+                  15 mins
                 </span>
               
             </div>
@@ -439,8 +439,7 @@
       
 
       
-        <h1 id="A-brief-survey-of-papers-on-GNN-for-Aspect-Based-Sentiment-Analysis"><a href="#A-brief-survey-of-papers-on-GNN-for-Aspect-Based-Sentiment-Analysis" class="headerlink" title="A brief survey of papers on GNN for Aspect-Based Sentiment Analysis"></a>A brief survey of papers on GNN for Aspect-Based Sentiment Analysis</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>​    In previous years, there are lots of research about Graph Neural Network(GNN), a modified neural network for graph data. And some researchers focus on using GNN for the NLP tasks, such as text classification(TextGCN, Yao et al.) and comment generation(graph2seq, Li et al.) . Sun et al. had purposed a new model called CDT, which is an application of Aspect-Based Sentiment Classification, the sub-task of Aspect-Based Sentiment Analysis(ABSA). Inspired by Sun et al., some researchers considered to using the GNN for ABSA. We focus on reviewing their rearches, and discussing about the future work in those aspects.</p>
-<p>​    最近关于图神经网络（Graph Neural Network）的研究非常火热，这是一种适应于图数据的神经网络，并且最近在NLP界也开始大展拳脚，比如文本分类任务（TextGCN，Yao et al.）和评论生成任务（graph2seq，Li et al.）。Sun et al. 提出了一个新的模型——CDT, 应用于Aspect-Based Sentiment Classification 任务，属于ABSA下的一个分支。受Sun et al.的研究的启发，一些研究人员开始致力于将GNN应用到ABSA任务上。我们希望回顾这些研究，并讨论一下这些研究未来的发展。</p>
+        <h1 id="A-brief-survey-of-papers-on-GNN-for-Aspect-Based-Sentiment-Analysis"><a href="#A-brief-survey-of-papers-on-GNN-for-Aspect-Based-Sentiment-Analysis" class="headerlink" title="A brief survey of papers on GNN for Aspect-Based Sentiment Analysis"></a>A brief survey of papers on GNN for Aspect-Based Sentiment Analysis</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>​    最近关于图神经网络（Graph Neural Network）的研究非常火热，这是一种适应于图数据的神经网络，并且最近在NLP界也开始大展拳脚，比如文本分类任务（TextGCN，Yao et al.）和评论生成任务（graph2seq，Li et al.）。Sun et al. 提出了一个新的模型——CDT, 应用于Aspect-Based Sentiment Classification 任务，属于ABSA下的一个分支。受Sun et al.的研究的启发，一些研究人员开始致力于将GNN应用到ABSA任务上。我们希望回顾这些研究，并讨论一下这些研究未来的发展。</p>
 <a id="more"></a>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>​    这里简要介绍一下图神经网络，ABSA任务，以及GNN在ABSA方面的前沿研究。</p>
 <h3 id="Graph-Nerual-Network"><a href="#Graph-Nerual-Network" class="headerlink" title="Graph Nerual Network"></a>Graph Nerual Network</h3><p>​    图神经网络，是一种能适应于图数据的神经网络，其基本的思想是，定义图上结点与他的邻居之间的信息传递方式，并通过矩阵运算实现。</p>
@@ -1072,7 +1071,7 @@ H^{(l+1)}= \sigma (AH^{(l)}W^{(l)})</script><p>（原论文中对$A$进行了标
     
       <span class="post-meta-item-text">总字数: </span>
     
-    <span title="Site words total count">60.7k</span>
+    <span title="Site words total count">60.6k</span>
   
 </div>
 
