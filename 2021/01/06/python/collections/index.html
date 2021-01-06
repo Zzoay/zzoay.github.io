@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/idea.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/idea.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="Python,collections,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="One Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。">
+<meta name="keywords" content="Python,collections">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python collections 简单上手">
+<meta property="og:url" content="http://yoursite.com/2021/01/06/python/collections/index.html">
+<meta property="og:site_name" content="One Blog">
+<meta property="og:description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-06T15:09:16.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python collections 简单上手">
+<meta name="twitter:description" content="collections 库简单上手Counter   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":14,"onmobile":false,"dimmer":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/06/python/collections/">
+
+
+
+
+
+  <title>Python collections 简单上手 | One Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">好好学习</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/06/python/collections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yao-zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python collections 简单上手</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-06T23:09:16+08:00">
+                2021-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,381 
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="collections-库简单上手"><a href="#collections-库简单上手" class="headerlink" title="collections 库简单上手"></a>collections 库简单上手</h1><h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p>   Counter 是 dictionary 对象的子类。collections 模块中的 Counter() 函数会接收一个诸如 list 或 tuple 的迭代器，然后返回一个 Counter dictionary。这个 dictionary 的键是该迭代器中的唯一元素，每个键的值是迭代器元素的计数。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">counter = Counter(lst)</span><br><span class="line">print(counter)</span><br></pre></td></tr></table></figure>
+<pre><code>Counter({1: 7, 2: 5, 3: 3})
+</code></pre><p>most_common()函数会以元组列表的形式，返回出现频率最高的n个元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">counter.most_common(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[(1, 7), (2, 5)]
+</code></pre><h2 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict"></a>defaultdict</h2><p>defaultdict 的工作方式和平常的 python dictionary 完全相同，只是当你试图访问一个不存在的键时，它不会报错，而是会使用默认值初始化这个键。默认值是根据在创建 defaultdict 对象时作为参数输入的数据类型自动设置的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br></pre></td></tr></table></figure>
+<p>如上所示，在访问不存在的键”Sara”时，程序并不会像一般字典一样报错，而是为其设置一个int型的默认值。<br>同理，当我们设置默认值类型为list时，看看会发生什么。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">names_dict = defaultdict(int)</span><br><span class="line">names_dict[<span class="string">"Bob"</span>] = <span class="number">1</span></span><br><span class="line">names_dict[<span class="string">"Katie"</span>] = <span class="number">2</span></span><br><span class="line">sara_number = names_dict[<span class="string">"Sara"</span>]</span><br><span class="line">print(names_dict)</span><br></pre></td></tr></table></figure>
+<pre><code>defaultdict(&lt;class &#39;int&#39;&gt;, {&#39;Bob&#39;: 1, &#39;Katie&#39;: 2, &#39;Sara&#39;: 0})
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">names_dict1 = defaultdict(list)</span><br><span class="line">names_dict1[<span class="string">"Bob"</span>] = <span class="number">1</span></span><br><span class="line">names_dict1[<span class="string">"Katie"</span>] = <span class="number">2</span></span><br><span class="line">sara_number = names_dict1[<span class="string">"Sara"</span>]</span><br><span class="line">print(names_dict1)</span><br></pre></td></tr></table></figure>
+<pre><code>defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;Bob&#39;: 1, &#39;Katie&#39;: 2, &#39;Sara&#39;: []})
+</code></pre><p>可以看到，默认值变成了一个空列表</p>
+<h2 id="OrderedDict"><a href="#OrderedDict" class="headerlink" title="OrderedDict"></a>OrderedDict</h2><p>返回一个字典的子类，具有可以将字典顺序重新排列的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = OrderedDict.fromkeys(<span class="string">'abcde'</span>)</span><br><span class="line">d.move_to_end(<span class="string">'b'</span>)</span><br><span class="line"><span class="string">''</span>.join(d.keys())</span><br></pre></td></tr></table></figure>
+<pre><code>&#39;acdeb&#39;
+</code></pre><p>last 参数默认为True，即将元素挪到最右边，False则将元素挪到最左边</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d.move_to_end(<span class="string">'b'</span>, last=<span class="keyword">False</span>) </span><br><span class="line"><span class="string">''</span>.join(d.keys())</span><br><span class="line"><span class="string">'bacde'</span></span><br></pre></td></tr></table></figure>
+<pre><code>&#39;bacde&#39;
+</code></pre><p>popitem()方法将最后的元素弹出，参数last默认为True，即弹出最右边的元素，False则为最左边。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"poped item: &#123;&#125;"</span>.format(d.popitem()))</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+<pre><code>poped item: (&#39;e&#39;, None)
+OrderedDict([(&#39;b&#39;, None), (&#39;a&#39;, None), (&#39;c&#39;, None), (&#39;d&#39;, None)])
+</code></pre><h2 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h2><p>   collections.deque是python中使用队列的一种非常好的方法，这个方法的一个关键特性是保持队列长度一直不变，也就是说，如果你将 queue 的最大大小设置为 10，那么 deque 将根据 FIFO 原则添加和删除元素，以保持 queue 的最大大小为 10。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my_queue = deque(maxlen=<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    my_queue.append(i+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(my_queue)</span><br></pre></td></tr></table></figure>
+<pre><code>deque([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], maxlen=10)
+</code></pre><p>   接下来，我们尝试继续往里面添加元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">11</span>,<span class="number">16</span>):</span><br><span class="line">    my_queue.append(i)</span><br><span class="line"></span><br><span class="line">print(my_queue)</span><br></pre></td></tr></table></figure>
+<pre><code>deque([6, 7, 8, 9, 10, 11, 12, 13, 14, 15], maxlen=10)
+</code></pre><p>可以看到，最前面的5个元素被弹出，而新元素被追加到队列的后面</p>
+<h2 id="nametuple"><a href="#nametuple" class="headerlink" title="nametuple"></a>nametuple</h2><p>nametuple是tuple的子类，意味着它可以像tuple一样通过索引下标访问，同时，它还具备了通过字段访问元素的功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Point = namedtuple(<span class="string">'Point'</span>, [<span class="string">'x'</span>, <span class="string">'y'</span>])</span><br><span class="line">p = Point(<span class="number">11</span>, y=<span class="number">22</span>) </span><br><span class="line"><span class="comment"># 像普通元组一样访问元素</span></span><br><span class="line">print(p[<span class="number">0</span>] + p[<span class="number">1</span>]) </span><br><span class="line"><span class="comment"># 通过字段访问元素</span></span><br><span class="line">print(p.x + p.y)</span><br></pre></td></tr></table></figure>
+<pre><code>33
+33
+</code></pre><p>为了防止与字段名冲突，nametuple的类方法和属性前都加了下划线_。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _make方法将列表转化为nametuple</span></span><br><span class="line">t = [<span class="number">11</span>, <span class="number">22</span>]</span><br><span class="line">Point._make(t)</span><br></pre></td></tr></table></figure>
+<pre><code>Point(x=11, y=22)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _asdict()将nametuple转为字典</span></span><br><span class="line">p = Point(x=<span class="number">11</span>, y=<span class="number">22</span>)</span><br><span class="line">p._asdict()</span><br></pre></td></tr></table></figure>
+<pre><code>OrderedDict([(&#39;x&#39;, 11), (&#39;y&#39;, 22)])
+</code></pre><p>需要注意，由于nametuple本质上还是一个tuple，因此直接更改其中的元素是会报错的。正确的做法是使用_replace函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># p.x = 12 报错</span></span><br><span class="line">p._replace(x=<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Point(x=12, y=22)
+</code></pre><p>可以通过_fields属性访问nametuple的字段。一个很常见的用法是从现有的nametuple创建一个新的nametuple。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p._fields</span><br></pre></td></tr></table></figure>
+<pre><code>(&#39;x&#39;, &#39;y&#39;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Color = namedtuple(<span class="string">'Color'</span>, <span class="string">'red green blue'</span>)</span><br><span class="line">Pixel = namedtuple(<span class="string">'Pixel'</span>, Point._fields + Color._fields)</span><br><span class="line">Pixel(<span class="number">11</span>, <span class="number">22</span>, <span class="number">128</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Pixel(x=11, y=22, red=128, green=255, blue=0)
+</code></pre><p> 如果希望将字典转换为nametuple，可以用如下方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'x'</span>: <span class="number">11</span>, <span class="string">'y'</span>: <span class="number">22</span>&#125;</span><br><span class="line">Point(**d)</span><br></pre></td></tr></table></figure>
+<pre><code>Point(x=11, y=22)
+</code></pre><h2 id="ChainMap"><a href="#ChainMap" class="headerlink" title="ChainMap"></a>ChainMap</h2><p>可以快速链接许多映射，因此可以将它们视为一个单元，通常比创建新字典并运行多个update()要快得多。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br></pre></td></tr></table></figure>
+<p>注意，ChainMap的迭代顺序是通过扫描从前往后的映射决定的（与官方文档说的从后往前相反，研究了甚久，有可能是版本问题）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">baseline = &#123;<span class="string">'music'</span>: <span class="string">'bach'</span>, <span class="string">'art'</span>: <span class="string">'rembrandt'</span>&#125;</span><br><span class="line">adjustments = &#123;<span class="string">'art'</span>: <span class="string">'van gogh'</span>, <span class="string">'opera'</span>: <span class="string">'carmen'</span>&#125;</span><br><span class="line">print(list(ChainMap(adjustments, baseline)))</span><br><span class="line">print(dict(ChainMap(adjustments, baseline)))</span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;art&#39;, &#39;opera&#39;, &#39;music&#39;]
+{&#39;art&#39;: &#39;van gogh&#39;, &#39;opera&#39;: &#39;carmen&#39;, &#39;music&#39;: &#39;bach&#39;}
+</code></pre><p>这与从最后一个映射开始的一系列dict.update()调用的顺序相反:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">combined = baseline.copy()</span><br><span class="line">combined.update(adjustments)</span><br><span class="line">print(list(combined))</span><br><span class="line">print(dict(combined))</span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;music&#39;, &#39;art&#39;, &#39;opera&#39;]
+{&#39;music&#39;: &#39;bach&#39;, &#39;art&#39;: &#39;van gogh&#39;, &#39;opera&#39;: &#39;carmen&#39;}
+</code></pre><p>ChainMap最常用的例子是在程序传入参数的优先级设置上，例如：参数可以通过命令行传入，可以通过环境变量传入，还可以有默认参数，我们可以设置优先级：命令行&gt;环境变量&gt;默认值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jupyter notebook中无法使用argparse</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line"><span class="keyword">import</span> os, argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造缺省参数:</span></span><br><span class="line">defaults = &#123;</span><br><span class="line">    <span class="string">'color'</span>: <span class="string">'red'</span>,</span><br><span class="line">    <span class="string">'user'</span>: <span class="string">'guest'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造命令行参数:</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'-u'</span>, <span class="string">'--user'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'-c'</span>, <span class="string">'--color'</span>)</span><br><span class="line">namespace = parser.parse_args()</span><br><span class="line">command_line_args = &#123; k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> vars(namespace).items() <span class="keyword">if</span> v &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组合成ChainMap:</span></span><br><span class="line">combined = ChainMap(command_line_args, os.environ, defaults)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印参数:</span></span><br><span class="line">print(<span class="string">'color=%s'</span> % combined[<span class="string">'color'</span>])</span><br><span class="line">print(<span class="string">'user=%s'</span> % combined[<span class="string">'user'</span>])</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/collections/" rel="tag"># collections</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/06/test/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Yao-zz">
+            
+              <p class="site-author-name" itemprop="name">Yao-zz</p>
+              <p class="site-description motion-element" itemprop="description">在机器学习的方向努力中......</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Zzoay" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:jianggongyao@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10145221/jiang-gongyao" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.quora.com/profile/Jiang-Gongyao" target="_blank" title="Quora">
+                      
+                        <i class="fa fa-fw fa-quora"></i>Quora</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5b6b0ff9f265da0f48613fa3" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-angle-double-down"></i>Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/8d6a6834e4fc" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#collections-库简单上手"><span class="nav-number">1.</span> <span class="nav-text">collections 库简单上手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Counter"><span class="nav-number">1.1.</span> <span class="nav-text">Counter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#defaultdict"><span class="nav-number">1.2.</span> <span class="nav-text">defaultdict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OrderedDict"><span class="nav-number">1.3.</span> <span class="nav-text">OrderedDict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque"><span class="nav-number">1.4.</span> <span class="nav-text">deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nametuple"><span class="nav-number">1.5.</span> <span class="nav-text">nametuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChainMap"><span class="nav-number">1.6.</span> <span class="nav-text">ChainMap</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yao-zz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数: </span>
+    
+    <span title="Site words total count">64.4k</span>
+  
+</div>
+
+<div class="powered-by">
+  Power by<a href="https://hexo.io"> Next  </a> | 
+
+</div>
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量: <span id="busuanzi_value_site_pv"></span> | 
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数: <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'PYesa2aFUX1zKBBdFA9M17bq-gzGzoHsz',
+        appKey: '81LH73KMJTtNEXA7qfJvT1Pu',
+        placeholder: '欢迎畅所欲言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'7' || 10,
+    });
+  </script>
+
+
+<script type="text/javascript">
+    (function() {
+        // 匿名函数，防止污染全局变量
+        var utterances = document.createElement('script');
+        utterances.type = 'text/javascript';
+        utterances.async = true;
+        utterances.setAttribute('issue-term','pathname')
+        utterances.setAttribute('theme','github-light')
+        utterances.setAttribute('repo','Zzoay/comments')
+        utterances.crossorigin = 'anonymous';
+        utterances.src = 'https://utteranc.es/client.js';
+        // content 是要插入评论的地方
+        document.getElementById('gitment-container').appendChild(utterances);
+    })();
+</script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<!-- 页面点击小红心<script type="text/javascript" src="/js/src/clicklove.js"></script>  -->

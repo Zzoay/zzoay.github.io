@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/idea.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/idea.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="机器学习,广义线性模型,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="One Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="广义线性模型(Generalized Linear Models）构造广义线性模型  广义线性模型有3个假设：  $y|x;\theta \sim ExponentialFamily(\eta)：$固定参数 $\theta$，在给定 $x$ 的情况下，$y$ 服从指数分布族 (the exponential family)中以 $\eta$ 为参数的某个分布. 给定一个 $x$，我们需要的目标函数">
+<meta name="keywords" content="机器学习,广义线性模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广义线性模型">
+<meta property="og:url" content="http://yoursite.com/2021/01/06/linear-model/GLM/index.html">
+<meta property="og:site_name" content="One Blog">
+<meta property="og:description" content="广义线性模型(Generalized Linear Models）构造广义线性模型  广义线性模型有3个假设：  $y|x;\theta \sim ExponentialFamily(\eta)：$固定参数 $\theta$，在给定 $x$ 的情况下，$y$ 服从指数分布族 (the exponential family)中以 $\eta$ 为参数的某个分布. 给定一个 $x$，我们需要的目标函数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-06T15:09:16.953Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="广义线性模型">
+<meta name="twitter:description" content="广义线性模型(Generalized Linear Models）构造广义线性模型  广义线性模型有3个假设：  $y|x;\theta \sim ExponentialFamily(\eta)：$固定参数 $\theta$，在给定 $x$ 的情况下，$y$ 服从指数分布族 (the exponential family)中以 $\eta$ 为参数的某个分布. 给定一个 $x$，我们需要的目标函数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":14,"onmobile":false,"dimmer":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/06/linear-model/GLM/">
+
+
+
+
+
+  <title>广义线性模型 | One Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">好好学习</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/06/linear-model/GLM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yao-zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">广义线性模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-06T23:09:16+08:00">
+                2021-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/线性模型/" itemprop="url" rel="index">
+                    <span itemprop="name">线性模型</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  632 
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="广义线性模型-Generalized-Linear-Models）"><a href="#广义线性模型-Generalized-Linear-Models）" class="headerlink" title="广义线性模型(Generalized Linear Models）"></a>广义线性模型(Generalized Linear Models）</h1><h2 id="构造广义线性模型"><a href="#构造广义线性模型" class="headerlink" title="构造广义线性模型"></a>构造广义线性模型</h2><p>  广义线性模型有3个假设：</p>
+<ul>
+<li>$y|x;\theta \sim ExponentialFamily(\eta)：$固定参数 $\theta$，在给定 $x$ 的情况下，$y$ 服从<strong>指数分布族</strong> <em>(the exponential family)</em>中以 $\eta$ 为参数的某个分布.</li>
+<li>给定一个 $x$，我们需要的目标函数为 $h_\theta(x) = E[T(y) | x;\theta] $，后者为该分布的期望.</li>
+<li>令 $\eta = \theta^Tx$.</li>
+</ul>
+<p>其中，所有可以表示成如下形式的概率分布，都属于指数分布族：</p>
+<script type="math/tex; mode=display">
+p(y;n) = b(y)exp(\eta^TT(y)-a(\eta))    \tag{1.1}</script><p>在式$(1.1)$ 中，$\eta$ 为该分布的<strong>自然参数</strong> <em>(nature parameter)</em>；$T(y)$ 是<strong>充分统计量</strong> <em>(sufficient statistic)</em> ，通常情况下 $T(y) =y$.</p>
+<a id="more"></a>
+<h2 id="推导线性回归"><a href="#推导线性回归" class="headerlink" title="推导线性回归"></a>推导线性回归</h2><p><a href="http://uniblog.cn/2018/06/07/linear-regression/" target="_blank" rel="noopener">线性回归</a></p>
+<p>  在线性回归中，我们使用了<strong>高斯分布</strong>作为误差 $e$ 的概率分布，现在我们将高斯分布表示为$(1,1)$的形式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y;\mu) &= \frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y-\mu)^2}{2\sigma^2})    \\
+&= \frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{1}{2}y^2)exp(\mu y-\frac{1}{2}\mu^2)
+\end{align}    \tag{2.1}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\eta &= \eta^T =\mu \\
+T(y) &= y \\
+a(\eta)& = \frac{1}{2}\mu^2 = \frac{1}{2}\eta^2    \\
+b(y) &= \frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{1}{2}y^2)
+\end{align}    \tag{2.2}</script><p>  即满足第1点要求，接下来：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+h_\theta(x) &= E[T(y)|x;\theta]    \\
+&= E[y|x;\theta]    \\
+&=\mu
+\end{align}    \tag{2.3}</script><p>即第2点满足，最后我们令 $\eta = \theta^Tx$ ，由 $(2.2) $中 $\eta=\mu$ ，有：</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \mu = \eta = \theta^Tx    \tag{2.4}</script><h2 id="推导逻辑回归"><a href="#推导逻辑回归" class="headerlink" title="推导逻辑回归"></a>推导逻辑回归</h2><p> <a href="http://uniblog.cn/2018/06/07/logistic-regression/" target="_blank" rel="noopener">逻辑回归</a></p>
+<p> 在逻辑回归的推导中，我们假定条件概率 $P(y=c|x;\theta)$ 服从<strong>伯努利分布</strong>，现在我们同样将伯努利分布放在广义线性模型下：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y;\phi) &= \phi^y(1-\phi)^{1-y}    \\
+&= (e^{log\phi})^y(e^{log(1-\phi)})^{(1-y)}    \\
+&= exp(ylog\phi+(1-y)log(1-\phi))    \\
+&= exp((log\frac{\phi}{1-\phi})y+log(1-\phi))
+\end{align}    \tag{3.1}</script><p>相应的参数为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\eta &= log\frac{\phi}{1-\phi} \rightarrow \frac{1}{1+e^{-\eta}}    \\
+T(y) &=y    \\
+a(\eta) &= -log(1-\phi) = log((1-\phi)^{-1}) = log(1+e^\phi)    \\
+b(y) &= 1
+\end{align}     \tag{3.2}</script><p>接下来执行第2点和第3点，令 $h_\theta(x)$ 等于伯努利函数的期望，并且令$\eta = \theta^Tx$：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+h_\theta(x)& = E[T(y)|x;\theta]    \\
+&= E[y|x;\theta]    \\
+&=\phi    \\
+&= \frac{1}{1+e^{-\eta}}    \\
+&= \frac{1}{1+e^{-\theta^Tx}}
+\end{align}    \tag{3.3}</script><h2 id="推导-Softmax-回归"><a href="#推导-Softmax-回归" class="headerlink" title="推导 Softmax 回归"></a>推导 Softmax 回归</h2><p><a href="http://uniblog.cn/2018/07/16/softmax-regression/" target="_blank" rel="noopener">Softmax回归</a></p>
+<h3 id="多项式分布"><a href="#多项式分布" class="headerlink" title="多项式分布"></a>多项式分布</h3><p>我们利用多项式分布进行建模，得到解决多分类问题的模型，实际上我们可以把它理解为是逻辑回归中 <strong>1重二项分布(伯努利分布)</strong> 的拓展，在多项式分布中，有：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y=1) = \phi_i    \\
+\sum^k_{i=1}\phi_i = 1        
+\end{align}    \tag{4.1}</script><p>其中$y\in{1,2,3…,k}$，又因为 $\phi_i$ 累加为1，所有我们可以只保留 $k-1$ 个参数：</p>
+<script type="math/tex; mode=display">
+\phi_k = 1-\sum^{k-1}_{i=1}\phi_i    \tag{4.2}</script><p>(这跟我们在二分类时只保留1个参数是一样的)</p>
+<h3 id="概率分布"><a href="#概率分布" class="headerlink" title="概率分布"></a>概率分布</h3><p>在多分类问题中，有如下的<strong>概率分布</strong>：</p>
+<script type="math/tex; mode=display">
+p(y;\theta) = \phi_1^{I(y=1)} \phi_2^{I(y=2)}... \phi_k^{I(y=k)}    \tag{4.2}</script><p>其中$I(y=i)$ 为<strong>指示器函数</strong> <em>(indicator function)</em></p>
+<script type="math/tex; mode=display">
+\begin{align}
+I\{true\} = 1 \\
+I\{false\} = 0
+\end{align}    
+\tag{4.3}</script><p>为了实现指示器函数的功能，我们给出 $T(y)$ ：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+T(1) &= [1\ 0\  ...\ 0]^T ,\\
+T(2) & = [0\ 1\  ...\ 0]^T, \\
+T(k-1) &=  [0\ 0\  ...\ 1]^T, \\
+T(k) &=  [0\ 0\  ...\ 0]^T, \\
+\end{align}
+\tag{4.4}</script><p>于是 $T(y) $ 中的某个元素：</p>
+<script type="math/tex; mode=display">
+T(y)_i = I\{y=i\}    \tag{4.5}</script><p>于是由 $(4.2)$ 有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y;\theta) &= \phi^{I(y=1)} \phi_2^{I(y=2)}...\phi_k^{1-\sum^{k-1}_{i=1}I\{y=i\}} \\
+&=\phi_1^{T(y)_1}\phi_2^{T(y)_2}...\phi_k^{1-\sum^{k-1}_{i=1}T(y)_i}
+\end{align}
+\tag{4.6}</script><h3 id="在广义线性模型下的推导"><a href="#在广义线性模型下的推导" class="headerlink" title="在广义线性模型下的推导"></a>在广义线性模型下的推导</h3><p>  首先从广义线性模型的第1点开始，我们将$(4.6)$表示为<strong>指数分布族</strong>的形式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y;\theta) &=\phi_1^{T(y)_1}\phi_2^{T(y)_2}...\phi_k^{1-\sum^{k-1}_{i=1}T(y)_i}    \\
+&= exp(T(y)_1log\phi_1+T(y)_2log\phi_2+⋯+((1−\sum _{i=1}^{k−1}T(y)_i)log\phi_k)    \\
+&= exp(T(y)_1log\frac{\phi_1}{\phi_k}+T(y)_2log\frac{\phi_2}{\phi_k}+⋯+T(y)_{k-1}log\frac{\phi_{k-1}}{\phi_k} +log_{\phi_k}    )\\
+&= b(y)exp(\eta^TT(y)-a(\eta))
+\end{align}
+\tag{5.1}</script><p>这里有：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\eta &= [log\frac{\phi_1}{\phi_k}, ... log\frac{\phi_k-1}{\phi_k}]^T    \\
+T(y) &= 式(4.4) \\
+a(\eta) &= -log\phi_k    \\
+b(y)&= 1
+\end{align}
+\tag{5.2}</script><p>观察发现：</p>
+<script type="math/tex; mode=display">
+\eta_i = log\frac{\phi_i}{\phi_k} \rightarrow e^{\eta_i} = \frac{\phi_i}{\phi_k}    \tag{5.3}</script><p>令其累加，有：</p>
+<script type="math/tex; mode=display">
+\sum^k_{i=1}e^{\eta_i} = \frac{\sum^k_{i=1}\phi_i}{\phi_k} = \frac{1}{\phi_k} \\
+\rightarrow \phi_k = \frac{1}{\sum^k_{i=1}e^{\eta_i}}    \tag{5.4}</script><p>代入$(5.3)$得：</p>
+<script type="math/tex; mode=display">
+\phi_i = \frac{e^{\eta_i}}{\sum^k_{i=1}e^{\eta_i}}    \tag{5.5}</script><p>下面推导第2点和第3点，假设$h_\theta(x)$ 等于多项式分布的期望，并令 $\eta =\theta^Tx$ :</p>
+<script type="math/tex; mode=display">
+\begin{align}
+h_\theta(x) &= ET(y)|x;\theta]    \\
+& = E[p(y=1|x;\theta),p(y=2|x;\theta),...,p(y=k-1|x;\theta)^T    \\
+& = [\phi_1,\phi_2,...,\phi_{k-1}]^T    \\
+& =[\frac{e^{\eta_1}}{\sum^k_{i=1}e^{\eta_i}},\frac{e^{\eta_2}}{\sum^k_{i=1}e^{\eta_i}},...,\frac{e^{\eta_{k-1}}}{\sum^k_{i=1}e^{\eta_i}}]^T    \\
+& =[\frac{e^{\theta_1^Tx}}{\sum^k_{i=1}e^{\theta_i^Tx}},\frac{e^{\theta_2^Tx}}{\sum^k_{i=1}e^{\theta_i^Tx}},...,\frac{e^{\theta_{k-1}^Tx}}{\sum^k_{i=1}e^{\theta_i^Tx}}]^T
+\end{align}
+\tag{5.6}</script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/广义线性模型/" rel="tag"># 广义线性模型</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/06/linear-model/linear-regression/" rel="next" title="机器学习笔记之线性回归">
+                <i class="fa fa-chevron-left"></i> 机器学习笔记之线性回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/06/linear-model/lr_local_weighted/" rel="prev" title="机器学习笔记之局部加权线性回归">
+                机器学习笔记之局部加权线性回归 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Yao-zz">
+            
+              <p class="site-author-name" itemprop="name">Yao-zz</p>
+              <p class="site-description motion-element" itemprop="description">在机器学习的方向努力中......</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Zzoay" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:jianggongyao@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10145221/jiang-gongyao" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.quora.com/profile/Jiang-Gongyao" target="_blank" title="Quora">
+                      
+                        <i class="fa fa-fw fa-quora"></i>Quora</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5b6b0ff9f265da0f48613fa3" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-angle-double-down"></i>Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/8d6a6834e4fc" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#广义线性模型-Generalized-Linear-Models）"><span class="nav-number">1.</span> <span class="nav-text">广义线性模型(Generalized Linear Models）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造广义线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">构造广义线性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">推导线性回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导逻辑回归"><span class="nav-number">1.3.</span> <span class="nav-text">推导逻辑回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导-Softmax-回归"><span class="nav-number">1.4.</span> <span class="nav-text">推导 Softmax 回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式分布"><span class="nav-number">1.4.1.</span> <span class="nav-text">多项式分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率分布"><span class="nav-number">1.4.2.</span> <span class="nav-text">概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在广义线性模型下的推导"><span class="nav-number">1.4.3.</span> <span class="nav-text">在广义线性模型下的推导</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yao-zz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数: </span>
+    
+    <span title="Site words total count">64.4k</span>
+  
+</div>
+
+<div class="powered-by">
+  Power by<a href="https://hexo.io"> Next  </a> | 
+
+</div>
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量: <span id="busuanzi_value_site_pv"></span> | 
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数: <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'PYesa2aFUX1zKBBdFA9M17bq-gzGzoHsz',
+        appKey: '81LH73KMJTtNEXA7qfJvT1Pu',
+        placeholder: '欢迎畅所欲言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'7' || 10,
+    });
+  </script>
+
+
+<script type="text/javascript">
+    (function() {
+        // 匿名函数，防止污染全局变量
+        var utterances = document.createElement('script');
+        utterances.type = 'text/javascript';
+        utterances.async = true;
+        utterances.setAttribute('issue-term','pathname')
+        utterances.setAttribute('theme','github-light')
+        utterances.setAttribute('repo','Zzoay/comments')
+        utterances.crossorigin = 'anonymous';
+        utterances.src = 'https://utteranc.es/client.js';
+        // content 是要插入评论的地方
+        document.getElementById('gitment-container').appendChild(utterances);
+    })();
+</script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<!-- 页面点击小红心<script type="text/javascript" src="/js/src/clicklove.js"></script>  -->
