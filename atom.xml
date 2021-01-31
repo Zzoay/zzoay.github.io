@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-23T11:35:26.790Z</updated>
+  <updated>2021-01-31T10:40:41.019Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记</title>
+    <link href="http://yoursite.com/2021/01/31/natural-language-processing/Relation-Extraction/"/>
+    <id>http://yoursite.com/2021/01/31/natural-language-processing/Relation-Extraction/</id>
+    <published>2021-01-31T11:00:25.166Z</published>
+    <updated>2021-01-31T10:40:41.019Z</updated>
+    
+    <content type="html"><![CDATA[<p>联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&lt; head entity, relation, tial entity>。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&lt;我，学习，自然语言处理&gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务：</p><ul><li>实体识别</li><li>关系检测</li></ul><p>通过两个子任务之间的信息交互与同步，同时提升两个子任务的表现。</p><p>下面简单地对最近的一些相关论文进行概述。（持续更新中…）</p><h3 id="A-Relation-Specific-Attention-Network-for-Joint-Entity-and-Relation-Extraction"><a href="#A-Relation-Specific-Attention-Network-for-Joint-Entity-and-Relation-Extraction" class="headerlink" title="A Relation-Specific Attention Network for Joint Entity and Relation Extraction"></a>A Relation-Specific Attention Network for Joint Entity and Relation Extraction</h3><p>文中提到，联合实体关系抽取是一个很大的挑战，因为一句话中可能会有多个重叠的实体（ovelapping entity）,如下图所示。</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229230105.png" alt="重叠实体问题" style="zoom:50%;"></p><p>过去的方法大多是先进行实体识别，然后在每个可能的实体对之间进行关系检测，这些方法通常会遭受大量冗余操作的困扰。因此，文章提出了relation-specific attention network (RSAN)，利用关系感知注意机制（relation-aware attention mechanism）为每个关系构建特定的句子表示形式，然后执行序列标记以提取其对应的头和尾实体。在两个公开的数据集New York Times(NYT)和WebNLG上取得了SOTA的效果。</p><p>模型结构图如下：</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229230855.png" alt="模型" style="zoom:50%;"></p><p>实验数据：</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229232832.png" style="zoom:50%;"></p><p>实验结果如下：</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229232751.png" style="zoom:50%;"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&amp;lt; head entity, relation, tial entity&gt;。举个例子，”我在学习自然语言处
+      
+    
+    </summary>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Relation Extraction" scheme="http://yoursite.com/tags/Relation-Extraction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ABSA 综述阅读笔记</title>
+    <link href="http://yoursite.com/2021/01/31/natural-language-processing/ABSA-Survey/"/>
+    <id>http://yoursite.com/2021/01/31/natural-language-processing/ABSA-Survey/</id>
+    <published>2021-01-31T11:00:25.160Z</published>
+    <updated>2021-01-31T10:40:41.016Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ABSA-综述阅读笔记"><a href="#ABSA-综述阅读笔记" class="headerlink" title="ABSA 综述阅读笔记"></a>ABSA 综述阅读笔记</h1><p>本文是 <a href="https://ieeexplore.ieee.org/document/8976252" target="_blank" rel="noopener">Issues and Challenges of Aspect-based Sentiment Analysis: A Comprehensive Survey</a> 一文的阅读笔记，目的是快速入门基于方面的情感分析（ABSA或AbSA）的领域。此外，还加入了我的一些个人理解和相关知识的汇总。<br>ABSA（AbSA），Aspect-based Sentiment Analysis，直译为基于方面的情感分析，是近几年NLP领域研究的比较火热的一个方向。它的核心思想是，人们的情感往往是围绕着某一个方面产生和变化的，这在评论文本中尤为明显，人们往往会就着某个事物的某个方面去发表正/负/中性的评论。就像我们买手机的时候，去评价手机的好和坏，往往是会针对手机的某些方面去谈。<br>举个例子，“这部手机的摄像头很好”，“好”的这样一个正面评价不是凭空出现，而是基于“摄像头”这一个方面（aspect）所产生的，因此，当商家分析这句话的时候，就需要知道：用户的评价是关于哪一个方面的（“摄像头”）；用户的情感倾向是什么（正面），这样商家就能从用户的评价中挖掘出情感倾向/用户喜好/需要改进的方面等等信息，对于商家今后改进产品和改变营销手段有很重要的参考价值。这也就引申出了AbSA的两大核心问题：如何去抽取aspect，以及如何利用aspect来改进情感分析是。此外，文中还提出了第三大核心问题：如何去衡量和测量用户的情感动态。</p><a id="more"></a><h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>文中提到了一些名词，下面是其中比较重要的一些名词解释（加入了一些个人的理解）：</p><ul><li><strong>aspect：</strong>人们的情感往往是围绕这某一个方面（aspect），就像前文提到的例子“这部手机的摄像头很好”中，“好”这个评价就是围绕着“摄像头”这个aspect的。</li><li><strong>entity</strong>：aspect往往是跟一个实体（entity）相关的，比如上面这句“这部手机的摄像头很好”，“手机”就是一个实体，也即：用户对“手机”这个实体的“摄像头”方面的情感倾向是“好”。当然，广义地理解，aspect本身也可以是实体（不少研究中并没有明确地区分二者）。</li><li><strong>“explicit”:</strong> “explicit”的意思是，这个aspect显式包含在文本中。还是刚刚的例子，“手机”和“摄像头”都显式地出现在了文本中。</li><li><strong>“implicit”</strong>：跟“explicit”相反，aspect是隐含在文本中。比如：“这部手机很容易没电”，其中的aspect“电池”并没有显式地体现在文本中，而是需要一定语义理解。</li><li><strong>Opinion Target Expression（OTE）</strong>：字面意思是观点目标表达式，还是“这个手机的摄像头很好”的例子，用户的评价目标是“手机”的一个属性，所以OTE是“手机”。这里跟aspect和entity的解释有点重叠，所以其实<strong>aspect是一个很宽泛的概念</strong>。</li></ul><p>另外，还有一些概念文中没有提到，但在不少论文中有所体现的：</p><ul><li><strong>Aspect Term, Target：</strong>往往是”explicit”的，即显式地在文本中出现，上面例子中的“手机”，“摄像头”都属于Aspect Term，也称Target。</li><li><strong>Aspect Category：</strong>一般是预先定义的类别集合，不必显式地出现在文本中。比如上面例子中的“电池”，假如我们事先根据数据集定义的类别集合里包含“电池”这一类别，则它是文本的Aspect Category<strong>。</strong></li></ul><h2 id="AbSA-分类"><a href="#AbSA-分类" class="headerlink" title="AbSA 分类"></a>AbSA 分类</h2><p>文中，作者根据AbSA的处理过程，将AbSA归为3类：</p><ul><li><p><strong>Aspect Extraction (AE)</strong>:</p><p>顾名思义，就是抽取aspect的任务，一般包括 explicit aspects, implicit aspects, aspect terms, entities 和Opinion Target Expressions (OTE)</p></li><li><p><strong>Aspect Sentiment Analysis (ASA):</strong></p><p>在给定aspect，target或者是entity的条件下，对情感的极性进行分类</p></li><li><p><strong>Sentiment Evolution (SE):</strong><br>关注的是人们在一段时间内对某些aspect或事件的情绪变化</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201214141332.png" alt></p></li></ul><h2 id="AbSA-核心问题和挑战"><a href="#AbSA-核心问题和挑战" class="headerlink" title="AbSA 核心问题和挑战"></a>AbSA 核心问题和挑战</h2><p>文中提到，目前AbSA任务主要有如下核心问题：</p><ol><li>如何有效地提高AE的表现；为什么至今这仍是一个大的挑战？<ol><li>如何抽取explicit aspect，OTE，implicit aspect，中性情感的aspect？</li><li>怎么进行跨领域和跨语言的AE？</li><li>如何映射不同数据对象之间的关系以改善AE？</li></ol></li><li>如何进行ASA； 如何建立一个情感计算模型，对所有情感方面进行深入分析； 为什么这仍然是一个巨大的挑战和研究热点？<ol><li>如何基于aspect(target)，entity和多词target（multi-word-target level）进行SA？</li><li>如何利用多任务学习（muti-task learning）来提高情感预测的准确率</li><li>数据对象之间的交互，依存关系和上下文语义关系如何有助于改善情感分类？</li></ol></li><li>如何衡量情感值随着时间的变化；为什么没有出色的工作，使得SE成为一个开放的领域？<ol><li>如何识别不断变化的情感特征中的因素并追踪明显的缺陷？</li><li>如何通过社交数据来预测SE</li></ol></li></ol><h2 id="Aspect-Extraction"><a href="#Aspect-Extraction" class="headerlink" title="Aspect Extraction"></a><strong>Aspect Extraction</strong></h2><p>AE(Aspect Extraction)，AbSA的第一个阶段，旨在将文本中的Aspect抽取出来。此外，AE还处理不同aspect之间的关系分布，来识别出一致的、关联的、相似的aspect，以提高抽取出来aspect的表示，可以用于改进下游的任务，也可以用以增强AE本身。<br><strong>Extraction of Aspects：</strong><br>文中将AE任务中需要抽取的aspects分为了如下几个类别：</p><ul><li>Explicit Aspects and OTE：也即显式在文本中出现的aspect，OTE往往也是”explicit”的，因此将它们归类在一起；</li><li>Implicit Aspects：即没有显式地在文本中出现的aspect；</li><li>Aspect with Neural Sentiment：这里单独将中性的aspect归为一类，原因是中性的aspect往往是容易被忽视的。我认为，在对中性的一句话抽取aspect时，中性情感和aspect的对应关系往往不像正/负情感那么强烈，因此就很容易退化成普通文本的关键词抽取或者NER的任务；</li><li>Cross Domain and Cross Lingual Aspects：跨领域和跨语言的任务往往是非常困难的，AE也是如此，基本上NLP中普适的方法如迁移学习等都可以套用在AE上。此外，few-shot和zero-shot也是一种改进方向。</li></ul><p><strong>Map Relationships：</strong><br>对抽取出的实体对象进行关系映射，也是AE中的一个重要任务，而关键是如何去挖掘和表示数据对象之间的关系，因此作者将映射的关系分为两类：</p><ul><li>Co-occurrence Relation：共现关系，这往往是最基础的统计特征；</li><li>Semantic and Dependency Relation (Hierarchical and Ontology Structure)：语义关系和依存关系，往往是较深层的语义信息。一般是通过层次结构或者是Ontology Tree的形式来表现</li></ul><h2 id="Aspect-Sentiment-Analysis"><a href="#Aspect-Sentiment-Analysis" class="headerlink" title="Aspect Sentiment Analysis"></a><strong>Aspect Sentiment Analysis</strong></h2><p>ASA(Aspect Sentimet Analysis)，AbSA的第二阶段，将情感分数分配给每个提取的aspect，target或entity。其中也包括了通过不同数据对象之间的交互（interactions），依存关系（dependencies），以及上下文语义关系（contextual-semantic relationships）来提升情感分类的准确度。<br><strong>Sentiment Analysis：</strong><br>ASA相较于普通的SA任务，能够提供更多信息。文中将ASA分为四类（有重叠的部分）：</p><ul><li>Aspect(Target)-level SA：这是最常见的ASA任务，给定aspect，去计算情感分数；</li><li>Entity-level SA：跟上面的任务类似，不同点在于需要基于实体（entity）进行SA，而entity往往是无固定边界的（类比NER任务）；</li><li>Multi-word Target SA：社交数据上的aspect往往不止一个词（我认为，这在英语上比较明显，对于中文而言，本质上就是分词的问题）；</li><li>Multi-Task Learning SA：多任务学习是近几年的热点，同样地，也可以在ASA任务上应用多任务学习；</li></ul><p><strong>Interactions and Contextual Sentiment Information for Improved ASA：</strong><br><strong>利用交互和上下文情感信息用以改进ASA，</strong>这在ASA里也是流行的做法，实际上就是引入更多信息，使机器能够学习到更多东西，自然也就会有更好的表现。</p><ul><li>不同数据对象之间的交互：数据对象之间的交互和依存关系可以增强aspect的表示，这里的“数据对象”，可以是aspect，也可以是普通的词，一般的做法是用注意力机制和深层的记忆网络来捕捉信息。</li><li>上下文语义情感信息：一般指的是aspect和它上下文之间的关系，比较常见的做法是使用注意力机制，为他们之间分配注意力分数，来增强aspect的表示。</li></ul><h2 id="Sentiment-Evolution"><a href="#Sentiment-Evolution" class="headerlink" title="Sentiment Evolution"></a><strong>Sentiment Evolution</strong></h2><p>除了AE和ASA，作者还提出了一个很重要但相关研究很少的挑战，Sentiment Evolution，关注的是人们在一段时间内对某些aspect或事件的情绪变化。作者认为SE有两个子问题：<br><strong>Recognition of Factors in SE：</strong><br>识别出使得用户改变情感的因素，是分析用户情感变化的关键。作者归纳了以下几种问题：</p><ul><li><strong>Cognitive (Informational) Attitude</strong>：认知的态度，人们对于某个aspect的情感，取决于他们对于这个aspect（对象，事件，实体，目标或人）的认知；</li><li><strong>Adopting the Majority Sentiment (Minority Avoidance)</strong>：采纳多数情绪（避免少数）。另一个问题是多数人的偏好（从众心理）。 人们不愿表现自己的情感，而是采用与之关系紧密的人的情感，避免与持有不同情感态度的少数人建立联系；</li><li><strong>Social Behavior：</strong>社会性行为，当个人与社区及其周围环境互动时，就会出现社会行为。 在社交互动中，情感的变化取决于诸如和谐和分歧（harmonization and divergence）之类的社会影响；</li><li><strong>Heterogeneity of Confined Confidence and Influence (HCCI)：</strong>局限性和影响力的异质性，由于社会上不同的地理位置或地位，人们无法相互交流，但仍具有相同的情感值。（也就是说，可能两个完全不相干的人，对某件事情的看法是一致的）</li></ul><p><strong>Predicting Sentiment Evolution over Social Data：</strong><br>第二个子问题是，预测社交数据的情感的动态变化。在实时应用程序上预测个人不断变化的社会行为是一项复杂的任务，因此去预测情感的动态变化是一个相当困难的问题，但也有学者提出了一些方法，具体的内容可以去看原文5.2，这里不再详述。</p><h2 id="关于未来研究方向的讨论"><a href="#关于未来研究方向的讨论" class="headerlink" title="关于未来研究方向的讨论"></a>关于未来研究方向的讨论</h2><p>文中提到，Aspect的抽取和情感分数的检测是AbSA任务中的核心问题和挑战，并不能通过一个单一而又全面的方法解决。研究者们应当更多地关注那些子问题，进而去解决主要问题。作者还提出了一些有价值的子挑战。</p><ul><li>数据裁剪和清洁（Data Pruning and Cleansing）</li><li>跨领域迁移学习（Cross-Domain-Transfer Learning）</li><li>上下文语义关系（Contextual-Semantic Relationships）</li><li>Aspect 摘要（Aspect Summarization）</li><li>预测情感动态（Predicting Dynamicity of Sentiment）</li><li>多模态情感分析（Multimodal SA）</li></ul><p><strong>个人见解：</strong>上述挑战都是相当有前景的研究方向，然而，对于普通研究者而言，新数据集的获取永远是一个大的问题。此外，在较常规AE和ASA任务中：ASA赛道已经挤满了“选手”，并且技术也日趋成熟，在没有新模型新方法的推出前，往往很难做出有效的成果；AE赛道虽然也有些拥挤，但相较于ASA，空间还是相对大一些。<br>此外，目前也已经有一些比较容易上手研究的新任务（有相应的数据集）：</p><ul><li>Targeted Aspect Based Sentiment Analysis，结合了ATSA和ACSA，旨在识别句子中针对一个指定Aspect term的一个指定Aspect category的情感；</li><li>Target-oriented Opinion Words Extraction任务，旨在抽取句子中与一个指定实体相关的情感词（可以理解为前面提到的OTE）。</li></ul><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>本文并没有较清晰地描述AbSA任务中常见的数据集，但对于研究者来说，数据集是很重要的，因此这里简单地对AbSA研究任务中常见的数据集做一个概括。</p><ul><li><strong>SemEval 14 Restaurant Review</strong>：共有四千多条数据，分为训练集和测试集，包含Aspect Term Sentiment Analysis(ATSA)和Aspect Category Sentimet Analysis(ACSA)两种版本。ATSA的数据集也可以用来做Aspect Term Extraction，ACSA的数据集也可以用来做Aspect Category Extraction。</li><li><strong>SemEval 14 Laptop Review</strong>：共三千多条数据，同样分为训练集和测试集，但只有ATSA的版本。</li><li><strong>Twitter</strong>（ACL 2014）：共六千多条数据，分为训练集和测试集，只有ATSA。</li><li><strong>MAMS</strong>（EMNLP-2019）：共有一万多条数据，包含MAMS数据集中包含ATSA和ACSA两种版本。MAMS的特点是，一个句子中一定包含至少两个Aspect，并且同一个句子中至少有两个Aspect情感极性是不同的，难度比上面几个都要大。</li><li><strong>SentiHood</strong>（COLING 2016）：适用于Targeted Aspect Based Sentiment Analysis任务</li><li><strong>TOWE</strong>（NACCL 2019）：适用于Target-oriented Opinion Words Extraction任务，实际上使用的是SemEval 2014 Resturant, SemEval 14 Laptop, SemEval 15 Resturant, SemEval 16 Resturant, 作者们对它们进行了Target-Opinion pair的标注。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ABSA-综述阅读笔记&quot;&gt;&lt;a href=&quot;#ABSA-综述阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;ABSA 综述阅读笔记&quot;&gt;&lt;/a&gt;ABSA 综述阅读笔记&lt;/h1&gt;&lt;p&gt;本文是 &lt;a href=&quot;https://ieeexplore.ieee.org/document/8976252&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Issues and Challenges of Aspect-based Sentiment Analysis: A Comprehensive Survey&lt;/a&gt; 一文的阅读笔记，目的是快速入门基于方面的情感分析（ABSA或AbSA）的领域。此外，还加入了我的一些个人理解和相关知识的汇总。&lt;br&gt;ABSA（AbSA），Aspect-based Sentiment Analysis，直译为基于方面的情感分析，是近几年NLP领域研究的比较火热的一个方向。它的核心思想是，人们的情感往往是围绕着某一个方面产生和变化的，这在评论文本中尤为明显，人们往往会就着某个事物的某个方面去发表正/负/中性的评论。就像我们买手机的时候，去评价手机的好和坏，往往是会针对手机的某些方面去谈。&lt;br&gt;举个例子，“这部手机的摄像头很好”，“好”的这样一个正面评价不是凭空出现，而是基于“摄像头”这一个方面（aspect）所产生的，因此，当商家分析这句话的时候，就需要知道：用户的评价是关于哪一个方面的（“摄像头”）；用户的情感倾向是什么（正面），这样商家就能从用户的评价中挖掘出情感倾向/用户喜好/需要改进的方面等等信息，对于商家今后改进产品和改变营销手段有很重要的参考价值。这也就引申出了AbSA的两大核心问题：如何去抽取aspect，以及如何利用aspect来改进情感分析是。此外，文中还提出了第三大核心问题：如何去衡量和测量用户的情感动态。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="ABSA" scheme="http://yoursite.com/tags/ABSA/"/>
+    
+      <category term="Aspect-based Sentiment Analysis" scheme="http://yoursite.com/tags/Aspect-based-Sentiment-Analysis/"/>
+    
+  </entry>
   
   <entry>
     <title>NLP——分词</title>
@@ -504,64 +563,6 @@
       <category term="word2vec" scheme="http://yoursite.com/tags/word2vec/"/>
     
       <category term="词向量" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%90%91%E9%87%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>特征选择</title>
-    <link href="http://yoursite.com/2018/08/10/feature-selection/"/>
-    <id>http://yoursite.com/2018/08/10/feature-selection/</id>
-    <published>2018-08-10T12:31:18.430Z</published>
-    <updated>2018-12-03T16:04:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>&emsp; 特征选择是数据预处理中非常重要的技术，具体来说，在一般的场景下，数据的特征往往很多，会出现数据样本稀疏、距离计算困难等问题，称为<strong>维数灾难</strong>(<em>curse of dimensionality</em>).  另外，去除那些不那么重要的特征，能使得重要的特征对结果的预测有更好的作用.  因此，特征的选择就变得非常重要.  具体的，在特征选择中，我们的目标是去除那些与预测结果相关性小的特征，而保留那些相关性大的特征.</p><a id="more"></a><h2 id="过滤式"><a href="#过滤式" class="headerlink" title="过滤式"></a>过滤式</h2><h2 id="包裹式"><a href="#包裹式" class="headerlink" title="包裹式"></a>包裹式</h2><h2 id="嵌入式"><a href="#嵌入式" class="headerlink" title="嵌入式"></a>嵌入式</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;特征选择&quot;&gt;&lt;a href=&quot;#特征选择&quot; class=&quot;headerlink&quot; title=&quot;特征选择&quot;&gt;&lt;/a&gt;特征选择&lt;/h1&gt;&lt;p&gt;&amp;emsp; 特征选择是数据预处理中非常重要的技术，具体来说，在一般的场景下，数据的特征往往很多，会出现数据样本稀疏、距离计算困难等问题，称为&lt;strong&gt;维数灾难&lt;/strong&gt;(&lt;em&gt;curse of dimensionality&lt;/em&gt;).  另外，去除那些不那么重要的特征，能使得重要的特征对结果的预测有更好的作用.  因此，特征的选择就变得非常重要.  具体的，在特征选择中，我们的目标是去除那些与预测结果相关性小的特征，而保留那些相关性大的特征.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="特征工程" scheme="http://yoursite.com/categories/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
-    
-    
-      <category term="特征选择" scheme="http://yoursite.com/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
-    
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>线性判别分析</title>
-    <link href="http://yoursite.com/2018/08/10/descend-dimension/LDA/"/>
-    <id>http://yoursite.com/2018/08/10/descend-dimension/LDA/</id>
-    <published>2018-08-10T01:53:45.379Z</published>
-    <updated>2020-04-23T04:38:41.301Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="线性判别分析-LDA"><a href="#线性判别分析-LDA" class="headerlink" title="线性判别分析(LDA)"></a>线性判别分析(LDA)</h1><p>&emsp; <strong>线性判别分析</strong>(<em>Linear Discriminant Analysis</em>，简称LDA)，是一种有监督的降维方法.  其思想是希望投影到超平面上的点具有如下性质：</p><ul><li>同类的样本点尽可能地接近</li><li>不同类的样本点尽可能远离</li></ul><p>如下图所示，右图的降维效果显然要好于左图.</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/lda1.png" alt="图片来源：博客园刘建平"></p><a id="more"></a><blockquote><p>(图片来源于博客园的刘建平大神，文末分享链接)</p></blockquote><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="二分类情况"><a href="#二分类情况" class="headerlink" title="二分类情况"></a>二分类情况</h3><p>&emsp; 首先，我们从二分类的情况来解释原理。给定 $n$ 维数据集 $D= \{(x_i,y_i)\}^m_{i=1},  y_i \in \{0,1\}$, 令 $X_i、\mu_i、\Sigma_i$ 分别表示第 $i\in \{0,1\}$ 类的样本的集合、均值向量、协方差矩阵. </p><p>&emsp; 在二分类的情况下，我们将 $n$ 维数据压缩到 $1$ 维，即数据投影到直线 $w$ 上，则两类样本的中心在直线上的投影分别为：$w^T\mu_0 $ 和 $w^T\mu_1$ ; 两类样本的协方差分别为：$w^T\Sigma_0 w$ 和 $w^T \Sigma_1 w$ . 显然，在一维空间中，它们都是一个实数.</p><p>&emsp; 回到开头我们讲LDA的两个目标：</p><ul><li><strong>同类的样本点尽可能地接近，则同类样本的投影点的协方差尽可能小，即 $w^T\Sigma_0w+w^T\Sigma_1w$ 尽可能小；</strong></li><li><strong>不同类样本点尽可能远离，则不同类的中心之间的距离尽可能大，即 $||w^T\mu_0-w^T\mu_1||_2^2$ 尽可能大.</strong></li></ul><p>同时考虑二者，我们就可以得到要最大化的目标：</p><script type="math/tex; mode=display">\begin{align}J &= \frac{||w^T\mu_0-w^T\mu_1||_2^2}{w^T\Sigma_0w+w^T\Sigma_1w}    \\&= \frac{w^T(\mu_0-\mu_1)(\mu_0-\mu_1)^Tw}{w^T(\Sigma_0+\Sigma_1)w}\end{align}    \tag{1}</script><p>我们给出 <strong>类内散度矩阵</strong>(<em>within-class scatter matrix</em>) 的定义</p><script type="math/tex; mode=display">\begin{align}S_w &= \Sigma_0 + \Sigma_1     \\&= \sum_{x\in X_0}(x-\mu_0)(x-u_0)^T+ \sum_{x\in X_1}(x-\mu_1)(x-\mu_1)^T\end{align}    \tag{2}</script><p>以及 <strong>类间散度矩阵</strong>(<em>between-class scatter matrix</em>) 的定义</p><script type="math/tex; mode=display">S_b =(\mu_0 -\mu_1)(\mu_0-\mu_1)^T    \tag{3}</script><p>于是 式$(1)$ 可以重写为</p><script type="math/tex; mode=display">J = \frac{w^TS_bw}{w^TS_w w}        \tag{4}</script><p>这个就是 LDA 要最大化的目标函数，即 $S_b$ 与 $S_w$ 的 <strong>广义瑞利商</strong>(<em>generalized Rayleigh quotient</em>) .</p><p>&emsp; 注意到式$(4)$的分子分母都是关于 $w $ 的二次项，因此式$(4)$的解与 $w$ 的长度无关，只与其方向有关.  于是，我们可以令 $w^TS_ww=1$ ，可得</p><script type="math/tex; mode=display">\begin{align}\min_w& \quad -w^TS_bw    \\s.t.& \quad w^TS_ww =1\end{align}    \tag{5}</script><p>应用拉格朗日乘子法，上式等价于</p><script type="math/tex; mode=display">S_bw = \lambda S_ww    \tag{6}</script><p>即</p><script type="math/tex; mode=display">S_w^{-1}S_b w = \lambda w    \tag{7}</script><p>这正好是<strong>特征值分解</strong>的形式，因此我们可以对 $S_w^{-1}S_b$ 特征值分解，得到的最大的特征值对应的特征向量即为降维后的投影方向 $w$ .  同理，如果是降到 $d$ 维的情况，只需选取最大的 $d$ 个特征值对应的特征向量张成投影矩阵即可.</p><p>另外，对于二类的情况，注意到 $S_bw$ 的方向恒为 $\mu_0 -\mu_1$,不妨令</p><script type="math/tex; mode=display">S_bw = \lambda(\mu_0-\mu_1)    \tag{8}</script><p>代入式$(6)$可得</p><script type="math/tex; mode=display">w = S^{-1}(\mu_0-\mu_1)    \tag{9}</script><p>即为最佳的投影方向.</p><h3 id="多分类情况"><a href="#多分类情况" class="headerlink" title="多分类情况"></a>多分类情况</h3><p>&emsp; 设$W=(w_1,w_2,…,w_d)$，即我们将数据压缩到 $d$ 维，$X_j$ 是第 $i$ 类样本的集合，$N_j$ 是第 $ j$ 类样本的个数，将式$(4)$推广到多分类情形时，有</p><script type="math/tex; mode=display">J = \frac{W^TS_bW}{W^TS_w W}    \tag{10}</script><p>其中，$S_b = \sum^k_{j=1}N_j(\mu_j-\mu)(\mu_j-\mu)^T$，$\mu$ 为所有样本的均值向量，$S_w = \sum^k_{j=1}S_{wj}=\sum^k_{j=1}\sum_{x\in X_j}(x-\mu_j)(x-\mu_j)^T$ .</p><p>&emsp; 问题在于，式$(10)$的分子和分母都是矩阵，而不是标量，没有办法作为一个标量函数来优化.  而针对这个问题，常见的一种方法是采用优化目标</p><script type="math/tex; mode=display">\arg\max_W\frac{tr(W^TS_bW)}{tr(W^TS_w W)}    \tag{11}</script><p>其中 $tr(·)$ 表示矩阵的<strong>迹</strong>(<em>trace</em>)，即<strong>主对角线元素的乘积</strong>. 于是，我们可以通过如下问题求解</p><script type="math/tex; mode=display">S_bW = \lambda S_w W    \tag{12}</script><p>正好和二类中的式(6)形式一样，因此我们也是同样采用对 $S_W^{-1}S_b$ 求特征值的方法，<strong>选取最大的 $d$ 个特征值对应的特征向量，把它们张成的矩阵作为降维的投影矩阵 $W$.</strong></p><h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><blockquote><p>输入：数据集 $D=\{(x_1,y_1),(x_2,y_2),…,(x_m,y_m)\} $，其中任意样本 $x_i$ 为 $n$ 维向量，$y_i \in \{C_1,C_2,…,C_k\}$，降维后的维度 $d$.</p><ol><li><p>计算类内散度矩阵</p><script type="math/tex; mode=display">S_w = \sum^k_{j=1}S_{wj}=\sum^k_{j=1}\sum_{x\in X_j}(x-\mu_j)(x-\mu_j)^T</script></li><li><p>计算类间散度矩阵</p></li></ol><script type="math/tex; mode=display">S_b = \sum^k_{j=1}N_j(\mu_j-\mu)(\mu_j-\mu)^T</script><ol><li><p>计算矩阵</p><script type="math/tex; mode=display">S_w^{-1}S_b</script></li><li><p>对矩阵 $S^{-1}_wS_b$ 进行特征值分解，选取特征值最大的 $d$ 个特征值对应的特征向量，张成投影矩阵 $W =(w_1,w_2,…,w_d)$</p></li><li><p><strong>for</strong> i =1,2,…m <strong>do</strong></p><script type="math/tex; mode=display">z_i = W^Tx_i</script><p><strong>end for</strong></p></li><li><p>得到输出样本集 $D^{‘} = \{(z_1,y_1),(z_2,y_2),…,(z_m,y_m)\}$ .</p></li></ol><p>输出：降维后的样本集 $D^{‘}$ .</p></blockquote><p>&lt;/br&gt;</p><blockquote><p>参考资料：</p><p>[1] 刘建平Pinard. 博客园: 线性判别分析LDA原理总结, <a href="https://www.cnblogs.com/pinard/p/6244265.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6244265.html</a> , 2017-01-03/2018-08-10 .</p><p>[2] 周志华. 机器学习[M], 北京: 清华大学出版社, 2016: 60-63. </p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;线性判别分析-LDA&quot;&gt;&lt;a href=&quot;#线性判别分析-LDA&quot; class=&quot;headerlink&quot; title=&quot;线性判别分析(LDA)&quot;&gt;&lt;/a&gt;线性判别分析(LDA)&lt;/h1&gt;&lt;p&gt;&amp;emsp; &lt;strong&gt;线性判别分析&lt;/strong&gt;(&lt;em&gt;Linear Discriminant Analysis&lt;/em&gt;，简称LDA)，是一种有监督的降维方法.  其思想是希望投影到超平面上的点具有如下性质：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;同类的样本点尽可能地接近&lt;/li&gt;
-&lt;li&gt;不同类的样本点尽可能远离&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如下图所示，右图的降维效果显然要好于左图.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog-fig.oss-cn-shenzhen.aliyuncs.com/lda1.png&quot; alt=&quot;图片来源：博客园刘建平&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="特征工程" scheme="http://yoursite.com/categories/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
-    
-    
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="数据降维" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E9%99%8D%E7%BB%B4/"/>
-    
-      <category term="线性判别分析" scheme="http://yoursite.com/tags/%E7%BA%BF%E6%80%A7%E5%88%A4%E5%88%AB%E5%88%86%E6%9E%90/"/>
     
   </entry>
   

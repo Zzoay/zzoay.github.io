@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/idea.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/idea.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="深度学习,自然语言处理,ABSA,Aspect-based Sentiment Analysis,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="One Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="ABSA 综述阅读笔记本文是 Issues and Challenges of Aspect-based Sentiment Analysis: A Comprehensive Survey 一文的阅读笔记，目的是快速入门基于方面的情感分析（ABSA或AbSA）的领域。此外，还加入了我的一些个人理解和相关知识的汇总。ABSA（AbSA），Aspect-based Sentiment Analysi">
+<meta name="keywords" content="深度学习,自然语言处理,ABSA,Aspect-based Sentiment Analysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ABSA 综述阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2021/01/31/natural-language-processing/ABSA-Survey/index.html">
+<meta property="og:site_name" content="One Blog">
+<meta property="og:description" content="ABSA 综述阅读笔记本文是 Issues and Challenges of Aspect-based Sentiment Analysis: A Comprehensive Survey 一文的阅读笔记，目的是快速入门基于方面的情感分析（ABSA或AbSA）的领域。此外，还加入了我的一些个人理解和相关知识的汇总。ABSA（AbSA），Aspect-based Sentiment Analysi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201214141332.png">
+<meta property="og:updated_time" content="2021-01-31T10:40:41.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ABSA 综述阅读笔记">
+<meta name="twitter:description" content="ABSA 综述阅读笔记本文是 Issues and Challenges of Aspect-based Sentiment Analysis: A Comprehensive Survey 一文的阅读笔记，目的是快速入门基于方面的情感分析（ABSA或AbSA）的领域。此外，还加入了我的一些个人理解和相关知识的汇总。ABSA（AbSA），Aspect-based Sentiment Analysi">
+<meta name="twitter:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201214141332.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":14,"onmobile":false,"dimmer":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/31/natural-language-processing/ABSA-Survey/">
+
+
+
+
+
+  <title>ABSA 综述阅读笔记 | One Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">好好学习</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/31/natural-language-processing/ABSA-Survey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yao-zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ABSA 综述阅读笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-31T19:00:25+08:00">
+                2021-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自然语言处理/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,405 
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ABSA-综述阅读笔记"><a href="#ABSA-综述阅读笔记" class="headerlink" title="ABSA 综述阅读笔记"></a>ABSA 综述阅读笔记</h1><p>本文是 <a href="https://ieeexplore.ieee.org/document/8976252" target="_blank" rel="noopener">Issues and Challenges of Aspect-based Sentiment Analysis: A Comprehensive Survey</a> 一文的阅读笔记，目的是快速入门基于方面的情感分析（ABSA或AbSA）的领域。此外，还加入了我的一些个人理解和相关知识的汇总。<br>ABSA（AbSA），Aspect-based Sentiment Analysis，直译为基于方面的情感分析，是近几年NLP领域研究的比较火热的一个方向。它的核心思想是，人们的情感往往是围绕着某一个方面产生和变化的，这在评论文本中尤为明显，人们往往会就着某个事物的某个方面去发表正/负/中性的评论。就像我们买手机的时候，去评价手机的好和坏，往往是会针对手机的某些方面去谈。<br>举个例子，“这部手机的摄像头很好”，“好”的这样一个正面评价不是凭空出现，而是基于“摄像头”这一个方面（aspect）所产生的，因此，当商家分析这句话的时候，就需要知道：用户的评价是关于哪一个方面的（“摄像头”）；用户的情感倾向是什么（正面），这样商家就能从用户的评价中挖掘出情感倾向/用户喜好/需要改进的方面等等信息，对于商家今后改进产品和改变营销手段有很重要的参考价值。这也就引申出了AbSA的两大核心问题：如何去抽取aspect，以及如何利用aspect来改进情感分析是。此外，文中还提出了第三大核心问题：如何去衡量和测量用户的情感动态。</p>
+<a id="more"></a>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>文中提到了一些名词，下面是其中比较重要的一些名词解释（加入了一些个人的理解）：</p>
+<ul>
+<li><strong>aspect：</strong>人们的情感往往是围绕这某一个方面（aspect），就像前文提到的例子“这部手机的摄像头很好”中，“好”这个评价就是围绕着“摄像头”这个aspect的。</li>
+<li><strong>entity</strong>：aspect往往是跟一个实体（entity）相关的，比如上面这句“这部手机的摄像头很好”，“手机”就是一个实体，也即：用户对“手机”这个实体的“摄像头”方面的情感倾向是“好”。当然，广义地理解，aspect本身也可以是实体（不少研究中并没有明确地区分二者）。</li>
+<li><strong>“explicit”:</strong> “explicit”的意思是，这个aspect显式包含在文本中。还是刚刚的例子，“手机”和“摄像头”都显式地出现在了文本中。</li>
+<li><strong>“implicit”</strong>：跟“explicit”相反，aspect是隐含在文本中。比如：“这部手机很容易没电”，其中的aspect“电池”并没有显式地体现在文本中，而是需要一定语义理解。</li>
+<li><strong>Opinion Target Expression（OTE）</strong>：字面意思是观点目标表达式，还是“这个手机的摄像头很好”的例子，用户的评价目标是“手机”的一个属性，所以OTE是“手机”。这里跟aspect和entity的解释有点重叠，所以其实<strong>aspect是一个很宽泛的概念</strong>。</li>
+</ul>
+<p>另外，还有一些概念文中没有提到，但在不少论文中有所体现的：</p>
+<ul>
+<li><strong>Aspect Term, Target：</strong>往往是”explicit”的，即显式地在文本中出现，上面例子中的“手机”，“摄像头”都属于Aspect Term，也称Target。</li>
+<li><strong>Aspect Category：</strong>一般是预先定义的类别集合，不必显式地出现在文本中。比如上面例子中的“电池”，假如我们事先根据数据集定义的类别集合里包含“电池”这一类别，则它是文本的Aspect Category<strong>。</strong></li>
+</ul>
+<h2 id="AbSA-分类"><a href="#AbSA-分类" class="headerlink" title="AbSA 分类"></a>AbSA 分类</h2><p>文中，作者根据AbSA的处理过程，将AbSA归为3类：</p>
+<ul>
+<li><p><strong>Aspect Extraction (AE)</strong>:</p>
+<p>顾名思义，就是抽取aspect的任务，一般包括 explicit aspects, implicit aspects, aspect terms, entities 和Opinion Target Expressions (OTE)</p>
+</li>
+<li><p><strong>Aspect Sentiment Analysis (ASA):</strong></p>
+<p>在给定aspect，target或者是entity的条件下，对情感的极性进行分类</p>
+</li>
+<li><p><strong>Sentiment Evolution (SE):</strong><br>关注的是人们在一段时间内对某些aspect或事件的情绪变化</p>
+<p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201214141332.png" alt></p>
+</li>
+</ul>
+<h2 id="AbSA-核心问题和挑战"><a href="#AbSA-核心问题和挑战" class="headerlink" title="AbSA 核心问题和挑战"></a>AbSA 核心问题和挑战</h2><p>文中提到，目前AbSA任务主要有如下核心问题：</p>
+<ol>
+<li>如何有效地提高AE的表现；为什么至今这仍是一个大的挑战？<ol>
+<li>如何抽取explicit aspect，OTE，implicit aspect，中性情感的aspect？</li>
+<li>怎么进行跨领域和跨语言的AE？</li>
+<li>如何映射不同数据对象之间的关系以改善AE？</li>
+</ol>
+</li>
+<li>如何进行ASA； 如何建立一个情感计算模型，对所有情感方面进行深入分析； 为什么这仍然是一个巨大的挑战和研究热点？<ol>
+<li>如何基于aspect(target)，entity和多词target（multi-word-target level）进行SA？</li>
+<li>如何利用多任务学习（muti-task learning）来提高情感预测的准确率</li>
+<li>数据对象之间的交互，依存关系和上下文语义关系如何有助于改善情感分类？</li>
+</ol>
+</li>
+<li>如何衡量情感值随着时间的变化；为什么没有出色的工作，使得SE成为一个开放的领域？<ol>
+<li>如何识别不断变化的情感特征中的因素并追踪明显的缺陷？</li>
+<li>如何通过社交数据来预测SE</li>
+</ol>
+</li>
+</ol>
+<h2 id="Aspect-Extraction"><a href="#Aspect-Extraction" class="headerlink" title="Aspect Extraction"></a><strong>Aspect Extraction</strong></h2><p>AE(Aspect Extraction)，AbSA的第一个阶段，旨在将文本中的Aspect抽取出来。此外，AE还处理不同aspect之间的关系分布，来识别出一致的、关联的、相似的aspect，以提高抽取出来aspect的表示，可以用于改进下游的任务，也可以用以增强AE本身。<br><strong>Extraction of Aspects：</strong><br>文中将AE任务中需要抽取的aspects分为了如下几个类别：</p>
+<ul>
+<li>Explicit Aspects and OTE：也即显式在文本中出现的aspect，OTE往往也是”explicit”的，因此将它们归类在一起；</li>
+<li>Implicit Aspects：即没有显式地在文本中出现的aspect；</li>
+<li>Aspect with Neural Sentiment：这里单独将中性的aspect归为一类，原因是中性的aspect往往是容易被忽视的。我认为，在对中性的一句话抽取aspect时，中性情感和aspect的对应关系往往不像正/负情感那么强烈，因此就很容易退化成普通文本的关键词抽取或者NER的任务；</li>
+<li>Cross Domain and Cross Lingual Aspects：跨领域和跨语言的任务往往是非常困难的，AE也是如此，基本上NLP中普适的方法如迁移学习等都可以套用在AE上。此外，few-shot和zero-shot也是一种改进方向。</li>
+</ul>
+<p><strong>Map Relationships：</strong><br>对抽取出的实体对象进行关系映射，也是AE中的一个重要任务，而关键是如何去挖掘和表示数据对象之间的关系，因此作者将映射的关系分为两类：</p>
+<ul>
+<li>Co-occurrence Relation：共现关系，这往往是最基础的统计特征；</li>
+<li>Semantic and Dependency Relation (Hierarchical and Ontology Structure)：语义关系和依存关系，往往是较深层的语义信息。一般是通过层次结构或者是Ontology Tree的形式来表现</li>
+</ul>
+<h2 id="Aspect-Sentiment-Analysis"><a href="#Aspect-Sentiment-Analysis" class="headerlink" title="Aspect Sentiment Analysis"></a><strong>Aspect Sentiment Analysis</strong></h2><p>ASA(Aspect Sentimet Analysis)，AbSA的第二阶段，将情感分数分配给每个提取的aspect，target或entity。其中也包括了通过不同数据对象之间的交互（interactions），依存关系（dependencies），以及上下文语义关系（contextual-semantic relationships）来提升情感分类的准确度。<br><strong>Sentiment Analysis：</strong><br>ASA相较于普通的SA任务，能够提供更多信息。文中将ASA分为四类（有重叠的部分）：</p>
+<ul>
+<li>Aspect(Target)-level SA：这是最常见的ASA任务，给定aspect，去计算情感分数；</li>
+<li>Entity-level SA：跟上面的任务类似，不同点在于需要基于实体（entity）进行SA，而entity往往是无固定边界的（类比NER任务）；</li>
+<li>Multi-word Target SA：社交数据上的aspect往往不止一个词（我认为，这在英语上比较明显，对于中文而言，本质上就是分词的问题）；</li>
+<li>Multi-Task Learning SA：多任务学习是近几年的热点，同样地，也可以在ASA任务上应用多任务学习；</li>
+</ul>
+<p><strong>Interactions and Contextual Sentiment Information for Improved ASA：</strong><br><strong>利用交互和上下文情感信息用以改进ASA，</strong>这在ASA里也是流行的做法，实际上就是引入更多信息，使机器能够学习到更多东西，自然也就会有更好的表现。</p>
+<ul>
+<li>不同数据对象之间的交互：数据对象之间的交互和依存关系可以增强aspect的表示，这里的“数据对象”，可以是aspect，也可以是普通的词，一般的做法是用注意力机制和深层的记忆网络来捕捉信息。</li>
+<li>上下文语义情感信息：一般指的是aspect和它上下文之间的关系，比较常见的做法是使用注意力机制，为他们之间分配注意力分数，来增强aspect的表示。</li>
+</ul>
+<h2 id="Sentiment-Evolution"><a href="#Sentiment-Evolution" class="headerlink" title="Sentiment Evolution"></a><strong>Sentiment Evolution</strong></h2><p>除了AE和ASA，作者还提出了一个很重要但相关研究很少的挑战，Sentiment Evolution，关注的是人们在一段时间内对某些aspect或事件的情绪变化。作者认为SE有两个子问题：<br><strong>Recognition of Factors in SE：</strong><br>识别出使得用户改变情感的因素，是分析用户情感变化的关键。作者归纳了以下几种问题：</p>
+<ul>
+<li><strong>Cognitive (Informational) Attitude</strong>：认知的态度，人们对于某个aspect的情感，取决于他们对于这个aspect（对象，事件，实体，目标或人）的认知；</li>
+<li><strong>Adopting the Majority Sentiment (Minority Avoidance)</strong>：采纳多数情绪（避免少数）。另一个问题是多数人的偏好（从众心理）。 人们不愿表现自己的情感，而是采用与之关系紧密的人的情感，避免与持有不同情感态度的少数人建立联系；</li>
+<li><strong>Social Behavior：</strong>社会性行为，当个人与社区及其周围环境互动时，就会出现社会行为。 在社交互动中，情感的变化取决于诸如和谐和分歧（harmonization and divergence）之类的社会影响；</li>
+<li><strong>Heterogeneity of Confined Confidence and Influence (HCCI)：</strong>局限性和影响力的异质性，由于社会上不同的地理位置或地位，人们无法相互交流，但仍具有相同的情感值。（也就是说，可能两个完全不相干的人，对某件事情的看法是一致的）</li>
+</ul>
+<p><strong>Predicting Sentiment Evolution over Social Data：</strong><br>第二个子问题是，预测社交数据的情感的动态变化。在实时应用程序上预测个人不断变化的社会行为是一项复杂的任务，因此去预测情感的动态变化是一个相当困难的问题，但也有学者提出了一些方法，具体的内容可以去看原文5.2，这里不再详述。</p>
+<h2 id="关于未来研究方向的讨论"><a href="#关于未来研究方向的讨论" class="headerlink" title="关于未来研究方向的讨论"></a>关于未来研究方向的讨论</h2><p>文中提到，Aspect的抽取和情感分数的检测是AbSA任务中的核心问题和挑战，并不能通过一个单一而又全面的方法解决。研究者们应当更多地关注那些子问题，进而去解决主要问题。作者还提出了一些有价值的子挑战。</p>
+<ul>
+<li>数据裁剪和清洁（Data Pruning and Cleansing）</li>
+<li>跨领域迁移学习（Cross-Domain-Transfer Learning）</li>
+<li>上下文语义关系（Contextual-Semantic Relationships）</li>
+<li>Aspect 摘要（Aspect Summarization）</li>
+<li>预测情感动态（Predicting Dynamicity of Sentiment）</li>
+<li>多模态情感分析（Multimodal SA）</li>
+</ul>
+<p><strong>个人见解：</strong>上述挑战都是相当有前景的研究方向，然而，对于普通研究者而言，新数据集的获取永远是一个大的问题。此外，在较常规AE和ASA任务中：ASA赛道已经挤满了“选手”，并且技术也日趋成熟，在没有新模型新方法的推出前，往往很难做出有效的成果；AE赛道虽然也有些拥挤，但相较于ASA，空间还是相对大一些。<br>此外，目前也已经有一些比较容易上手研究的新任务（有相应的数据集）：</p>
+<ul>
+<li>Targeted Aspect Based Sentiment Analysis，结合了ATSA和ACSA，旨在识别句子中针对一个指定Aspect term的一个指定Aspect category的情感；</li>
+<li>Target-oriented Opinion Words Extraction任务，旨在抽取句子中与一个指定实体相关的情感词（可以理解为前面提到的OTE）。</li>
+</ul>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>本文并没有较清晰地描述AbSA任务中常见的数据集，但对于研究者来说，数据集是很重要的，因此这里简单地对AbSA研究任务中常见的数据集做一个概括。</p>
+<ul>
+<li><strong>SemEval 14 Restaurant Review</strong>：共有四千多条数据，分为训练集和测试集，包含Aspect Term Sentiment Analysis(ATSA)和Aspect Category Sentimet Analysis(ACSA)两种版本。ATSA的数据集也可以用来做Aspect Term Extraction，ACSA的数据集也可以用来做Aspect Category Extraction。</li>
+<li><strong>SemEval 14 Laptop Review</strong>：共三千多条数据，同样分为训练集和测试集，但只有ATSA的版本。</li>
+<li><strong>Twitter</strong>（ACL 2014）：共六千多条数据，分为训练集和测试集，只有ATSA。</li>
+<li><strong>MAMS</strong>（EMNLP-2019）：共有一万多条数据，包含MAMS数据集中包含ATSA和ACSA两种版本。MAMS的特点是，一个句子中一定包含至少两个Aspect，并且同一个句子中至少有两个Aspect情感极性是不同的，难度比上面几个都要大。</li>
+<li><strong>SentiHood</strong>（COLING 2016）：适用于Targeted Aspect Based Sentiment Analysis任务</li>
+<li><strong>TOWE</strong>（NACCL 2019）：适用于Target-oriented Opinion Words Extraction任务，实际上使用的是SemEval 2014 Resturant, SemEval 14 Laptop, SemEval 15 Resturant, SemEval 16 Resturant, 作者们对它们进行了Target-Opinion pair的标注。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+            <a href="/tags/ABSA/" rel="tag"># ABSA</a>
+          
+            <a href="/tags/Aspect-based-Sentiment-Analysis/" rel="tag"># Aspect-based Sentiment Analysis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/18/natural-language-processing/Word-Segmentation/" rel="next" title="NLP——分词">
+                <i class="fa fa-chevron-left"></i> NLP——分词
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/31/natural-language-processing/Relation-Extraction/" rel="prev" title="联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记">
+                联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Yao-zz">
+            
+              <p class="site-author-name" itemprop="name">Yao-zz</p>
+              <p class="site-description motion-element" itemprop="description">在机器学习的方向努力中......</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Zzoay" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:uni_coder99@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10145221/jiang-gongyao" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.quora.com/profile/Jiang-Gongyao" target="_blank" title="Quora">
+                      
+                        <i class="fa fa-fw fa-quora"></i>Quora</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5b6b0ff9f265da0f48613fa3" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-angle-double-down"></i>Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/8d6a6834e4fc" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ABSA-综述阅读笔记"><span class="nav-number">1.</span> <span class="nav-text">ABSA 综述阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-number">1.1.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AbSA-分类"><span class="nav-number">1.2.</span> <span class="nav-text">AbSA 分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AbSA-核心问题和挑战"><span class="nav-number">1.3.</span> <span class="nav-text">AbSA 核心问题和挑战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aspect-Extraction"><span class="nav-number">1.4.</span> <span class="nav-text">Aspect Extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aspect-Sentiment-Analysis"><span class="nav-number">1.5.</span> <span class="nav-text">Aspect Sentiment Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentiment-Evolution"><span class="nav-number">1.6.</span> <span class="nav-text">Sentiment Evolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于未来研究方向的讨论"><span class="nav-number">1.7.</span> <span class="nav-text">关于未来研究方向的讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">1.8.</span> <span class="nav-text">数据集</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yao-zz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数: </span>
+    
+    <span title="Site words total count">64.4k</span>
+  
+</div>
+
+<div class="powered-by">
+  Power by<a href="https://hexo.io"> Next  </a> | 
+
+</div>
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量: <span id="busuanzi_value_site_pv"></span> | 
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数: <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.4.9/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'PYesa2aFUX1zKBBdFA9M17bq-gzGzoHsz',
+        appKey: '81LH73KMJTtNEXA7qfJvT1Pu',
+        placeholder: '欢迎畅所欲言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'7' || 10,
+    });
+  </script>
+
+
+<script type="text/javascript">
+    (function() {
+        // 匿名函数，防止污染全局变量
+        var utterances = document.createElement('script');
+        utterances.type = 'text/javascript';
+        utterances.async = true;
+        utterances.setAttribute('issue-term','pathname')
+        utterances.setAttribute('theme','github-light')
+        utterances.setAttribute('repo','Zzoay/comments')
+        utterances.crossorigin = 'anonymous';
+        utterances.src = 'https://utteranc.es/client.js';
+        // content 是要插入评论的地方
+        document.getElementById('gitment-container').appendChild(utterances);
+    })();
+</script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
