@@ -90,22 +90,22 @@
 
 
 
-<meta name="description" content="联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&amp;lt; head entity, relation, tial entity&amp;gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&amp;lt;我，学习，自然语言处理&amp;gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解">
+<meta name="description" content="联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: &amp;lt;实体1，关系，实体2&amp;gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&amp;lt;我，学习，自然语言处理&amp;gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务：  实体识别 关系检测  通过两">
 <meta name="keywords" content="深度学习,自然语言处理,Relation Extraction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记">
 <meta property="og:url" content="http://yoursite.com/2021/01/31/natural-language-processing/Relation-Extraction/index.html">
 <meta property="og:site_name" content="One Blog">
-<meta property="og:description" content="联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&amp;lt; head entity, relation, tial entity&amp;gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&amp;lt;我，学习，自然语言处理&amp;gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解">
+<meta property="og:description" content="联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: &amp;lt;实体1，关系，实体2&amp;gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&amp;lt;我，学习，自然语言处理&amp;gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务：  实体识别 关系检测  通过两">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229230105.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229230855.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229232832.png">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229232751.png">
-<meta property="og:updated_time" content="2021-01-31T10:40:41.019Z">
+<meta property="og:updated_time" content="2021-01-31T11:18:43.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记">
-<meta name="twitter:description" content="联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&amp;lt; head entity, relation, tial entity&amp;gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&amp;lt;我，学习，自然语言处理&amp;gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解">
+<meta name="twitter:description" content="联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: &amp;lt;实体1，关系，实体2&amp;gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&amp;lt;我，学习，自然语言处理&amp;gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务：  实体识别 关系检测  通过两">
 <meta name="twitter:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20201229230105.png">
 
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  384 
+                  387 
                 </span>
               
 
@@ -433,7 +433,7 @@
       
 
       
-        <p>联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&lt; head entity, relation, tial entity>。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&lt;我，学习，自然语言处理&gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务：</p>
+        <p>联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: &lt;实体1，关系，实体2&gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&lt;我，学习，自然语言处理&gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务：</p>
 <ul>
 <li>实体识别</li>
 <li>关系检测</li>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记]]></title>
     <url>%2F2021%2F01%2F31%2Fnatural-language-processing%2FRelation-Extraction%2F</url>
-    <content type="text"><![CDATA[联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: \&lt; head entity, relation, tial entity>。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&lt;我，学习，自然语言处理&gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务： 实体识别 关系检测 通过两个子任务之间的信息交互与同步，同时提升两个子任务的表现。 下面简单地对最近的一些相关论文进行概述。（持续更新中…） A Relation-Specific Attention Network for Joint Entity and Relation Extraction文中提到，联合实体关系抽取是一个很大的挑战，因为一句话中可能会有多个重叠的实体（ovelapping entity）,如下图所示。 过去的方法大多是先进行实体识别，然后在每个可能的实体对之间进行关系检测，这些方法通常会遭受大量冗余操作的困扰。因此，文章提出了relation-specific attention network (RSAN)，利用关系感知注意机制（relation-aware attention mechanism）为每个关系构建特定的句子表示形式，然后执行序列标记以提取其对应的头和尾实体。在两个公开的数据集New York Times(NYT)和WebNLG上取得了SOTA的效果。 模型结构图如下： 实验数据： 实验结果如下：]]></content>
+    <content type="text"><![CDATA[联合实体关系抽取(Joint Entity and Relation Extraction)，旨在抽取文本中的实体与实体间的关系，一般可以表示为三元组的形式: &lt;实体1，关系，实体2&gt;。举个例子，”我在学习自然语言处理的知识”，则可以抽取出：&lt;我，学习，自然语言处理&gt; 等诸如此类的三元组。联合实体关系抽取的一般化做法是将任务分解为两个子任务： 实体识别 关系检测 通过两个子任务之间的信息交互与同步，同时提升两个子任务的表现。 下面简单地对最近的一些相关论文进行概述。（持续更新中…） A Relation-Specific Attention Network for Joint Entity and Relation Extraction文中提到，联合实体关系抽取是一个很大的挑战，因为一句话中可能会有多个重叠的实体（ovelapping entity）,如下图所示。 过去的方法大多是先进行实体识别，然后在每个可能的实体对之间进行关系检测，这些方法通常会遭受大量冗余操作的困扰。因此，文章提出了relation-specific attention network (RSAN)，利用关系感知注意机制（relation-aware attention mechanism）为每个关系构建特定的句子表示形式，然后执行序列标记以提取其对应的头和尾实体。在两个公开的数据集New York Times(NYT)和WebNLG上取得了SOTA的效果。 模型结构图如下： 实验数据： 实验结果如下：]]></content>
       <categories>
         <category>自然语言处理</category>
       </categories>
