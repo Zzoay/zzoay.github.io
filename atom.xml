@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-31T11:18:43.698Z</updated>
+  <updated>2021-02-05T15:52:19.796Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>参数生成网络（Parameter Generator Network）</title>
+    <link href="http://yoursite.com/2021/02/05/natural-language-processing/Parameter-Generator-Network/"/>
+    <id>http://yoursite.com/2021/02/05/natural-language-processing/Parameter-Generator-Network/</id>
+    <published>2021-02-05T15:05:12.009Z</published>
+    <updated>2021-02-05T15:52:19.796Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="参数生成网络（Parameter-Generator-Network）"><a href="#参数生成网络（Parameter-Generator-Network）" class="headerlink" title="参数生成网络（Parameter Generator Network）"></a>参数生成网络（Parameter Generator Network）</h1><p>参数生成最早由<a href="https://www.aclweb.org/anthology/D18-1039.pdf" target="_blank" rel="noopener">Platanios</a>提出和应用，用于解决多语言的翻译任务下，多种语言往往涉及的多套参数的生成问题。传统的方式是为每对语言单独训练一套参数，这样一来，参数量会十分庞大，而本文提出了参数生成网络（Parameter Generator Network）来生成不同语言的Encoder和Decoder的参数，在一定程度上共享参数的同时，保留了不同语种的特性。后来参数生成也被用在了其他跨语言的任务中，取得了不错的效果。</p><p>首先我们假设在翻译任务下，源语言、目标语言数目分别为$S$和$T$，在传统的方式下，模型的参数生成主要有以下几种方式：</p><ul><li>Pairwise：为每对语言分别训练一套网络，那么参数总量为$O(ST)$</li><li>Per-language：为每一个源语言训练一个Encoder，每一个目标语言训练一个Decoder，参数总量为$O(S+T)$</li><li>Universal：仅训练一套参数，通过一些方式来适应不同语言</li></ul><p>本文提出了Contextual Parameter Generator，核心思想是将语言看作是Encoder/Decoder的上下文，像Word Embedding一样为不同的语言分配不同的Embedding，称作Language Embedding，以此来生成不同的Encoder/Decoder。</p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20210205233646.png" alt="Parameter Generator"></p><p>进一步，作者提出了两种参数生成的方式：</p><ul><li><p>Decoupled：源语言和目标语言各自分别生成Encoder和Decoder：</p><script type="math/tex; mode=display">\theta ^{(enc)} = g ^ {(enc)}(l_s), \theta ^{(dec)} = g ^ {(dec)}(l_t)</script></li><li><p>Coupled：源语言和目标语言共同生成Encoder和Decoder：</p><script type="math/tex; mode=display">\theta ^{(enc)} = g ^ {(enc)}(l_s, l_t), \theta ^{(dec)} = g ^ {(dec)}(l_s, l_t)</script></li></ul><p>其中，上标$enc$和$dec$分别代表Encoder和Decoder，$l_s,l_t$ 分别表示源语言和目标语言的Embedding，$g$ 则表示生成参数的函数。</p><p>作者采用了Decoupled的方式，并将参数生成网络设计成了简单的线性变换的模式：</p><script type="math/tex; mode=display">g^{(enc)}(l_s) = W^{(enc)}l_s \\g^{(dec)}(l_t) = W^{(dec)}l_t</script><p>其中，$l_s,l_t \in R^M, W^{(enc)} \in R^{P^{(dec)} \times M}, W^{(dec)} \in R^{P^{(dec)} \times M}$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;参数生成网络（Parameter-Generator-Network）&quot;&gt;&lt;a href=&quot;#参数生成网络（Parameter-Generator-Network）&quot; class=&quot;headerlink&quot; title=&quot;参数生成网络（Parameter Gener
+      
+    
+    </summary>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>联合实体关系抽取（Joint Entity and Relation Extraction）论文阅读笔记</title>
@@ -535,34 +563,6 @@
       <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Word2Vec</title>
-    <link href="http://yoursite.com/2018/09/09/natural-language-processing/Word2Vec/"/>
-    <id>http://yoursite.com/2018/09/09/natural-language-processing/Word2Vec/</id>
-    <published>2018-09-09T11:19:59.257Z</published>
-    <updated>2020-04-23T04:55:11.492Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h1><p>&emsp; Word2Vec是一种以<strong>无监督</strong>的方式来得到词向量的模型，其核心思想是通过上下文信息表达一个词语，将词语从原先的空间映射到新的空间中(本质上是一种降维)。这样得到的词向量相对于<strong>独热编码</strong>具有维度较低、词语之间相似度易衡量等优点.</p><p>&emsp; 具体地，Word2Vec首先将词语进行独热编码，然后将编码后的词向量输入神经网络，通过最小化误差来更新权值矩阵，最后将训练好的权值矩阵作为处理后的词向量矩阵. </p><a id="more"></a><p>&emsp; Word2Vec主要有CBOW、Skip-gram两种模型.  CBOW是根据上下文词语预测当前词；而Skip-Gram正好相反，根据当前词预测上下文. 如下图所示:   </p><p><img src="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/word2vec1.jpg" alt="CBOW and Skip-Gram"></p><p>对于CBOW，我们的目标函数为：</p><script type="math/tex; mode=display">L = \sum_{w\in C} \log p(w|context(w))</script><p>而对于Skip-gram，目标函数为：</p><script type="math/tex; mode=display">L = \sum_{w\in C}\log p(context(w)|w)</script><p>&emsp; Word2Vec有两个trick，分别是Hierarchical Softmax 和 Nagative Sampling，他们是Word2Vec提高训练效率和效果的两种技巧(trick).</p><h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><h2 id="Hierarchical-Softmax"><a href="#Hierarchical-Softmax" class="headerlink" title="Hierarchical Softmax"></a>Hierarchical Softmax</h2><h2 id="Nagative-Sampling"><a href="#Nagative-Sampling" class="headerlink" title="Nagative Sampling"></a>Nagative Sampling</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Word2Vec&quot;&gt;&lt;a href=&quot;#Word2Vec&quot; class=&quot;headerlink&quot; title=&quot;Word2Vec&quot;&gt;&lt;/a&gt;Word2Vec&lt;/h1&gt;&lt;p&gt;&amp;emsp; Word2Vec是一种以&lt;strong&gt;无监督&lt;/strong&gt;的方式来得到词向量的模型，其核心思想是通过上下文信息表达一个词语，将词语从原先的空间映射到新的空间中(本质上是一种降维)。这样得到的词向量相对于&lt;strong&gt;独热编码&lt;/strong&gt;具有维度较低、词语之间相似度易衡量等优点.&lt;/p&gt;
-&lt;p&gt;&amp;emsp; 具体地，Word2Vec首先将词语进行独热编码，然后将编码后的词向量输入神经网络，通过最小化误差来更新权值矩阵，最后将训练好的权值矩阵作为处理后的词向量矩阵. &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-      <category term="word2vec" scheme="http://yoursite.com/tags/word2vec/"/>
-    
-      <category term="词向量" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%90%91%E9%87%8F/"/>
     
   </entry>
   
