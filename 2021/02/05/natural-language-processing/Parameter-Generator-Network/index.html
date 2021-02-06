@@ -99,7 +99,7 @@
 <meta property="og:description" content="参数生成网络（Parameter Generator Network）参数生成最早由Platanios提出和应用，用于解决多语言的翻译任务下，多种语言往往涉及的多套参数的生成问题。传统的方式是为每对语言单独训练一套参数，这样一来，参数量会十分庞大，而本文提出了参数生成网络（Parameter Generator Network）来生成不同语言的Encoder和Decoder的参数，在一定程度上共享">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-fig.oss-cn-shenzhen.aliyuncs.com/20210205233646.png">
-<meta property="og:updated_time" content="2021-02-05T15:52:19.796Z">
+<meta property="og:updated_time" content="2021-02-06T15:41:01.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="参数生成网络（Parameter Generator Network）">
 <meta name="twitter:description" content="参数生成网络（Parameter Generator Network）参数生成最早由Platanios提出和应用，用于解决多语言的翻译任务下，多种语言往往涉及的多套参数的生成问题。传统的方式是为每对语言单独训练一套参数，这样一来，参数量会十分庞大，而本文提出了参数生成网络（Parameter Generator Network）来生成不同语言的Encoder和Decoder的参数，在一定程度上共享">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  489 
+                  720 
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 mins
+                  3 mins
                 </span>
               
             </div>
@@ -452,7 +452,9 @@
 <p>作者采用了Decoupled的方式，并将参数生成网络设计成了简单的线性变换的模式：</p>
 <script type="math/tex; mode=display">
 g^{(enc)}(l_s) = W^{(enc)}l_s \\
-g^{(dec)}(l_t) = W^{(dec)}l_t</script><p>其中，$l_s,l_t \in R^M, W^{(enc)} \in R^{P^{(dec)} \times M}, W^{(dec)} \in R^{P^{(dec)} \times M}$</p>
+g^{(dec)}(l_t) = W^{(dec)}l_t</script><p>其中，$l_s,l_t \in \mathbb{R}^M, W^{(enc)} \in \mathbb{R}^{P^{(enc)} \times M}, W^{(dec)} \in \mathbb{R}^{P^{(dec)} \times M} $，M代表Language Embedding的维度（可以类比词向量的维度），而$P^{(enc)},P^{(dec)}$ 则分别表示Encoder和Decoder的参数量。这样一来，对于不同的语言，只需要使用对应的Language Embedding，即可生成对应的参数用于训练和预测。</p>
+<p>这样一来，所需要的参数量就大大减少了，原来$L$种语言相互翻译需要$L(L-1)$组参数，每组参数量为$P=P^{(enc)}+P^{(dec)}$；而对于参数生成网络而言，只需要像维护词向量一样维护$L$组参数量为$M$的language embedding，以及只需要一组通用的$L \times M$的参数生成网络。</p>
+<p>此外，由于Encoder和Decoder分开生成，并且在训练过程中学习到了不同的语言，Encoder到Decoder的中间表示可以理解为一种通用的语言表示，可以被解码为任一语言。</p>
 
       
     </div>
@@ -718,7 +720,7 @@ g^{(dec)}(l_t) = W^{(dec)}l_t</script><p>其中，$l_s,l_t \in R^M, W^{(enc)} \i
     
       <span class="post-meta-item-text">总字数: </span>
     
-    <span title="Site words total count">64.9k</span>
+    <span title="Site words total count">65.1k</span>
   
 </div>
 
