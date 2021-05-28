@@ -61,5 +61,17 @@
                 hreflang="zh"
                 href="https://zzoay.github.io/"
                 />
+  </url><url>
+    <loc>https://zzoay.github.io/authors/admin/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href=""
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/authors/admin/"
+                />
   </url>
 </urlset>

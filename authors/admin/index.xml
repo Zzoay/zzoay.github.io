@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>蒋功耀 | Zzoay&#39;s website</title>
+    <link>https://zzoay.github.io/authors/admin/</link>
+      <atom:link href="https://zzoay.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    <description>蒋功耀</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>zh-Hans</language>
+    <image>
+      <url>https://zzoay.github.io/authors/admin/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_270x270_fill_q75_lanczos_center.jpg</url>
+      <title>蒋功耀</title>
+      <link>https://zzoay.github.io/authors/admin/</link>
+    </image>
+    
+  </channel>
+</rss>
