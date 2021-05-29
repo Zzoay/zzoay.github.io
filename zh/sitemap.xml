@@ -2,7 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zzoay.github.io/publication-type/1/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication-type/1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication-type/1/"
+                />
+  </url><url>
     <loc>https://zzoay.github.io/authors/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -12,6 +26,119 @@
                 rel="alternate"
                 hreflang="zh"
                 href="https://zzoay.github.io/authors/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/publication/ecai2020/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication/ecai2020/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication/ecai2020/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/authors/gongyao-jiang/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href=""
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/authors/gongyao-jiang/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/authors/jin-yuan/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zzoay.github.io/publication_types/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication_types/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication_types/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/publication/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/tags/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/tag/text-classification/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/tag/text-classification/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/tag/text-classification/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/authors/ye-liu/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zzoay.github.io/authors/zhihao-ye/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href=""
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/authors/zhihao-ye/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/authors/zhiyong-li/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zzoay.github.io/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/"
                 />
   </url><url>
     <loc>https://zzoay.github.io/categories/</loc>
@@ -24,42 +151,6 @@
                 rel="alternate"
                 hreflang="zh"
                 href="https://zzoay.github.io/categories/"
-                />
-  </url><url>
-    <loc>https://zzoay.github.io/publication_types/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zzoay.github.io/en/publication_types/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zzoay.github.io/publication_types/"
-                />
-  </url><url>
-    <loc>https://zzoay.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zzoay.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zzoay.github.io/tags/"
-                />
-  </url><url>
-    <loc>https://zzoay.github.io/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zzoay.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zzoay.github.io/"
                 />
   </url><url>
     <loc>https://zzoay.github.io/authors/admin/</loc>

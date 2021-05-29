@@ -21,6 +21,84 @@
                 href="https://zzoay.github.io/en/"
                 />
   </url><url>
+    <loc>https://zzoay.github.io/en/publication-type/1/</loc>
+    <lastmod>2021-05-28T16:14:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication-type/1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication-type/1/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/en/publication/ecai2020/</loc>
+    <lastmod>2021-05-28T16:14:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication/ecai2020/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication/ecai2020/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/en/publication_types/</loc>
+    <lastmod>2021-05-28T16:14:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication_types/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication_types/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/en/publication/</loc>
+    <lastmod>2021-05-28T16:14:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/publication/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/publication/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/en/tags/</loc>
+    <lastmod>2021-05-28T16:14:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/tags/"
+                />
+  </url><url>
+    <loc>https://zzoay.github.io/en/tag/text-classification/</loc>
+    <lastmod>2021-05-28T16:14:38+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zzoay.github.io/tag/text-classification/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zzoay.github.io/en/tag/text-classification/"
+                />
+  </url><url>
     <loc>https://zzoay.github.io/en/tag/academic/</loc>
     <lastmod>2020-12-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -42,19 +120,6 @@
   </url><url>
     <loc>https://zzoay.github.io/en/post/</loc>
     <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zzoay.github.io/en/tags/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zzoay.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zzoay.github.io/en/tags/"
-                />
   </url><url>
     <loc>https://zzoay.github.io/en/post/getting-started/</loc>
     <lastmod>2020-12-13T00:00:00+00:00</lastmod>
@@ -80,26 +145,10 @@
     <loc>https://zzoay.github.io/en/project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zzoay.github.io/en/publication-type/1/</loc>
+    <loc>https://zzoay.github.io/en/publication/_ecai2020/</loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zzoay.github.io/en/publication/example/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zzoay.github.io/en/publication_types/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zzoay.github.io/publication_types/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zzoay.github.io/en/publication_types/"
-                />
-  </url><url>
-    <loc>https://zzoay.github.io/en/publication/</loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zzoay.github.io/en/admin/</loc>
