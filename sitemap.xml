@@ -18,11 +18,31 @@
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>https://zzoay.github.io/tag/dependency-parsing/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://zzoay.github.io/tag/few-shot-learning/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://zzoay.github.io/tag/natural-language-processing/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>https://zzoay.github.io/publication_types/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://zzoay.github.io/publication/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://zzoay.github.io/tags/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://zzoay.github.io/tag/zero-shot-learning/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -34,15 +54,15 @@
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>https://zzoay.github.io/tag/fake-news-detection/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>https://zzoay.github.io/publication/ipm2022/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/source-themes/</loc>
-    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/tags/</loc>
+    <loc>https://zzoay.github.io/tag/prompt-learning/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -75,6 +95,10 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://zzoay.github.io/publication/ecai2020/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://zzoay.github.io/tag/graph-convolutional-network/</loc>
     <lastmod>2020-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
