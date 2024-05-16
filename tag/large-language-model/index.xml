@@ -5,12 +5,39 @@
     <link>https://zzoay.github.io/tag/large-language-model/</link>
       <atom:link href="https://zzoay.github.io/tag/large-language-model/index.xml" rel="self" type="application/rss+xml" />
     <description>Large Language Model</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en</language><lastBuildDate>Tue, 12 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en</language><lastBuildDate>Thu, 16 May 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://zzoay.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Large Language Model</title>
       <link>https://zzoay.github.io/tag/large-language-model/</link>
     </image>
+    
+    <item>
+      <title>ToMBench: Benchmarking Theory of Mind in Large Language Models</title>
+      <link>https://zzoay.github.io/publication/tombench/</link>
+      <pubDate>Thu, 16 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://zzoay.github.io/publication/tombench/</guid>
+      <description>&lt;!-- 
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
     
     <item>
       <title>LLM-Assisted Data Augmentation for Chinese Dialogue-Level Dependency Parsing</title>
