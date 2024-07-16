@@ -2,175 +2,212 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://zzoay.github.io/talk/example-talk/</loc>
+    <loc>http://localhost:1313/event/example/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/event/</loc>
+    <loc>http://localhost:1313/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication-type/1/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/publication_types/3/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/benchmark/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/automatic-science-journalism/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/large-language-model/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/large-language-model/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication_types/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/publication/arxiv-2407/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/publication_types/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tags/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/publication/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/theory-of-mind/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication/tombench/</loc>
-    <lastmod>2024-05-16T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/text-generation/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication-type/2/</loc>
+    <loc>http://localhost:1313/publication_types/1/</loc>
+    <lastmod>2024-07-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/benchmark/</loc>
+    <lastmod>2024-07-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/theory-of-mind/</loc>
+    <lastmod>2024-07-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/publication/tombench/</loc>
+    <lastmod>2024-07-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/projects/</loc>
+    <lastmod>2024-05-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/publication_types/2/</loc>
     <lastmod>2024-03-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/dependency-parsing/</loc>
+    <loc>http://localhost:1313/tags/dependency-parsing/</loc>
     <lastmod>2024-03-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication/cl2024/</loc>
+    <loc>http://localhost:1313/publication/cl2024/</loc>
     <lastmod>2024-03-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/natural-language-processing/</loc>
+    <loc>http://localhost:1313/tags/natural-language-processing/</loc>
     <lastmod>2024-03-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication/acl2023/</loc>
+    <loc>http://localhost:1313/post/get-started/</loc>
+    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/academic/</loc>
+    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/hugo-blox/</loc>
+    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/markdown/</loc>
+    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/hugo/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/project/pandas/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/project/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/project/pytorch/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/project/scikit/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/second-brain/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/wowchemy/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/second-brain/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/data-visualization/</loc>
+    <lastmod>2023-10-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/teach-courses/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/experience/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/hugo-blox-builder/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/javascript/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/teaching/js/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/teaching/python/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/python/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/teaching/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/project-management/</loc>
+    <lastmod>2023-10-23T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/publication/acl2023/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/few-shot-learning/</loc>
+    <loc>http://localhost:1313/tags/few-shot-learning/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/zero-shot-learning/</loc>
+    <loc>http://localhost:1313/tags/zero-shot-learning/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2022-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/fake-news-detection/</loc>
+    <loc>http://localhost:1313/tags/fake-news-detection/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/publication/ipm2022/</loc>
+    <loc>http://localhost:1313/publication/ipm2022/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/prompt-learning/</loc>
+    <loc>http://localhost:1313/tags/prompt-learning/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/academic/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/categories/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/category/demo/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/post/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/post/getting-started/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/tag/%E5%BC%80%E6%BA%90/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/category/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2020-12-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/publication/ecai2020/</loc>
+    <loc>http://localhost:1313/publication/ecai2020/</loc>
     <lastmod>2020-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/graph-convolutional-network/</loc>
+    <loc>http://localhost:1313/tags/graph-convolutional-network/</loc>
     <lastmod>2020-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://zzoay.github.io/tag/text-classification/</loc>
+    <loc>http://localhost:1313/tags/text-classification/</loc>
     <lastmod>2020-08-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/post/writing-technical-content/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/post/jupyter/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/slides/</loc>
-    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/slides/example/</loc>
-    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/privacy/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/terms/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/tag/deep-learning/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/tag/demo/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/project/example/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/project/external-project/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/project/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://zzoay.github.io/admin/</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
