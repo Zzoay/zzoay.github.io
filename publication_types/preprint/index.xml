@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Preprint | Gongyao&#39;s Homepage</title>
-    <link>https://example.com/publication_types/preprint/</link>
-      <atom:link href="https://example.com/publication_types/preprint/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://zzoay.github.io/publication_types/preprint/</link>
+      <atom:link href="https://zzoay.github.io/publication_types/preprint/index.xml" rel="self" type="application/rss+xml" />
     <description>Preprint</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 16 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>https://zzoay.github.io/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Preprint</title>
-      <link>https://example.com/publication_types/preprint/</link>
+      <link>https://zzoay.github.io/publication_types/preprint/</link>
     </image>
     
     <item>
       <title>LLM-Collaboration on Automatic Science Journalism for the General Audience</title>
-      <link>https://example.com/publication/arxiv-2407/</link>
+      <link>https://zzoay.github.io/publication/arxiv-2407/</link>
       <pubDate>Tue, 16 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/arxiv-2407/</guid>
+      <guid>https://zzoay.github.io/publication/arxiv-2407/</guid>
       <description>&lt;!-- 
 
 
