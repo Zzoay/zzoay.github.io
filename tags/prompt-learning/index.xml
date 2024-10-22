@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Prompt Learning | Gongyao&#39;s Homepage</title>
-    <link>http://localhost:1313/tags/prompt-learning/</link>
-      <atom:link href="http://localhost:1313/tags/prompt-learning/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/prompt-learning/</link>
+      <atom:link href="https://example.com/tags/prompt-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>Prompt Learning</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Sep 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>https://example.com/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Prompt Learning</title>
-      <link>http://localhost:1313/tags/prompt-learning/</link>
+      <link>https://example.com/tags/prompt-learning/</link>
     </image>
     
     <item>
       <title>Fake news detection via knowledgeable prompt learning</title>
-      <link>http://localhost:1313/publication/ipm2022/</link>
+      <link>https://example.com/publication/ipm2022/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/ipm2022/</guid>
+      <guid>https://example.com/publication/ipm2022/</guid>
       <description>&lt;!-- 
 
 

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dependency Parsing | Gongyao&#39;s Homepage</title>
-    <link>http://localhost:1313/tags/dependency-parsing/</link>
-      <atom:link href="http://localhost:1313/tags/dependency-parsing/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/dependency-parsing/</link>
+      <atom:link href="https://example.com/tags/dependency-parsing/index.xml" rel="self" type="application/rss+xml" />
     <description>Dependency Parsing</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 12 Mar 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>https://example.com/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Dependency Parsing</title>
-      <link>http://localhost:1313/tags/dependency-parsing/</link>
+      <link>https://example.com/tags/dependency-parsing/</link>
     </image>
     
     <item>
       <title>LLM-Assisted Data Augmentation for Chinese Dialogue-Level Dependency Parsing</title>
-      <link>http://localhost:1313/publication/cl2024/</link>
+      <link>https://example.com/publication/cl2024/</link>
       <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/cl2024/</guid>
+      <guid>https://example.com/publication/cl2024/</guid>
       <description>&lt;!-- 
 
 
@@ -55,9 +55,9 @@ Supplementary notes can be added here, including [code, math, and images](https:
     
     <item>
       <title>A Pilot Study on Dialogue-Level Dependency Parsing for Chinese</title>
-      <link>http://localhost:1313/publication/acl2023/</link>
+      <link>https://example.com/publication/acl2023/</link>
       <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/acl2023/</guid>
+      <guid>https://example.com/publication/acl2023/</guid>
       <description>&lt;!-- 
 
 
