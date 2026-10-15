@@ -1,0 +1,13 @@
+.older-publications { margin-top: 20px; }
+.older-publications > summary {
+  width: fit-content;
+  padding: 12px 18px;
+  border: 1px solid var(--teal, #164b49);
+  color: var(--teal, #164b49);
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+}
+.older-publications > summary:hover { background: var(--surface, #fff); }
+.older-publications > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.older-publications[open] > summary { margin-bottom: 14px; }
