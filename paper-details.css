@@ -1,0 +1,12 @@
+.paper-detail { max-width: 1000px; margin: 0 auto; padding: 40px 28px 100px; }
+.paper-detail nav { margin-bottom: 64px; }
+.paper-detail h1 { font-size: clamp(1.8rem, 4vw, 3.3rem); line-height: 1.15; overflow-wrap: anywhere; }
+.paper-detail header > p { margin: 24px 0; }
+.paper-detail .paper-authors { font-size: 1.1rem; }
+.paper-detail section { max-width: 760px; margin-top: 56px; }
+.paper-detail section h2 { font-size: 1.6rem; margin-bottom: 20px; }
+.paper-detail section p { font-size: 1.1rem; line-height: 1.7; }
+.publication-card h3 a { color: inherit; text-decoration: none; }
+.publication-card h3 a:hover { color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+@media(max-width: 600px) { .paper-detail { padding: 28px 20px 64px; } .paper-detail nav { margin-bottom: 40px; } }
